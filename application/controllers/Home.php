@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	{
         $data['fetch_data'] = $this->Students_model->get_confirm_students();
 		$this->load->view('templates/header');
-		$this->load->view('pages/home', $data);
+		$this->load->view('pages/login', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 		$data['fetch_data'] = $this->Students_model->get_students_requirements($username);
 		$this->load->view('pages/account_verify', $data);
 	}
-	
+
 	public function login()
 	{
 		$this->load->view('templates/header');
