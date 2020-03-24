@@ -34,7 +34,7 @@
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Username</label>
 				      <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
-				      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				      <span id="email_result"></span>
 				      <span class="text-danger"><?php echo form_error('username'); ?></span>
 				    </div>
 				    <div class="form-group">
@@ -42,6 +42,11 @@
 				      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
 				       <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 				       <span class="text-danger"><?php echo form_error('password'); ?></span>
+				    </div>
+				    <div class="form-group">
+				      <label for="exampleInputPassword1">Confirm Password</label>
+				      <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password">
+				       <span class="text-danger"><?php echo form_error('confirm_password'); ?></span>
 				    </div>
 				    <button type="submit" class="btn btn-primary btn-block">Register</button>
 				    <br>

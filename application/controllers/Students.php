@@ -10,6 +10,7 @@ class Students extends CI_Controller {
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 		$this->form_validation->set_rules('contact_no', 'Contact No.', 'max_length[11]|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header');
