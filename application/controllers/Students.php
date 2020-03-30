@@ -195,7 +195,7 @@ class Students extends CI_Controller {
 
 	public function upload_resume($username)
 	{
-		if (!$this->session->userdata('login'))
+		if ( ! $this->session->userdata('login'))
         { 
             redirect(base_url().'home/login');
         }
@@ -204,20 +204,19 @@ class Students extends CI_Controller {
         $config['overwrite'] 		= true;
         $config['max_size']         =   0;
 
-        $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-        if ( ! $this->upload->do_upload('userfile'))
-        {
-            $error = array('error' => $this->upload->display_errors());
-            $post_image = 'no_pdf.png';
-        }
-        else
-        {
-            $data = array('upload_data' => $this->upload->data());
-
-            dump($data, true);
-            $post_image = $_FILES['userfile']['name']; 
-        }
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+                dump($data, true);
+                $error = array('error' => $this->upload->display_errors());
+                $post_image = 'no_pdf.png';
+            }
+            else
+            {
+                $data = array('upload_data' => $this->upload->data());
+                $post_image = $_FILES['userfile']['name']; 
+            }
         $this->Students_model->upload_resume($post_image, $username);
         redirect(base_url().'home/account_verify/'.$username);
 	}
