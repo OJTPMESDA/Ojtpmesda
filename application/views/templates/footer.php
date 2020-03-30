@@ -40,23 +40,25 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/form_wizard.js"></script>
 
-   <!--  <script type="text/javascript">
+    <script>
        $(document).ready(function() {
-
         $('#email').change(function(){
           var email = $('#email').val();
           if (email != '') 
           {
             $.ajax({
-              url:"<?php echo base_url(); ?>";
-              method: "POST",
+              url:"<?php echo base_url(); ?>Students/check_email_availability",
+              method:"POST",
               data: {email:email},
-              
-            })
+              success:function(data){
+                $('#email_result').html(data);
+              }
+
+            });
           }
-        })
-       })
-    </script> -->
+        });
+       });
+    </script>
 
     <script type="text/javascript">
     $(".btn").on("click", function (event) {         

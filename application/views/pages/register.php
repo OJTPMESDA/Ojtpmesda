@@ -16,7 +16,7 @@
 					    </select>
 					</div>
 				    <div class="form-group">
-				      <label for="exampleInputEmail1">Complete Name | Company Name</label>
+				      <label for="exampleInputEmail1">Complete Name if Student | Company Name</label>
 				      <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter complete name">
 				      <span class="text-danger"><?php echo form_error('name'); ?></span>
 				    </div>
@@ -26,14 +26,14 @@
 				      <span class="text-danger"><?php echo form_error('contact_no'); ?></span>
 				    </div>
 				    <div class="form-group">
-				      <label for="exampleInputEmail1">Address</label>
+				      <label for="exampleInputEmail1">Permanent Address</label>
 				      <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter valid address">
-				      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-				      <span class="text-danger"><?php echo form_error('username'); ?></span>
+				      <span class="text-danger"><?php echo form_error('address'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Username</label>
-				      <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+				      <input type="text" name="email" class="form-control" id="email" placeholder="Enter username">
+				      <small id="emailHelp" class="form-text text-muted">Pls. Select a unique username</small>
 				      <span id="email_result"></span>
 				      <span class="text-danger"><?php echo form_error('username'); ?></span>
 				    </div>

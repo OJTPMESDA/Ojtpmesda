@@ -25,7 +25,7 @@
 				    <div class="form-group">
 				      <label for="exampleInputPassword1"><i class="fa fa-lock" aria-hidden="true"></i>&nbspPassword</label>
 				      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
-				       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				       <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 				       <span class="text-danger"><?php echo form_error('password'); ?></span>
 				    </div>
 				    <?php if($this->session->flashdata('error')): ?>

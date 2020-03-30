@@ -6,7 +6,7 @@ class Students extends CI_Controller {
 	public function add_new_data()
 	{
 		$this->form_validation->set_rules('name', 'Complete Name', 'trim|required');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('email', 'Username', 'trim|required');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 		$this->form_validation->set_rules('contact_no', 'Contact No.', 'max_length[11]|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -354,4 +354,15 @@ class Students extends CI_Controller {
         $this->Students_model->upload_consent($post_image, $username);
         redirect(base_url().'home/account_verify/'.$username);
 	}
+
+    public function check_email_availability()
+    {
+     
+        if ($this->Students_model->check_email($_POST['email'])) {
+            echo '<label class="text-danger">Username Already Taken</label>';
+        }
+        else{
+             echo '<label class="text-success">Username Available</label>';
+        }
+    }
 }

@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	{
         $data['fetch_data'] = $this->Students_model->get_confirm_students();
 		$this->load->view('templates/header');
-		$this->load->view('pages/login', $data);
+		$this->load->view('pages/home', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -87,7 +87,7 @@ class Home extends CI_Controller {
 					redirect(base_url());
 				}
 				elseif ($this->Students_model->verify_company($username, $password)) {
-					redirect('home/account_verify');
+					echo show_404();
 				}
 				else
 				{

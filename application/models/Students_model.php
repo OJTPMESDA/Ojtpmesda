@@ -9,7 +9,7 @@ class Students_model extends CI_Model
 			'contact_no' => $this->input->post('contact_no'),
 			'address' => $this->input->post('address'),
 			'user_image' => 'no_image.png',
-			'username' => $this->input->post('username'),
+			'username' => $this->input->post('email'),
 			'password' => $this->input->post('password')
 		);
 		$data = array(
@@ -17,7 +17,7 @@ class Students_model extends CI_Model
 			'contact_no' => $this->input->post('contact_no'),
 			'address' => $this->input->post('address'),
 			'user_image' => 'no_image.png',
-			'username' => $this->input->post('username'),
+			'username' => $this->input->post('email'),
 			'password' => $this->input->post('password')
 		);
 		$req = array(
@@ -455,6 +455,19 @@ class Students_model extends CI_Model
 		);
 		$this->db->where('username', $username);
 		$this->db->update('requirements', $data);
+	}
+
+	function check_email($email)
+	{
+		$this->db->where('username', $email);
+		$query = $this->db->get('students');
+		if ($query->num_rows() > 0) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 ?>
