@@ -196,7 +196,7 @@ class Students extends CI_Controller {
 	public function upload_resume($username)
 	{
 
-        dump($_SESSION);
+        dump($_SESSION, true);
 		if (!$this->session->userdata('login'))
         { 
             redirect(base_url().'home/login');
