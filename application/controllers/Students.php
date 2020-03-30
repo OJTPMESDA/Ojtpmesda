@@ -221,7 +221,6 @@ class Students extends CI_Controller {
             {
                 $error = array('error' => $this->upload->display_errors());
                 $post_image = 'no_pdf.png';
-                dump($error, true);
             }
             else
             {
