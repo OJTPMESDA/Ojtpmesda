@@ -5,7 +5,6 @@ class Students extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->library('upload');
     }
 
 	public function add_new_data()
