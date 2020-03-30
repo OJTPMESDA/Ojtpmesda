@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Students extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->library('upload');
+    }
+
 	public function add_new_data()
 	{
 		$this->form_validation->set_rules('name', 'Complete Name', 'trim|required');
@@ -199,12 +204,19 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
+
+        $dir = 'assets/pdf';
+
+        if(!is_dir($dir)) {
+                mkdir($dir, 0755, TRUE);
+        }
+
+        $config['upload_path']      = $dir;
         $config['allowed_types']    = 'pdf';
         $config['overwrite'] 		= true;
         $config['max_size']         =   0;
 
-            $this->load->library('upload', $config);
+        $this->upload->initialize($config);
 
             if ( ! $this->upload->do_upload('userfile'))
             {
