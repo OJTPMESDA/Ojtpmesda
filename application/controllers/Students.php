@@ -195,7 +195,9 @@ class Students extends CI_Controller {
 
 	public function upload_resume($username)
 	{
-		if ( ! $this->session->userdata('login'))
+
+        dump($_SESSION);
+		if (!$this->session->userdata('login'))
         { 
             redirect(base_url().'home/login');
         }
@@ -205,8 +207,6 @@ class Students extends CI_Controller {
         $config['max_size']         =   0;
 
         $this->load->library('upload', $config);
-
-        dump($_FILES);
 
         if ( ! $this->upload->do_upload('userfile'))
         {
