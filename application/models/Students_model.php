@@ -21,7 +21,7 @@ class Students_model extends CI_Model
 			'password' => $this->input->post('password')
 		);
 		$req = array(
-			'username' => $this->input->post('username'),
+			'username' => $this->input->post('email'),
 			'resume' => 'no_pdf.png',
 			'clearance' => 'no_pdf.png',
 			'waiver' => 'no_pdf.png',
