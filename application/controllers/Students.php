@@ -206,8 +206,6 @@ class Students extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        dump($_FILES, true);
-
         if ( ! $this->upload->do_upload('userfile'))
         {
             $error = array('error' => $this->upload->display_errors());
@@ -216,6 +214,8 @@ class Students extends CI_Controller {
         else
         {
             $data = array('upload_data' => $this->upload->data());
+
+            dump($data, true);
             $post_image = $_FILES['userfile']['name']; 
         }
         $this->Students_model->upload_resume($post_image, $username);
