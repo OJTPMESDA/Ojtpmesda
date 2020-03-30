@@ -1,4 +1,15 @@
-
+.banner{
+	position: relative;
+	padding-top: 0;
+    padding: 0;
+    background:#2C3E50;
+    margin-top:0;
+    display:flex;
+}
+.banner .banner-content{
+	color: #fff;
+	padding: 50px;
+}
 .shadow{
 	-webkit-box-shadow: -9px 10px 25px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -9px 10px 25px -9px rgba(0,0,0,0.75);

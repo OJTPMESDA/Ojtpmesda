@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Manila');
 |
 */
 
-$config['base_url'] = 'http://localhost/OJTPMESDA/';
+$config['base_url'] = 'http://ojtpmesda.com/';
 
 /*
 |--------------------------------------------------------------------------

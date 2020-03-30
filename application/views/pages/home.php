@@ -1,4 +1,13 @@
+<div class="banner">
+	<div class="banner-content">
+		<img src="<?= base_url(); ?>assets/images/minscat.png" height="100px">
+		<legend>Mindoro State College of Agriculture and Technology Bongabong Campus</legend>
+		<label>On the Job Training Performance Monitoring and Evaluation System with Data Analytics is an website that handles practicum requirements and provide a timeline for posting announcements and monitor their performance of the student trainees. It also use an electronic evaluation sheet for evaluating student's performance.</label>
+	</div>
+</div>
 <div class="container">
+	<br>
+	<legend class="text-center">LIST OF OJT CANDIDATES</legend>
 	<div class="row">
 		<?php foreach ($fetch_data->result() as $row): ?>
 			<?php 
