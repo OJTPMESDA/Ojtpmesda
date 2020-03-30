@@ -208,7 +208,7 @@ class Students extends CI_Controller {
         $dir = 'assets/pdf';
 
         if(!is_dir($dir)) {
-                mkdir($dir, 0755, TRUE);
+            mkdir($dir, 0755, TRUE);
         }
 
         $config['upload_path']      = $dir;
@@ -220,9 +220,9 @@ class Students extends CI_Controller {
 
             if ( ! $this->upload->do_upload('userfile'))
             {
-                dump($data, true);
                 $error = array('error' => $this->upload->display_errors());
                 $post_image = 'no_pdf.png';
+                dump($error, true);
             }
             else
             {
