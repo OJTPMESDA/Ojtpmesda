@@ -26,10 +26,10 @@ if ( ! function_exists('dump'))
         $c = 0;
 
         for ($i = 0; $i < $max; $i++) {
-            if ($match[1]{$i} == "(" ) $c++;
-            elseif ($match[1]{$i} == ")" ) $c--;
+            if ($match[1][$i] == "(" ) $c++;
+            elseif ($match[1][$i] == ")" ) $c--;
             if ($c < 0) break;
-            $varname .= $match[1]{$i};
+            $varname .= $match[1][$i];
         }
 
         if(is_object($data))     $message = 'Variable holds an OBJECT';
