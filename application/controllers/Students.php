@@ -249,11 +249,6 @@ class Students extends CI_Controller {
         $config['overwrite']        = true;
         $config['max_size']         =   0;
 
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
-
             $this->load->library('upload', $config);
 
             if ( ! $this->upload->do_upload('userfile'))
@@ -283,9 +278,9 @@ class Students extends CI_Controller {
             mkdir($dir, 0755, TRUE);
         }
 
-        $config['upload_path']      = './assets/pdf';
+        $config['upload_path']      = $dir;
         $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
+        $config['overwrite']        = true;
         $config['max_size']         =   0;
 
             $this->load->library('upload', $config);
@@ -310,9 +305,16 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
+        
+        $dir = 'assets/pdf';
+
+        if(!is_dir($dir)) {
+            mkdir($dir, 0755, TRUE);
+        }
+
+        $config['upload_path']      = $dir;
         $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
+        $config['overwrite']        = true;
         $config['max_size']         =   0;
 
             $this->load->library('upload', $config);
@@ -337,9 +339,16 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
+
+        $dir = 'assets/pdf';
+
+        if(!is_dir($dir)) {
+            mkdir($dir, 0755, TRUE);
+        }
+
+        $config['upload_path']      = $dir;
         $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
+        $config['overwrite']        = true;
         $config['max_size']         =   0;
 
             $this->load->library('upload', $config);
@@ -364,9 +373,16 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
+        
+        $dir = 'assets/pdf';
+
+        if(!is_dir($dir)) {
+            mkdir($dir, 0755, TRUE);
+        }
+
+        $config['upload_path']      = $dir;
         $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
+        $config['overwrite']        = true;
         $config['max_size']         =   0;
 
             $this->load->library('upload', $config);
