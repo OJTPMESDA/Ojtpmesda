@@ -276,6 +276,13 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
+
+        $dir = 'assets/pdf';
+
+        if(!is_dir($dir)) {
+            mkdir($dir, 0755, TRUE);
+        }
+
         $config['upload_path']      = './assets/pdf';
         $config['allowed_types']    = 'pdf';
         $config['overwrite'] 		= true;
