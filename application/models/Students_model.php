@@ -2,42 +2,20 @@
 
 class Students_model extends CI_Model
 {
-	function add_students()
+
+	public function __construct()
+    {	
+        parent::__construct();
+    }
+
+	public function insertStudent($data)
 	{
-		$config = array(
-			'company_name' => $this->input->post('name'),
-			'contact_no' => $this->input->post('contact_no'),
-			'address' => $this->input->post('address'),
-			'user_image' => 'no_image.png',
-			'username' => $this->input->post('email'),
-			'password' => $this->input->post('password')
-		);
-		$data = array(
-			'name' => $this->input->post('name'),
-			'contact_no' => $this->input->post('contact_no'),
-			'address' => $this->input->post('address'),
-			'user_image' => 'no_image.png',
-			'username' => $this->input->post('email'),
-			'password' => $this->input->post('password')
-		);
-		$req = array(
-			'username' => $this->input->post('email'),
-			'resume' => 'no_pdf.png',
-			'clearance' => 'no_pdf.png',
-			'waiver' => 'no_pdf.png',
-			'good_moral' => 'no_pdf.png',
-			'registration_form' => 'no_pdf.png',
-			'parents_consent' => 'no_pdf.png'
-		);
-		if($this->input->post('role') == 1)
-		{
-			$this->db->insert('requirements', $req);
-			$this->db->insert('students', $data);
-		}
-		else
-		{
-			$this->db->insert('admin', $config);
-		}
+		$this->db->insert('students', $data);
+	}
+
+	public function insertAdmin($data)
+	{
+		$this->db->insert('admin', $data);
 	}
 
 	function get_evaluate()
@@ -151,38 +129,18 @@ class Students_model extends CI_Model
 		$this->db->delete(array('students', 'requirements'));
 	}
 
-	function login_students($username, $password)
+	function login_students($where)
 	{
-		$this->db->where('username', $username);
-		$this->db->where('password', $password);
-		$this->db->where('status', 1);
-		$query = $this->db->get('students');
+		$data = [];
 
-		if($query->num_rows() == 1)
-			{         
-			    return true;
-			}
-			else
-			{
-			    return false;
-			} 
-	}
+		$res = $this->db->where($where)
+						->get('students');
 
-	function verify_students($username, $password)
-	{
-		$this->db->where('username', $username);
-		$this->db->where('password', $password);
-		$this->db->where('status', 0);
-		$query = $this->db->get('students');
-
-		if($query->num_rows() == 1)
-			{         
-			    return true;
-			}
-			else
-			{
-			    return false;
-			} 
+		if($res->num_rows() > 0) {         
+		    $data = $res->row();
+		}
+		$res->free_result();
+        return $data;
 	}
 
 	function verify_company($username, $password)
@@ -201,37 +159,32 @@ class Students_model extends CI_Model
 			} 
 	}
 
-	function login_company($username, $password)
+	function login_company($where)
 	{
-		$this->db->where('username', $username);
-		$this->db->where('password', $password);
-		$this->db->where('status', 1);
-		$query = $this->db->get('admin');
+		$data = [];
 
-		if($query->num_rows() == 1)
-			{         
-			    return true;
-			}
-			else
-			{
-			    return false;
-			} 
+		$res = $this->db->where($where)
+						->get('admin');
+
+		if($res->num_rows() > 0) {         
+		    $data = $res->row();
+		}
+		$res->free_result();
+        return $data; 
 	}
 
-	function login_admin($username, $password)
+	function login_admin($where)
 	{
-		$this->db->where('username', $username);
-		$this->db->where('password', $password);
-		$query = $this->db->get('main_admin');
+		$data = [];
 
-		if($query->num_rows() == 1)
-			{         
-			    return true;
-			}
-			else
-			{
-			    return false;
-			} 
+		$res = $this->db->where($where)
+						->get('main_admin');
+
+		if($res->num_rows() > 0) {         
+		    $data = $res->row();
+		}
+		$res->free_result();
+        return $data; 
 	}
 
 	function add_hours($username)
@@ -275,64 +228,9 @@ class Students_model extends CI_Model
 
 	}
 
-	function upload_resume($post_image, $username)
+	public function _updateData($where, $data)
 	{
-		$config = array(
-			'username' => $username,
-			'resume' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
-	}
-
-	function upload_clearance($post_image, $username)
-	{
-		$config = array(
-			'username' => $username,
-			'clearance' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
-	}
-
-	function upload_waiver($post_image, $username)
-	{
-		$config = array(
-			'username' => $username,
-			'waiver' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
-	}
-
-	function upload_good_moral($post_image, $username)
-	{
-		$config = array(
-			'username' => $username,
-			'good_moral' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
-	}
-
-	function upload_registration_form($post_image, $username)
-	{
-		$config = array(
-			'username' => $username,
-			'registration_form' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
-	}
-
-	function upload_consent($post_image, $username)
-	{
-		$config = array(
-			'username' => $username,
-			'parents_consent' => $post_image
-		);
-		$this->db->where('username', $username);
-		$this->db->update('requirements', $config);
+		return $this->db->where($where)->update('requirements', $data);
 	}
 
 	function get_students_requirements($username)

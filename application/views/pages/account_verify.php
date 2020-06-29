@@ -73,7 +73,10 @@
 			  <div class="tab-pane fade active show" id="resume">
 			  	<center>
 			  	<br>
-			  	<?php 
+			  	<?php
+				if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				}
 			  	if($fetch_data['resume'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['resume'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['resume'].'</legend>';
@@ -109,7 +112,10 @@
 				<div class="tab-pane fade" id="clearance">
 			  	<center>
 			  	<br>
-			  	<?php 
+			  	<?php
+			  	if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				}
 			  	if($fetch_data['clearance'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['clearance'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['clearance'].'</legend>';
@@ -146,6 +152,9 @@
 			  	<center>
 			  	<br>
 			  	<?php 
+			  	if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				}
 			  	if($fetch_data['waiver'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['waiver'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['waiver'].'</legend>';
@@ -182,6 +191,9 @@
 			  	<center>
 			  	<br>
 			  	<?php 
+			  	if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				}
 			  	if($fetch_data['good_moral'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['good_moral'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['good_moral'].'</legend>';
@@ -217,7 +229,10 @@
 				<div class="tab-pane fade" id="cor">
 			  	<center>
 			  	<br>
-			  	<?php 
+			  	<?php
+			  	if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				}
 			  	if($fetch_data['registration_form'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['registration_form'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['registration_form'].'</legend>';
@@ -254,7 +269,10 @@
 				<div class="tab-pane fade" id="consent">
 			  	<center>
 			  	<br>
-			  	<?php 
+			  	<?php
+			  	if($this->session->flashdata('error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				} 
 			  	if($fetch_data['parents_consent'] != 'no_pdf.png') {
 			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['parents_consent'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 			    <legend>'.$fetch_data['parents_consent'].'</legend>';

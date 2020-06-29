@@ -43,77 +43,84 @@ class Home extends CI_Controller {
 			$this->load->view('templates/header');
 			$this->load->view('pages/login');
 			$this->load->view('templates/footer');
-		}
-		else
-		{
+		} else {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$role = $this->input->post('role');
 			if ($role == 1) {
-				if($this->Students_model->login_students($username, $password))
-				{
-					$session_data = array(
-						'role' => $this->input->post('role'),
-						'username' => $username,
-						'login' => TRUE
-					);
-					$this->session->set_userdata($session_data);
-					redirect(base_url());
+				$students = $this->Students_model->login_students(['username' => $username]);
+				if(!empty($students)) {
+
+					if ($this->_password_verify($password,$students->password)) {
+						$sess = [
+							'role' => $role,
+							'username' => $students->username,
+							'uid' => $students->id,
+							'login' => TRUE
+						];
+						$this->session->set_userdata($sess);
+
+						if ($students->status == 0) {
+							redirect(base_url());
+						} elseif ($students->status == 1) {
+							redirect('home/account_verify/'.$username
+								.'');
+						}
+					} else {
+						$this->session->set_flashdata('error', 'Invalid Username and Password');
+						redirect(base_url().'home/login');
+					}
 				}
-				elseif ($this->Students_model->verify_students($username, $password)) {
-					$session_data = array(
-						'role' => $this->input->post('role'),
-						'username' => $username,
-						'login' => TRUE
-					);
-					$this->session->set_userdata($session_data);
-					redirect('home/account_verify/'.$this->session->userdata('username').'');
-				}
-				else
-				{
+			} elseif ($role == 2) {
+				$company = $this->Students_model->login_company(['username' => $username]);
+				if(!empty($company)) {
+
+					if ($this->_password_verify($password,$company->password)) {
+						$sess = [
+							'role' => $role,
+							'username' => $company->username,
+							'uid' => $company->id,
+							'login' => TRUE
+						];
+
+						$this->session->set_userdata($sess);
+
+						if ($company->username == 1) {
+							redirect(base_url());
+						} else {
+							show_404();
+						}
+						
+					}
+						
+				} else {
 					$this->session->set_flashdata('error', 'Invalid Username and Password');
 					redirect(base_url().'home/login');
 				}
-			}
-			elseif ($role == 2) {
-				if($this->Students_model->login_company($username, $password, $role))
-				{
-					$session_data = array(
-						'role' => $this->input->post('role'),
-						'username' => $username,
-						'login' => TRUE
-					);
-					$this->session->set_userdata($session_data);
-					redirect(base_url());
-				}
-				elseif ($this->Students_model->verify_company($username, $password)) {
-					echo show_404();
-				}
-				else
-				{
+			} elseif ($role == 3) {
+				$admin = $this->Students_model->login_admin(['username' => $username]);
+				if(!empty($admin)) {
+					if ($this->_password_verify($password,$admin->password)) {
+						$sess = [
+							'role' => $role,
+							'username' => $admin->username,
+							'uid' => $admin->id,
+							'login' => TRUE
+						];
+
+						$this->session->set_userdata($sess);
+
+						redirect(base_url());
+
+					} else {
+						$this->session->set_flashdata('error', 'Invalid Username and Password');
+						redirect(base_url().'home/login');
+					}
+				} else {
 					$this->session->set_flashdata('error', 'Invalid Username and Password');
 					redirect(base_url().'home/login');
 				}
-			}
-			elseif ($role == 3) {
-				if($this->Students_model->login_admin($username, $password, $role))
-				{
-					$session_data = array(
-						'role' => $this->input->post('role'),
-						'username' => $username,
-						'login' => TRUE
-					);
-					$this->session->set_userdata($session_data);
-					redirect(base_url());
-				}
-				else
-				{
-					$this->session->set_flashdata('error', 'Invalid Username and Password');
-					redirect(base_url().'home/login');
-				}
-			}
-			else
-			{
+			} else {
 				return false;
 			}
 			
@@ -123,7 +130,7 @@ class Home extends CI_Controller {
 
 	public function logout()
 	{
-		$this->session->unset_userdata(array('role', 'username', 'login'));
+		$this->session->sess_destroy();
 		redirect(base_url().'home/login');
 	}
 }

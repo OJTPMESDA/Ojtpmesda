@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Students extends CI_Controller {
+class Students extends MY_Controller {
 
     function __construct() {
         parent::__construct();
@@ -20,13 +20,35 @@ class Students extends CI_Controller {
 			$this->load->view('templates/header');
 			$this->load->view('pages/register');
 			$this->load->view('templates/footer');
-		}
-		else
-		{
+		} else {
+            $hash = $this->_password_hash($this->input->post('password'));
+            $email = $this->input->post('email');
+            $name = $this->input->post('name');
+            $contact_no = $this->input->post('contact_no');
+            $address = $this->input->post('address');
+                
+            if($this->input->post('role') == 1) {
+                $data = [
+                    'name' => $name,
+                    'contact_no' => $contact_no,
+                    'address' => $address,
+                    'username' => $email,
+                    'password' => $hash
+                ];
+                $this->Students_model->insertStudent($data);
 
-			$this->Students_model->add_students();
+            } else {
+                $admin = [
+                    'company_name' => $name,
+                    'contact_no' => $contact_no,
+                    'address' => $address,
+                    'username' => $email,
+                    'password' => $hash
+                ];
+                $this->Students_model->insertAdmin($admin);
+
+            }
 			redirect('home/login');
-			
 		}
 	}
 
@@ -199,62 +221,37 @@ class Students extends CI_Controller {
 
 	public function upload_resume($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
+		if ( ! $this->session->userdata('login')) { 
             redirect(base_url().'home/login');
         }
 
-        $dir = 'assets/pdf';
+        $dir = $this->_mkdir('assets/pdf');
 
-        if(!is_dir($dir)) {
-            mkdir($dir, 0755, TRUE);
+        $img = $this->_uploadFiles($dir);
+
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['resume' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
         }
-
-        $config['upload_path']      = $dir;
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
-
-        $this->upload->initialize($config);
-
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_resume($post_image, $username);
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
 	public function upload_clearance($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
+		if ( ! $this->session->userdata('login')) { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
 
-            $this->load->library('upload', $config);
+        $dir = $this->_mkdir('assets/pdf');
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_clearance($post_image, $username);
+        $img = $this->_uploadFiles($dir);
+
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['clearance' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
+        }
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
@@ -264,51 +261,34 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
+        
+        $dir = $this->_mkdir('assets/pdf');
 
-            $this->load->library('upload', $config);
+        $img = $this->_uploadFiles($dir);
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_waiver($post_image, $username);
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['waiver' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
+        }
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
 	public function upload_good_moral($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
+		if ( ! $this->session->userdata('login')) { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
+        
+        $dir = $this->_mkdir('assets/pdf');
 
-            $this->load->library('upload', $config);
+        $img = $this->_uploadFiles($dir);
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_good_moral($post_image, $username);
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['good_moral' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
+        }
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
@@ -318,58 +298,42 @@ class Students extends CI_Controller {
         { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
+        
+        $dir = $this->_mkdir('assets/pdf');
 
-            $this->load->library('upload', $config);
+        $img = $this->_uploadFiles($dir);
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_registration_form($post_image, $username);
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['registration_form' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
+        }
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
 	public function upload_consent($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
+		if ( ! $this->session->userdata('login')) { 
             redirect(base_url().'home/login');
         }
-        $config['upload_path']      = './assets/pdf';
-        $config['allowed_types']    = 'pdf';
-        $config['overwrite'] 		= true;
-        $config['max_size']         =   0;
+        
+        $dir = $this->_mkdir('assets/pdf');
 
-            $this->load->library('upload', $config);
+        $img = $this->_uploadFiles($dir);
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_pdf.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-        $this->Students_model->upload_consent($post_image, $username);
+        if (!empty($img)) {
+            $this->Students_model->_updateData(['studentID' => $this->session->uid], ['parents_consent' => $img]);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
+        }
         redirect(base_url().'home/account_verify/'.$username);
 	}
 
     public function check_email_availability()
     {
-     
-        if ($this->Students_model->check_email($_POST['email'])) {
+        $email = $this->input->post('email');
+
+        if ($this->Students_model->check_email($email)) {
             echo '<label class="text-danger">Username Already Taken</label>';
         }
         else{
