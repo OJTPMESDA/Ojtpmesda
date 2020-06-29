@@ -50,7 +50,7 @@
 			<legend>@<?= $fetch_data['username'].' '.$g.'/6'; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link active <?php echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
+			    <a class="nav-link <?php echo (empty($this->session->flashdata('resume-active'))) ? 'active' : $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link <?php echo $this->session->flashdata('clearance-active'); ?>" data-toggle="tab" href="#clearance">Clearance</a>
@@ -353,14 +353,6 @@
                 $('#applyRemoveDialog').modal("show");
             }
         });
-
-        <?php if($this->session->flashdata('active')): ?>
-        	$('a.nav-link').each(function(){
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                }
-            });
-        <?php endif; ?>
   </script>
   
   <script>
