@@ -47,12 +47,18 @@
 			$f = $fetch_data['consent_status'];
 			$g = $a+$b+$c+$d+$e+$f;
 
-
+			if ($this->session->flashdata('remove')) {
+				$active = null;
+				$show = null;
+			} else {
+				$active = 'active';
+				$show = 'show';
+			}
 			?>
 			<legend>@<?= $fetch_data['username'].' '.$g.'/6'; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link <?php echo ($this->session->flashdata('remove')) ? null : 'active'; echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
+			    <a class="nav-link <?php echo $active; echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link <?php echo $this->session->flashdata('clearance-active'); ?>" data-toggle="tab" href="#clearance">Clearance</a>
@@ -72,7 +78,7 @@
 			  
 			</ul>
 			<div id="myTabContent" class="tab-content">
-			  <div class="tab-pane fade active show" id="resume">
+			  <div class="tab-pane fade <?php echo $active.' '.$show; ?>" id="resume">
 			  	<center>
 			  	<br>
 			  	<?php
@@ -113,7 +119,7 @@
 			  	</center>
 				</div>
 
-				<div class="tab-pane fade" id="clearance">
+				<div class="tab-pane fade <?php echo ($this->session->flashdata('clearance-active')) ? $this->session->flashdata('clearance-active').' show' : null; ?>" id="clearance">
 			  	<center>
 			  	<br>
 			  	<?php
@@ -154,7 +160,7 @@
 			  	</center>
 				</div>
 
-				<div class="tab-pane fade" id="waiver">
+				<div class="tab-pane fade <?php echo ($this->session->flashdata('waiver-active')) ? $this->session->flashdata('waiver-active').' show' : null; ?>" id="waiver">
 			  	<center>
 			  	<br>
 			  	<?php 
@@ -195,7 +201,7 @@
 			  	</center>
 				</div>
 
-				<div class="tab-pane fade" id="good_moral">
+				<div class="tab-pane fade <?php echo ($this->session->flashdata('good-moral-active')) ? $this->session->flashdata('good-moral-active').' show' : null; ?>" id="good_moral">
 			  	<center>
 			  	<br>
 			  	<?php 
@@ -236,7 +242,7 @@
 			  	</center>
 				</div>
 
-				<div class="tab-pane fade" id="cor">
+				<div class="tab-pane fade <?php echo ($this->session->flashdata('registration-active')) ? $this->session->flashdata('registration-active').' show' : null; ?>" id="cor">
 			  	<center>
 			  	<br>
 			  	<?php
@@ -277,8 +283,8 @@
 			  	</center>
 				</div>
 
-
-				<div class="tab-pane fade" id="consent">
+consent
+				<div class="tab-pane fade <?php echo ($this->session->flashdata('consent-active')) ? $this->session->flashdata('consent-active').' show' : null; ?>" id="consent">
 			  	<center>
 			  	<br>
 			  	<?php
