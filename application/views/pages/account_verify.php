@@ -282,8 +282,6 @@
 			  	?>
 			  	</center>
 				</div>
-
-consent
 				<div class="tab-pane fade <?php echo ($this->session->flashdata('consent-active')) ? $this->session->flashdata('consent-active').' show' : null; ?>" id="consent">
 			  	<center>
 			  	<br>
