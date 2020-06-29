@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/icon/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+    <!-- <link rel="stylesheet" href="<?php //echo base_url(); ?>assets/css/style.css"> -->
     
   </head>
   <body>
@@ -344,38 +344,15 @@
   </script>
   
   <script>
-  $.ajax({
-    url: "<?php echo base_url("Home/get_data"); ?>",
-    type: "POST",
-    cache: false,
-    success: function(data){
-      //alert(data);
-      $('#table').html(data); 
-    }
-  });
-  </script>
-
-  </body>
-</html>
-k", function (event) {         
-            if ($(this).hasClass("disabled")) {
-                event.stopPropagation()
-            } else {
-                $('#applyRemoveDialog').modal("show");
-            }
-        });
-  </script>
-  
-  <script>
-  $.ajax({
-    url: "<?php echo base_url("Home/get_data"); ?>",
-    type: "POST",
-    cache: false,
-    success: function(data){
-      //alert(data);
-      $('#table').html(data); 
-    }
-  });
+  // $.ajax({
+  //   url: "<?php //echo base_url("Home/get_data"); ?>",
+  //   type: "POST",
+  //   cache: false,
+  //   success: function(data){
+  //     //alert(data);
+  //     $('#table').html(data); 
+  //   }
+  // });
   </script>
 
   </body>
