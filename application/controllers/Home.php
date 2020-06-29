@@ -27,7 +27,6 @@ class Home extends MY_Controller {
 
 	public function login()
 	{
-		echo $this->_password_hash('pass1234');
 		$this->load->view('templates/header');
 		$this->load->view('pages/login');
 		$this->load->view('templates/footer');
