@@ -357,3 +357,26 @@
 
   </body>
 </html>
+k", function (event) {         
+            if ($(this).hasClass("disabled")) {
+                event.stopPropagation()
+            } else {
+                $('#applyRemoveDialog').modal("show");
+            }
+        });
+  </script>
+  
+  <script>
+  $.ajax({
+    url: "<?php echo base_url("Home/get_data"); ?>",
+    type: "POST",
+    cache: false,
+    success: function(data){
+      //alert(data);
+      $('#table').html(data); 
+    }
+  });
+  </script>
+
+  </body>
+</html>
