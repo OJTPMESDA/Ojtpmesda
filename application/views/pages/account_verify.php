@@ -50,22 +50,22 @@
 			<legend>@<?= $fetch_data['username'].' '.$g.'/6'; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link active" data-toggle="tab" href="#resume">Resume</a>
+			    <a class="nav-link active <?php echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#clearance">Clearance</a>
+			    <a class="nav-link <?php echo $this->session->flashdata('clearance-active'); ?>" data-toggle="tab" href="#clearance">Clearance</a>
 			  </li>
 			   <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#waiver">Waiver</a>
+			    <a class="nav-link <?php echo $this->session->flashdata('waiver-active'); ?>" data-toggle="tab" href="#waiver">Waiver</a>
 			  </li>
 			   <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#good_moral">Good Moral</a>
+			    <a class="nav-link <?php echo $this->session->flashdata('good-moral-active'); ?>" data-toggle="tab" href="#good_moral">Good Moral</a>
 			  </li>
 			   <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#cor">Registration Form</a>
-			  </li>
+			    <a class="nav-link <?php echo $this->session->flashdata('registration-active'); ?>" data-toggle="tab" href="#cor">Registration Form</a>
+			  </li>active
 			  <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#consent">Parents Consent</a>
+			    <a class="nav-link <?php echo $this->session->flashdata('consent-active'); ?>" data-toggle="tab" href="#consent">Parents Consent</a>
 			  </li>
 			  
 			</ul>
@@ -74,18 +74,20 @@
 			  	<center>
 			  	<br>
 			  	<?php
-				if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+				if($this->session->flashdata('resume-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('resume-error').'</p>';
 				}
-			  	if($fetch_data['resume'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['resume'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['resume'].'</legend>';
-			    	if($fetch_data['resume_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+
+				if(!empty($fetch_data['resume'])) {
+				  	if($fetch_data['resume'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['resume']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				  		<legend>'.explode('/',$fetch_data['resume'])[2].'</legend>';
+				    	if($fetch_data['resume_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	} else {
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -113,18 +115,20 @@
 			  	<center>
 			  	<br>
 			  	<?php
-			  	if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+			  	if($this->session->flashdata('clearance-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('clearance-error').'</p>';
 				}
-			  	if($fetch_data['clearance'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['clearance'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['clearance'].'</legend>';
-			    	if($fetch_data['clearance_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+				if(!empty($fetch_data['clearance'])) {
+			  		if($fetch_data['clearance'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['clearance']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.explode('/',$fetch_data['clearance'])[2].'</legend>';
+				    	if($fetch_data['clearance_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -152,18 +156,20 @@
 			  	<center>
 			  	<br>
 			  	<?php 
-			  	if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+			  	if($this->session->flashdata('waiver-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('waiver-error').'</p>';
 				}
-			  	if($fetch_data['waiver'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['waiver'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['waiver'].'</legend>';
-			    	if($fetch_data['waiver_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+				if(!empty($fetch_data['waiver'])) {
+				  	if($fetch_data['waiver'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['waiver']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.explode('/',$fetch_data['waiver'])[2].'</legend>';
+				    	if($fetch_data['waiver_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -191,18 +197,20 @@
 			  	<center>
 			  	<br>
 			  	<?php 
-			  	if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+			  	if($this->session->flashdata('good-moral-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('good-moral-error').'</p>';
 				}
-			  	if($fetch_data['good_moral'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['good_moral'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['good_moral'].'</legend>';
-			    	if($fetch_data['good_moral_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+				if(!empty($fetch_data['good_moral'])) {
+				  	if($fetch_data['good_moral'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['good_moral']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.explode('/',$fetch_data['good_moral'])[2].'</legend>';
+				    	if($fetch_data['good_moral_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -230,18 +238,20 @@
 			  	<center>
 			  	<br>
 			  	<?php
-			  	if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
+			  	if($this->session->flashdata('registration-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('registration-error').'</p>';
 				}
-			  	if($fetch_data['registration_form'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['registration_form'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['registration_form'].'</legend>';
-			    	if($fetch_data['registration_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+				if(!empty($fetch_data['registration_form'])) {
+				  	if($fetch_data['registration_form'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['registration_form']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.explode('/',$fetch_data['registration_form'])[2].'</legend>';
+				    	if($fetch_data['registration_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -270,18 +280,20 @@
 			  	<center>
 			  	<br>
 			  	<?php
-			  	if($this->session->flashdata('error')) {
-					echo '<p class="text-danger">'.$this->session->flashdata('error').'</p>';
-				} 
-			  	if($fetch_data['parents_consent'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['parents_consent'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    <legend>'.$fetch_data['parents_consent'].'</legend>';
-			    	if($fetch_data['consent_status'] == 0) {
-			    		echo 'Status: Pending..';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+			  	if($this->session->flashdata('consent-error')) {
+					echo '<p class="text-danger">'.$this->session->flashdata('consent-error').'</p>';
+				}
+				if(!empty($fetch_data['parents_consent'])) {
+				  	if($fetch_data['parents_consent'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url($fetch_data['parents_consent']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.explode('/',$fetch_data['parents_consent'])[2].'</legend>';
+				    	if($fetch_data['consent_status'] == 0) {
+				    		echo 'Status: Pending..';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    }
 			  	}
 			  	else{
 			  		echo '<legend>No PDF Uploaded</legend><small>(Make sure you upload complete details about specific requirements needed)</small>';
@@ -334,13 +346,21 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
 
     <script type="text/javascript">
-    $(".btn").on("click", function (event) {         
+    	$(".btn").on("click", function (event) {         
             if ($(this).hasClass("disabled")) {
                 event.stopPropagation()
             } else {
                 $('#applyRemoveDialog').modal("show");
             }
         });
+
+        <?php if($this->session->flashdata('active')): ?>
+        	$('a.nav-link').each(function(){
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                }
+            });
+        <?php endif; ?>
   </script>
   
   <script>

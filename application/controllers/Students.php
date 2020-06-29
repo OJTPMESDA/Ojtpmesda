@@ -231,8 +231,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['resume' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('resume-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('resume-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -249,8 +251,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['clearance' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('clearance-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('clearance-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -268,8 +272,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['waiver' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('waiver-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('waiver-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -286,8 +292,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['good_moral' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('good-moral-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('good-moral-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -305,8 +313,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['registration_form' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('registration-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('registration-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -323,8 +333,10 @@ class Students extends MY_Controller {
 
         if (!empty($img)) {
             $this->Students_model->_updateData(['studentID' => $this->session->uid], ['parents_consent' => $img]);
+            $this->session->set_flashdata('active', 'active');
+            $this->session->set_flashdata('consent-active', 'active');
         } else {
-            $this->session->set_flashdata('error', 'Invalid File');
+            $this->session->set_flashdata('consent-error', 'Invalid File');
         }
         redirect(base_url().'home/account_verify/'.$username);
 	}
