@@ -234,7 +234,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('resume-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('resume-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -254,7 +254,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('clearance-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('clearance-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -275,7 +275,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('waiver-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('waiver-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -295,7 +295,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('good-moral-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('good-moral-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -316,7 +316,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('registration-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('registration-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}
@@ -336,7 +336,7 @@ class Students extends MY_Controller {
         } else {
             $this->session->set_flashdata('consent-error', 'Invalid File');
         }
-        $this->session->set_flashdata('active', 'active');
+        $this->session->set_flashdata('remove', 'active');
         $this->session->set_flashdata('consent-active', 'active');
         redirect(base_url().'home/account_verify/'.$username);
 	}

@@ -46,11 +46,13 @@
 			$e = $fetch_data['registration_status'];
 			$f = $fetch_data['consent_status'];
 			$g = $a+$b+$c+$d+$e+$f;
+
+
 			?>
 			<legend>@<?= $fetch_data['username'].' '.$g.'/6'; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link <?php echo (empty($this->session->flashdata('resume-active'))) ? 'active' : $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
+			    <a class="nav-link <?php echo ($this->session->flashdata('remove')) ? null : 'active'; echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link <?php echo $this->session->flashdata('clearance-active'); ?>" data-toggle="tab" href="#clearance">Clearance</a>
