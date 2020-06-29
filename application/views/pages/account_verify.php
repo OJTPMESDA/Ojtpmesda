@@ -63,7 +63,7 @@
 			  </li>
 			   <li class="nav-item">
 			    <a class="nav-link <?php echo $this->session->flashdata('registration-active'); ?>" data-toggle="tab" href="#cor">Registration Form</a>
-			  </li>active
+			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link <?php echo $this->session->flashdata('consent-active'); ?>" data-toggle="tab" href="#consent">Parents Consent</a>
 			  </li>
