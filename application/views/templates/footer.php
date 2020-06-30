@@ -37,8 +37,10 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/global.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/form_wizard.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/evaluate.js"></script>
 
     <script>
        $(document).ready(function() {
@@ -69,58 +71,6 @@
             }
         });
   </script>
-
- <script>
-   var ctx = document.getElementById('myData').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Total Hours Attended', 'Total Days Attended', 'Total Absent'],
-        datasets: [{
-            label: 'OJT Hours',
-            data: [<?php echo $hours; ?>, <?php echo $attended; ?>, <?php echo $absent; ?>],
-            backgroundColor: [
-                'rgba(52, 152, 219)',
-                'rgba(46, 204, 113)',
-                'rgba(231, 76, 60)'
-            ],
-            borderWidth: 2,
-            hoverBorderWidth: 5,
-        }]
-    },
-    options: {
-    }
-});
- </script>
-
- <script>
-   var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Hours', 'Absent', 'Attended', 'Holidays'],
-        datasets: [{
-            label: '# of Votes',
-            data: [62, 3, 40, 3],
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
-            ],
-            borderColor: [
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    }
-});
- </script>
 
   </body>
 </html>

@@ -59,7 +59,7 @@
                     <div class="col-md-8">
 						<!-- Form Wizard -->
 						<div class="form-wizard form-header-classic form-body-classic">
-                    	<form role="form" action="#" method="post">
+                    	<form role="form" class="evaluation-form" action="<?php echo base_url('evaluate/'); ?>" method="post">
 
                     		<h3>On The Job Training</h3>
                     		<p>Evaluation Form</p>
@@ -111,15 +111,15 @@
                     		    <h4>I. Quality and Quantity of Work: (40%)</h4>
                     			<div class="form-group">
                     			    <label>1. Ability to perform the assigned work well</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="ability" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>2. Accuracy of work</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="accuracy" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>3. Volume of Work Accomplished</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="volume" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-next">Next</button>
@@ -138,15 +138,15 @@
                                 <h4>I. Knowledge of Work: (40%)</h4>
                     			<div class="form-group">
                     			    <label>1. Knowledge of the Basic Principle Neccessary for the Accomplishment of assigned Work.</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="knowledge" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>2. Extent of Knowledge with regards to Department Operations.</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="extent" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>3. Ability to follow Instructions.</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="follow" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>
@@ -165,27 +165,27 @@
                                 <h4>I. Work Habits and Personality: (20%)</h4>
                     			<div class="form-group">
                     			    <label>1. Punctuality</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="punctuality" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>2. Attendance</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="attendance" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
-                    			    <label>3. Deportment/Behavior</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                    			    <label>3. Department/Behavior</label>
+                                    <input type="number" name="department" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>4. Industry</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="industry" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>5. Interested and Enthusiasm in the Performance of Work</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="interested" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-group">
                     			    <label>6. Orderliness</label>
-                                    <input type="number" name="one" placeholder="Input Numerical Rating" class="form-control required">
+                                    <input type="number" name="orderliness" placeholder="Input Numerical Rating" class="form-control required">
                                 </div>
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>
@@ -209,11 +209,7 @@
 									</div>
 									<div class="form-group">
 	                    			    <label>Remarks:</label>
-	                                    <textarea name="one" class="form-control" placeholder="Enter comments" required></textarea>
-	                                </div>
-	                                <div class="form-group">
-	                    			    <label>Rated By:</label>
-	                                    <input type="text" name="one" placeholder="Enter Evaluator Full Name" class="form-control required">
+	                                    <textarea name="remarks" class="form-control" placeholder="Enter comments" required></textarea>
 	                                </div>
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>

@@ -1,14 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Forums extends CI_Controller {
+class Forums extends MY_Controller {
+
+	function __construct() {
+        parent::__construct();
+
+        // check if already loggedin
+        if(!$this->session->logged_in) redirect(base_url());
+    }
 
 	public function index()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Post_model->post();
 		$this->load->view('templates/header');
 		$this->load->view('pages/forums', $data);
@@ -17,10 +20,6 @@ class Forums extends CI_Controller {
 
 	public function add_post()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$config['upload_path']      = './assets/post_images';
         $config['allowed_types']    = 'gif|jpg|png';
 
@@ -73,20 +72,12 @@ class Forums extends CI_Controller {
 
 	public function delete_post($id)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$this->Post_model->delete_post($id);
 		redirect(base_url().'forums');
 	}
 
 	public function post_request()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Post_model->get_post_request();
 		$this->load->view('templates/header');
 		$this->load->view('pages/post_request', $data);
@@ -95,10 +86,6 @@ class Forums extends CI_Controller {
 
 	public function approve_post($id)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$this->Post_model->approve_post($id);
 		redirect(base_url().'Forums/post_request');
 	}

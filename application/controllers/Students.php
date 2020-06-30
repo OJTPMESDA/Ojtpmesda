@@ -5,6 +5,8 @@ class Students extends MY_Controller {
 
     function __construct() {
         parent::__construct();
+        // check if already loggedin
+        if(!$this->session->logged_in) redirect(base_url());
     }
 
 	public function add_new_data()

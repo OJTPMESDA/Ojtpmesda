@@ -30,10 +30,10 @@
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>home/login">Login</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>home/register">Register</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>register">Register</a>
             </li>
           </ul>
           </form>

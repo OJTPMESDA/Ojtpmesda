@@ -17,10 +17,6 @@ class Home extends MY_Controller {
 
 	public function account_verify($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Students_model->get_students_requirements($username);
 		$this->load->view('pages/account_verify', $data);
 	}
@@ -60,7 +56,7 @@ class Home extends MY_Controller {
 							'role' => $role,
 							'username' => $students->username,
 							'uid' => $students->id,
-							'login' => TRUE
+							'logged_in' => TRUE
 						];
 						$this->session->set_userdata($sess);
 
@@ -84,7 +80,7 @@ class Home extends MY_Controller {
 							'role' => $role,
 							'username' => $company->username,
 							'uid' => $company->id,
-							'login' => TRUE
+							'logged_in' => TRUE
 						];
 
 						$this->session->set_userdata($sess);
@@ -109,7 +105,7 @@ class Home extends MY_Controller {
 							'role' => $role,
 							'username' => $admin->username,
 							'uid' => $admin->id,
-							'login' => TRUE
+							'logged_in' => TRUE
 						];
 
 						$this->session->set_userdata($sess);

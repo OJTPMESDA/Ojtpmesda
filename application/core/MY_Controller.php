@@ -68,4 +68,28 @@ class MY_Controller extends CI_Controller {
 		return $verified;
 
 	}
+
+    public function response($success, $text = '', $params = null)
+    {   
+
+        if (is_bool($success)) {
+
+            $response['status'] = $success;
+
+            if ($text) {
+                $response['text'] = $text;
+            }
+    
+            if (is_array($params)) {
+                foreach($params as $key => $val) {
+                    $response[$key] = $val;
+                }
+            }
+        } else {
+            $response = $success;
+        }
+
+        echo json_encode($response);
+        exit;
+    }
 }
