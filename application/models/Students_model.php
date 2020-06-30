@@ -107,28 +107,10 @@ class Students_model extends CI_Model
 		return $data;
 	}
 
-	function update_students_profile($username, $post_image)
+	function _updateStudent($where, $data)
 	{
-		if($this->input->post('gender') == 1)
-		{
-			$data = "Male";
-		}
-		else
-		{
-		$data = "Female";
-		}
-		$data = array(
-			'user_image' => $post_image,
-			'age' => $this->input->post('age'),
-			'gender' => $data,
-			'address' => $this->input->post('address'),
-			'email_address' => $this->input->post('email_address'),
-			'contact_no' => $this->input->post('contact_no'),
-			'parents' => $this->input->post('parents'),
-			'parents_contact_no' => $this->input->post('parents_contact_no')
-		);
-		$this->db->where('username', $username);
-		$this->db->update('students', $data);
+		
+		return $this->db->where($where)->update('students', $data);
 	}
 
 	function delete_student_request($username)

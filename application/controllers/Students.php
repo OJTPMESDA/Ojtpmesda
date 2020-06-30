@@ -120,26 +120,35 @@ class Students extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function update_student_profile($username)
+	public function update_student_profile($id)
 	{
-        $config['upload_path']      = './assets/images';
-        $config['allowed_types']    = 'gif|jpg|png';
-        $config['overwrite'] 		= true;
 
-        $this->load->library('upload', $config);
+        if($this->input->post('gender') == 1) {
+            $gender = "Male";
+        } else {
+            $gender = "Female";
+        }
+        $data = [
+            'user_image' => $post_image,
+            'age' => $this->input->post('age'),
+            'gender' => $gender,
+            'address' => $this->input->post('address'),
+            'email_address' => $this->input->post('email_address'),
+            'contact_no' => $this->input->post('contact_no'),
+            'parents' => $this->input->post('parents'),
+            'parents_contact_no' => $this->input->post('parents_contact_no')
+        ];
 
-        if ( ! $this->upload->do_upload('userfile'))
-        {
-            $error = array('error' => $this->upload->display_errors());
-            $post_image = 'no_image.png';
+        $dir = $this->_mkdir('assets/images');
+
+        $img = $this->_uploadFiles($dir);
+
+        if (!empty($img)) {
+            $this->Students_model->_updateStudent(['id' => $id], $data);
+        } else {
+            $this->session->set_flashdata('error', 'Invalid File');
         }
-        else
-        {
-            $data = array('upload_data' => $this->upload->data());
-            $post_image = $_FILES['userfile']['name']; 
-        }
-	   $this->Students_model->update_students_profile($username, $post_image);
-		redirect('students/student_profile/'.$username.'');
+		redirect(base_url('profile/'.$id));
 	}
 
 	public function delete_request($username)
