@@ -31,7 +31,7 @@
 				?>
 		    <tr class="table-bordered">
 		      <th scope="row"><?php echo $counter++; ?></th>
-		      <td><img src="<?php echo base_url(); ?>assets/images/<?php echo $row->user_image; ?>" class="rounded-circle" height="60px"></td>
+		      <td><img src="<?php echo base_url($row->user_image); ?>" class="rounded-circle" height="60px"></td>
 		      <td><?php echo $row->name;?></td>
 		      <td>0<?php echo $row->contact_no;?></td>
 		      <?php 

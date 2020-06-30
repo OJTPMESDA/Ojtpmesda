@@ -78,7 +78,7 @@ class Students_model extends CI_Model
 		if($this->session->userdata('role') == 2)
 		{
 			$this->db->select('id');
-			$this->db->where('username', $this->session->userdata('username'));
+			$this->db->where('id', $this->session->uid);
 			$tsk = $this->db->get('admin');
 			foreach ($tsk->result() as $row) {
 				$hey = $row->id;
