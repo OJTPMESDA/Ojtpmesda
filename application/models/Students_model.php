@@ -96,7 +96,7 @@ class Students_model extends CI_Model
 	{
 		$data = [];
 
-		$res = $this->db->where($where)->db->get('students');
+		$res = $this->db->where($where)->get('students');
 
 		if($res->num_rows() > 0){
 			$data = $res->row_array();
