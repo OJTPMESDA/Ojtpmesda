@@ -10,7 +10,7 @@ class Company extends MY_Controller {
         if(!$this->session->logged_in) redirect(base_url());
 
         // check if role
-        if ($this->session->role != 2 || $this->session->role != 3) redirect(base_url());
+        if (!in_array($this->session->role,[2,3])) redirect(base_url());
     }
 
 	public function index()
@@ -23,7 +23,6 @@ class Company extends MY_Controller {
 
 	public function evaluate()
 	{
-		
 		$this->load->view('templates/header');
 		$this->load->view('pages/evaluate');
 		$this->load->view('templates/footer');
