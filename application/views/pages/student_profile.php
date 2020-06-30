@@ -57,8 +57,9 @@
 				  		$this->db->where('studentID', $user);
 						$name = $this->db->get('requirements');
 						foreach ($name->result() as $row) {
+							$clearance = explode('/',$row->clearance);
 							echo '<td class="text-center"><a href="'.base_url($row->resume).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->resume)).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->clearance).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->clearance)).'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->clearance).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end($clearance).'</p></td>';
 							echo '<td class="text-center"><a href="'.base_url($row->waiver).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->waiver)).'</p></td>';
 							echo '<td class="text-center"><a href="'.base_url($row->good_moral).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->good_moral)).'</p></td>';
 							echo '<td class="text-center"><a href="'.base_url($row->registration_form).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->registration_form)).'</p></td>';
