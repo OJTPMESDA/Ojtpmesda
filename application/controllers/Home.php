@@ -45,6 +45,7 @@ class Home extends MY_Controller {
 			$role = $this->input->post('role');
 
 			slack(json_encode($_POST), ENVIRONMENT, 'debug');
+			
 			if ($role == 1) {
 				$students = $this->Students_model->login_students(['username' => $username]);
 				if(!empty($students)) {
@@ -83,9 +84,8 @@ class Home extends MY_Controller {
 							'logged_in' => TRUE
 						];
 
-						$this->session->set_userdata($sess);
-
-						if ($company->username == 1) {
+						if ($company->status == 1) {
+							$this->session->set_userdata($sess);
 							redirect(base_url('home'));
 						} else {
 							show_404();
