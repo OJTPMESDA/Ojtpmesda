@@ -24,7 +24,7 @@
         <?php if(!$this->session->userdata('logged_in')): ?>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+              <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -41,23 +41,23 @@
 
         <?php if($this->session->userdata('role') == 1): ?>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+           <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>forums">Forums</a>
+              <a class="nav-link" href="<?php echo base_url('forums'); ?>">Forums</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>students/get_confirm_students">Students</a>
+              <a class="nav-link" href="<?php echo base_url('student/confirm/list'); ?>">Students</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>students/student_profile/<?php echo $this->session->userdata('username'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
+              <a class="nav-link" href="<?php echo base_url('profile'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>home/logout">Logout</a>
+              <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
             </li>
           </ul>
           </form>
@@ -66,25 +66,25 @@
           <?php if($this->session->userdata('role') == 2): ?>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+              <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>forums">Forums</a>
+              <a class="nav-link" href="<?php echo base_url('forums'); ?>">Forums</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>students/get_confirm_students">Students</a>
+              <a class="nav-link" href="<?php echo base_url('student/confirm/list'); ?>">Students</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>Company">Evaluate</a>
+            <a class="nav-link" href="<?php echo base_url('company'); ?>">Evaluate</a>
           </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>students/student_profile"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
+              <a class="nav-link" href="<?php echo base_url('profile'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>home/logout">Logout</a>
+              <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
             </li>
           </ul>
           </form>
@@ -93,13 +93,13 @@
           <?php if($this->session->userdata('role') == 3): ?>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+              <a class="nav-link" href="<?php echo base_url('home'); ?>">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>forums">Forums</a>
+              <a class="nav-link" href="<?php echo base_url('forums'); ?>">Forums</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>students/get_confirm_students">Students</a>
+              <a class="nav-link" href="<?php echo base_url('student/confirm/list'); ?>">Students</a>
             </li>
              <li class="nav-item">
               <a class="nav-link" href="#">Reports</a>
@@ -118,10 +118,10 @@
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>Admin"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
+              <a class="nav-link" href="<?php echo base_url('admin'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>home/logout">Logout</a>
+              <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
             </li>
           </ul>
           </form>

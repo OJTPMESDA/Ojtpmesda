@@ -9,4 +9,8 @@ $route['home'] = 'Home';
 $route['register'] = 'Home/register';
 $route['new/student'] = 'Students/add_new_data';
 
+$route['student/confirm/list'] = 'Students/get_confirm_students';
+
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
+
+$route['logout'] = 'Home/logout';

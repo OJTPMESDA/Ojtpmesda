@@ -15,10 +15,6 @@ class Company extends MY_Controller {
 
 	public function index()
 	{
-		if ( ! $this->session->userdata('logged_in'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Students_model->get_evaluate();
 		$this->load->view('templates/header');
 		$this->load->view('pages/evaluate_student', $data);
