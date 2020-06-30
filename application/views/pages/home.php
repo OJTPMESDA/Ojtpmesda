@@ -16,9 +16,10 @@
 			$cat = $meow / $dog;
 			$kwek = floor($cat);
 			$yow = $row->company;
+			 $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png')
 			?>
 			<div class="col-md-3 text-center">
-				<img src="<?php echo base_url(); ?>assets/images/<?php echo $row->user_image; ?>" class="rounded-circle " height="150px">
+				<img src="<?php echo $path; ?>" class="rounded-circle " height="150px">
 				<br>
 				<h5><?php echo $row->name; ?></h5>
 				<?php 
