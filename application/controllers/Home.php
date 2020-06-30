@@ -82,7 +82,7 @@ class Home extends MY_Controller {
 						$this->session->set_userdata($sess);
 
 						if ($company->username == 1) {
-							redirect(base_url());
+							redirect(base_url('home'));
 						} else {
 							show_404();
 						}
@@ -106,7 +106,7 @@ class Home extends MY_Controller {
 
 						$this->session->set_userdata($sess);
 
-						redirect(base_url());
+						redirect(base_url('home'));
 
 					} else {
 						$this->session->set_flashdata('error', 'Invalid Username and Password');
@@ -126,6 +126,6 @@ class Home extends MY_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect(base_url().'home/login');
+		redirect(base_url());
 	}
 }
