@@ -43,18 +43,18 @@
 		      </td>
 		      <td class="text-center">
 		      	<?php
-		      	$yow = $row->username;
-		      	$this->db->where('username', $yow);
+		      	$this->db->where('studentID', $row->id);
 		      	$data = $this->db->get('requirements');
+		      	$g = 0;
 		      	foreach ($data->result() as $key) {
-		      	$a = $key->resume_status;
-		      	$b = $key->clearance_status;
-		      	$c = $key->waiver_status;
-		      	$d = $key->good_moral_status;
-		      	$e = $key->registration_status;
-		      	$f = $key->consent_status;
-		      	$g = $a+$b+$c+$d+$e+$f;
-		      	$h = $g*16.66;
+			      	$a = $key->resume_status;
+			      	$b = $key->clearance_status;
+			      	$c = $key->waiver_status;
+			      	$d = $key->good_moral_status;
+			      	$e = $key->registration_status;
+			      	$f = $key->consent_status;
+			      	$g = $a+$b+$c+$d+$e+$f;
+			      	$h = $g*16.66;
 		      	}
 		      	?>
 		      	<small><?php echo $g; ?>/6</small>

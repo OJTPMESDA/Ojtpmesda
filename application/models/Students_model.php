@@ -26,9 +26,16 @@ class Students_model extends CI_Model
 
 	function get_student_request()
 	{
-		$this->db->order_by('id', 'DESC');
-		$this->db->where('status', 0);
-		$data = $this->db->get('students');
+		$data = [];
+		$res = $this->db->order_by('id', 'DESC')
+						->where('status', 0)
+						->get('students');
+
+		if($res->num_rows() > 0){
+			$data = $res->row_array();
+		}
+
+		$res->free_result();
 		return $data;
 	}
 
