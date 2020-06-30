@@ -21,7 +21,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarColor01">
 
-        <?php if(!$this->session->userdata('login')): ?>
+        <?php if(!$this->session->userdata('logged_in')): ?>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>

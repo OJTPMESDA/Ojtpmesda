@@ -5,6 +5,7 @@ $route['default_controller'] = 'Home/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['home'] = 'Home';
 $route['register'] = 'Home/register';
 
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';

@@ -23,6 +23,8 @@ class Home extends MY_Controller {
 
 	public function login()
 	{
+		if($this->session->logged_in) redirect(base_url('home'));
+
 		$this->load->view('templates/header');
 		$this->load->view('pages/login');
 		$this->load->view('templates/footer');
@@ -30,6 +32,7 @@ class Home extends MY_Controller {
 
 	public function register()
 	{
+		if($this->session->logged_in) redirect(base_url('home'));
 		$this->load->view('templates/header');
 		$this->load->view('pages/register');
 		$this->load->view('templates/footer');
@@ -61,14 +64,14 @@ class Home extends MY_Controller {
 						$this->session->set_userdata($sess);
 
 						if ($students->status == 0) {
-							redirect(base_url());
+							redirect(base_url('home'));
 						} elseif ($students->status == 1) {
 							redirect('home/account_verify/'.$username
 								.'');
 						}
 					} else {
 						$this->session->set_flashdata('error', 'Invalid Username and Password');
-						redirect(base_url().'home/login');
+						redirect(base_url());
 					}
 				}
 			} elseif ($role == 2) {
@@ -95,7 +98,7 @@ class Home extends MY_Controller {
 						
 				} else {
 					$this->session->set_flashdata('error', 'Invalid Username and Password');
-					redirect(base_url().'home/login');
+					redirect(base_url());
 				}
 			} elseif ($role == 3) {
 				$admin = $this->Students_model->login_admin(['username' => $username]);
@@ -114,11 +117,11 @@ class Home extends MY_Controller {
 
 					} else {
 						$this->session->set_flashdata('error', 'Invalid Username and Password');
-						redirect(base_url().'home/login');
+						redirect(base_url());
 					}
 				} else {
 					$this->session->set_flashdata('error', 'Invalid Username and Password');
-					redirect(base_url().'home/login');
+					redirect(base_url());
 				}
 			} else {
 				return false;
