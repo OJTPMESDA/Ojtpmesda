@@ -79,10 +79,10 @@
 					?>
 				  
 				  <label class="btn btn-primary btn-sm">
-				    <a href="<?= base_url(); ?>Students/students_requirements/<?php echo $row->username; ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
+				    <a href="<?= base_url('student/requirements/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
 				  </label>
 				  <label class="btn btn-danger btn-sm">
-				    <a href="<?= base_url(); ?>students/delete_request/<?php echo $row->username; ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-trash-alt"></i></a>
+				    <a href="<?= base_url('student/requirements/delete/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-trash-alt"></i></a>
 				  </label>
 				</div>
 		      </td>
@@ -98,7 +98,7 @@
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        <form method="post" action="<?php echo base_url(); ?>students/confirm_student/<?php echo $row->username; ?>">
+			        <form method="post" action="<?php echo base_url(); ?>students/confirm_student/<?php echo $row->id; ?>">
 						  	<fieldset>
 							  	<div class="form-group">
 							    	<label for="exampleInputEmail1">SELECT COMPANY</label>

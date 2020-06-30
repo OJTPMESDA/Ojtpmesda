@@ -54,10 +54,10 @@ class Students extends MY_Controller {
 		}
 	}
 
-    public function students_requirements($username)
+    public function students_requirements($id)
     {
         
-        $data['fetch_data'] = $this->Students_model->get_students_requirements($username);
+        $data['fetch_data'] = $this->Students_model->_getRequirements(['studentID' => $id]);
         $this->load->view('templates/header');
         $this->load->view('pages/student_requirements', $data);
         $this->load->view('templates/footer');
@@ -150,9 +150,9 @@ class Students extends MY_Controller {
 		redirect(base_url('profile/'.$id));
 	}
 
-	public function delete_request($username)
+	public function delete_request($id)
 	{
-		$this->Students_model->delete_student_request($username);
+		$this->Students_model->_updateData(['studentID' => $id], ['status' => 1]);
 		redirect('students/students_list');
 	}
 

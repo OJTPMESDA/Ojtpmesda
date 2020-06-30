@@ -3,6 +3,8 @@
 class Students_model extends CI_Model
 {
 
+	private $arr = [];
+
 	public function __construct()
     {	
         parent::__construct();
@@ -116,14 +118,7 @@ class Students_model extends CI_Model
 
 	function _updateStudent($where, $data)
 	{
-		
 		return $this->db->where($where)->update('students', $data);
-	}
-
-	function delete_student_request($username)
-	{
-		$this->db->where('username', $username);
-		$this->db->delete(array('students', 'requirements'));
 	}
 
 	function login_students($where)
@@ -210,11 +205,16 @@ class Students_model extends CI_Model
 		return $this->db->where($where)->update('requirements', $data);
 	}
 
-	function get_students_requirements($username)
+	function _getRequirements($where)
 	{
-		$this->db->where('username', $username);
-		$data = $this->db->get('requirements');
-		return $data->row_array();
+		$res = $this->db->where($where)->get('requirements');
+
+		if($res->num_rows() > 0) {         
+		    $this->arr = $res->row_array();
+		}
+		$res->free_result();
+
+		return $this->arr;
 	}
 
 
