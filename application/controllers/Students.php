@@ -144,11 +144,7 @@ class Students extends MY_Controller {
             'parents_contact_no' => $this->input->post('parents_contact_no')
         ];
 
-        if (!empty($img)) {
-            $this->Students_model->_updateStudent(['id' => $id], $data);
-        } else {
-            $this->session->set_flashdata('error', 'Invalid File');
-        }
+        $this->Students_model->_updateStudent(['id' => $id], $data);
 		redirect(base_url('profile/'.$id));
 	}
 
