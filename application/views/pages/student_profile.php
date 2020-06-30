@@ -57,13 +57,24 @@
 				  		$this->db->where('studentID', $user);
 						$name = $this->db->get('requirements');
 						foreach ($name->result() as $row) {
+							$resume = explode('/',$row->resume);
+							$resume = end($resume);
 							$clearance = explode('/',$row->clearance);
-							echo '<td class="text-center"><a href="'.base_url($row->resume).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->resume)).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->clearance).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end($clearance).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->waiver).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->waiver)).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->good_moral).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->good_moral)).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->registration_form).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->registration_form)).'</p></td>';
-							echo '<td class="text-center"><a href="'.base_url($row->parents_consent).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.end(explode('/',$row->parents_consent)).'</p></td>';
+							$clearance = end($clearance);
+							$waiver = explode('/',$row->waiver);
+							$waiver = end($waiver);
+							$good_moral = explode('/',$row->good_moral);
+							$good_moral = end($good_moral);
+							$registration_form = explode('/',$row->registration_form);
+							$registration_form = end($registration_form);
+							$parents_consent = explode('/',$row->parents_consent);
+							$parents_consent = end($parents_consent);
+							echo '<td class="text-center"><a href="'.base_url($row->resume).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$resume.'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->clearance).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$clearance.'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->waiver).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$waiver.'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->good_moral).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$good_moral.'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->registration_form).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$registration_form.'</p></td>';
+							echo '<td class="text-center"><a href="'.base_url($row->parents_consent).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="100px"></a><p>'.$parents_consent.'</p></td>';
 						}
 					?>
 					</tr>
