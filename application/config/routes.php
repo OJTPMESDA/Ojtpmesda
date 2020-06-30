@@ -7,5 +7,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'Home';
 $route['register'] = 'Home/register';
+$route['new/student'] = 'Students/add_new_data';
 
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';

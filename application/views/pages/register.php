@@ -5,7 +5,7 @@
 		<div class="col-md-4 shadow">
 			<div class="container">
 			<br>
-		  	<form method="post" action="<?php echo base_url(); ?>students/add_new_data">
+		  	<form method="post" action="<?php echo base_url('new/student'); ?>">
 			  	<fieldset>
 				    <legend>Register</legend>
 				    <div class="form-group">
@@ -51,7 +51,7 @@
 				    <button type="submit" class="btn btn-primary btn-block">Register</button>
 				    <br>
 				    <center>
-				    	<a href="<?php echo base_url(); ?>home/login">Click here to Login</a>
+				    	<a href="<?php echo base_url(); ?>">Click here to Login</a>
 				    </center>
 				    <br>
 				</fieldset>

@@ -13,12 +13,12 @@ $(document).ready(function(){
 			dataType: 'json',
 			beforeSend: function() {
 				b.attr('disabled', true);
-				b.html('loading...')
+				b.html('loading...');
 			},
 			success: function(res) {
 				if (res.status) {
 					b.removeAttr('disabled');
-					b.html('Submit')
+					b.html('Submit');
 				}
 			}
 		});
