@@ -10,6 +10,7 @@ $route['register'] = 'Home/register';
 $route['new/student'] = 'Students/add_new_data';
 $route['profile/(:num)'] = 'Students/student_profile/$1';
 $route['student/confirm/list'] = 'Students/get_confirm_students';
+$route['profile/update/(:num)'] = 'students/update_student_profile/$id';
 
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
 

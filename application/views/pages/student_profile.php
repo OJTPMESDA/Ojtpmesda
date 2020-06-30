@@ -87,7 +87,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="<?php echo base_url(); ?>students/update_student_profile/<?php echo $fetch_data['username']; ?>" enctype="multipart/form-data">
+        <form method="post" action="<?php echo base_url('profile/update/'.$fetch_data['id']); ?>" enctype="multipart/form-data">
 			  	<fieldset>
 			  		<div class="form-group">
 			  			<label for="exampleInputEmail1">Image</label>
