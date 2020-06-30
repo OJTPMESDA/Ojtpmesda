@@ -175,7 +175,7 @@ class Students extends MY_Controller {
                 'ojt_hours' => $this->input->post('ojt_hours')
             ];
             $this->Students_model->_insertDTR($save);
-            redirect(base_url('work/hours/'.$id));
+            redirect(base_url('student/dtr/'.$id));
         }
 
         show_error('Invalid request');
