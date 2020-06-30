@@ -112,10 +112,9 @@ class Students extends MY_Controller {
 		redirect('students/company_list');
 	}
 
-	public function student_profile($username)
+	public function student_profile($id)
 	{
-
-		$data['fetch_data'] = $this->Students_model->get_students_profile($username);
+		$data['fetch_data'] = $this->Students_model->_getData(['id' => $id]);
 		$this->load->view('templates/header');
 		$this->load->view('pages/student_profile', $data);
 		$this->load->view('templates/footer');
