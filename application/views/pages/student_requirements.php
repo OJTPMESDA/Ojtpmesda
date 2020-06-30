@@ -45,7 +45,7 @@
                 if(!empty($fetch_data['resume'])) {
 				  	if($fetch_data['resume'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['resume']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['resume'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['resume'])).'</legend>';
 				    	if($fetch_data['resume_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_resume/'.$fetch_data['studentID'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
@@ -73,7 +73,7 @@
                 if(!empty($fetch_data['clearance'])) {
 				  	if($fetch_data['clearance'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['clearance']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['clearance'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['clearance'])).'</legend>';
 				    	if($fetch_data['clearance_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_clearance/'.$fetch_data['studentID'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
@@ -101,7 +101,7 @@
                 if(!empty($fetch_data['waiver'])) {
 				  	if($fetch_data['waiver'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['waiver']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['waiver'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['waiver'])).'</legend>';
 				    	if($fetch_data['waiver_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_waiver/'.$fetch_data['username'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
@@ -130,7 +130,7 @@
                 if(!empty($fetch_data['good_moral'])) {
 				  	if($fetch_data['good_moral'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['good_moral']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['good_moral'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['good_moral'])).'</legend>';
 				    	if($fetch_data['good_moral_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_good_moral/'.$fetch_data['username'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
@@ -159,7 +159,7 @@
                 if(!empty($fetch_data['registration_form'])) {
 				  	if($fetch_data['registration_form'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['registration_form']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['registration_form'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['registration_form'])).'</legend>';
 				    	if($fetch_data['registration_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_registration/'.$fetch_data['username'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
@@ -188,7 +188,7 @@
                 if(!empty($fetch_data['parents_consent'])) {
 				  	if($fetch_data['parents_consent'] != 'no_pdf.png') {
 				  		echo '<a href="'.base_url($fetch_data['parents_consent']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.$fetch_data['parents_consent'].'</legend>';
+				    	<legend>'.end(explode('/',$fetch_data['parents_consent'])).'</legend>';
 				    	if($fetch_data['consent_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_consent/'.$fetch_data['username'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
