@@ -126,8 +126,6 @@ class Students extends MY_Controller {
 
         $img = $this->_uploadFiles($dir);
 
-        slack(json_encode($_POST), ENVIRONMENT, 'debug');
-
         if($this->input->post('gender') == 1) {
             $gender = "Male";
         } else {
@@ -143,6 +141,10 @@ class Students extends MY_Controller {
             'parents' => $this->input->post('parents'),
             'parents_contact_no' => $this->input->post('parents_contact_no')
         ];
+
+        if (empty($img)) {
+            unset($data['user_image']);
+        }
 
         $this->Students_model->_updateStudent(['id' => $id], $data);
 		redirect(base_url('profile/'.$id));
