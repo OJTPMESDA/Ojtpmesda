@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller {
     protected function _uploadFiles($dir)
     {
     	$config['upload_path']      = $dir;
-        $config['allowed_types']    = 'pdf';
+        $config['allowed_types']    = 'pdf|jpg|png|jpeg|gif';
         $config['overwrite'] 		= true;
         $config['max_size']         =   0;
 
