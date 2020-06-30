@@ -8,9 +8,11 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = 'Home';
 $route['register'] = 'Home/register';
 $route['new/student'] = 'Students/add_new_data';
-
+$route['profile'] = 'Students/student_profile';
 $route['student/confirm/list'] = 'Students/get_confirm_students';
 
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
 
 $route['logout'] = 'Home/logout';
+
+$route['work/hours/(:num)'] = 'students/add_hours/$1';

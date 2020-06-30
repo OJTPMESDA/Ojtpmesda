@@ -187,29 +187,9 @@ class Students_model extends CI_Model
         return $data; 
 	}
 
-	function add_hours($username)
+	public function _insertDTR($data)
 	{
-		$date = date('Y-m-d');
-		$data = array(
-			'check_by' => $this->session->userdata('username'),
-			'student_username' => $username,
-			'ojt_date' => $date,
-			'ojt_hours' => $this->input->post('ojt_hours')
-		);
 		$this->db->insert('students_dtr', $data);
-
-		$this->db->select_sum('ojt_hours');
-		$this->db->where('student_username', $username);
-		$data = $this->db->get('students_dtr');
-		foreach ($data->result() as $row) {
-			$sum = $row->ojt_hours;
-			$rose = array(
-			'total_hours' => $sum
-			);
-			$this->db->where('username', $username);
-			$this->db->update('students', $rose);
-		}
-
 	}
 
 	function get_students_dtr($username)

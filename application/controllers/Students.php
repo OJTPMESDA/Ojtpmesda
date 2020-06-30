@@ -165,10 +165,20 @@ class Students extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function add_hours($username)
+	public function add_hours($id)
 	{
-		$this->Students_model->add_hours($username);
-		redirect(base_url().'students/student_dtr/'.$username.'');
+        if (ctype_digit($id)) {
+            $save = [
+                'check_by' => $this->session->uid,
+                'studentID' => $id,
+                'ojt_date' => date('Y-m-d'),
+                'ojt_hours' => $this->input->post('ojt_hours')
+            ];
+            $this->Students_model->_insertDTR($save);
+            redirect(base_url('work/hours/'.$id));
+        }
+
+        show_error('Invalid request');
 	}
 
 	public function confirm_requirements($username)

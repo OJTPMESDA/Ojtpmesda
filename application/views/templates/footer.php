@@ -16,24 +16,6 @@
 </div>
 
     </div>
-
-        <?php
-  $this->db->select_sum('ojt_hours');
-  $this->db->where('student_username', 'mariella01');
-  $data = $this->db->get('students_dtr');
-  foreach ($data->result() as $row) {
-      $hours = $row->ojt_hours;
-  }
-
-  $this->db->where('ojt_hours !=', 0);
-  $this->db->where('student_username', 'mariella01');
-  $attended = $this->db->count_all_results('students_dtr');
- 
-  $this->db->where('ojt_hours', 0);
-  $this->db->where('student_username', 'mariella01');
-  $absent = $this->db->count_all_results('students_dtr');
-?>
-
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>

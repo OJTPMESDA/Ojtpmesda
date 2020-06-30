@@ -92,7 +92,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post" action="<?php echo base_url(); ?>students/add_hours/<?php echo $fetch_data['username']; ?>">
+        <form method="post" action="<?php echo base_url(); ?>work/hours/<?php echo $fetch_data['id']; ?>">
 			  	<fieldset>
 				  	<div class="form-group">
 						<label>Date Time</label>
