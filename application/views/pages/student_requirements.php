@@ -198,7 +198,7 @@
                 if(!empty($fetch_data['parents_consent'])) {
 				  	if($fetch_data['parents_consent'] != 'no_pdf.png') {
 				  		$parents_consent = explode('/',$fetch_data['clearance']);
-				  		$parents_consent = end($registration_form);
+				  		$parents_consent = end($parents_consent);
 				  		echo '<a href="'.base_url($fetch_data['parents_consent']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
 				    	<legend>'.$parents_consent.'</legend>';
 				    	if($fetch_data['consent_status'] == 0) {
