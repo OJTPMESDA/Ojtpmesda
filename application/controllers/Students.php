@@ -56,10 +56,7 @@ class Students extends MY_Controller {
 
     public function students_requirements($username)
     {
-        if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+        
         $data['fetch_data'] = $this->Students_model->get_students_requirements($username);
         $this->load->view('templates/header');
         $this->load->view('pages/student_requirements', $data);
@@ -68,10 +65,7 @@ class Students extends MY_Controller {
 
 	public function students_list()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$data['fetch_data'] = $this->Students_model->get_student_request();
 		$this->load->view('templates/header');
 		$this->load->view('pages/students_request', $data);
@@ -80,10 +74,7 @@ class Students extends MY_Controller {
 
 	public function company_list()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$data['fetch_data'] = $this->Students_model->get_company_request();
 		$this->load->view('templates/header');
 		$this->load->view('pages/company_request', $data);
@@ -92,30 +83,21 @@ class Students extends MY_Controller {
 
 	public function confirm_student($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$this->Students_model->confirm_students($username);
 		redirect('students/students_list');
 	}
 
 	public function confirm_company($id)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$this->Students_model->confirm_company($id);
 		redirect('students/company_list');
 	}
 
 	public function get_confirm_students()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$data['fetch_data'] = $this->Students_model->get_confirm_students();
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);
@@ -125,20 +107,14 @@ class Students extends MY_Controller {
 
 	public function delete_company($id)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$this->Students_model->delete_company($id);
 		redirect('students/company_list');
 	}
 
 	public function student_profile($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
+
 		$data['fetch_data'] = $this->Students_model->get_students_profile($username);
 		$this->load->view('templates/header');
 		$this->load->view('pages/student_profile', $data);
@@ -147,46 +123,34 @@ class Students extends MY_Controller {
 
 	public function update_student_profile($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
         $config['upload_path']      = './assets/images';
         $config['allowed_types']    = 'gif|jpg|png';
         $config['overwrite'] 		= true;
 
-            $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $post_image = 'no_image.png';
-            }
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $post_image = $_FILES['userfile']['name']; 
-            }
-		$this->Students_model->update_students_profile($username, $post_image);
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $post_image = 'no_image.png';
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $post_image = $_FILES['userfile']['name']; 
+        }
+	   $this->Students_model->update_students_profile($username, $post_image);
 		redirect('students/student_profile/'.$username.'');
 	}
 
 	public function delete_request($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$this->Students_model->delete_student_request($username);
 		redirect('students/students_list');
 	}
 
 	public function student_dtr($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Students_model->get_students_profile($username);
 		$this->load->view('templates/header');
 		$this->load->view('pages/student_dtr', $data);
@@ -195,10 +159,6 @@ class Students extends MY_Controller {
 
 	public function student_attendance()
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$data['fetch_data'] = $this->Students_model->get_confirm_students();
 		$this->load->view('templates/header');
 		$this->load->view('pages/attendance', $data);
@@ -223,9 +183,6 @@ class Students extends MY_Controller {
 
 	public function upload_resume($username)
 	{
-		if ( ! $this->session->userdata('login')) { 
-            redirect(base_url().'home/login');
-        }
 
         $dir = $this->_mkdir('assets/pdf');
 
@@ -243,10 +200,6 @@ class Students extends MY_Controller {
 
 	public function upload_clearance($username)
 	{
-		if ( ! $this->session->userdata('login')) { 
-            redirect(base_url().'home/login');
-        }
-
         $dir = $this->_mkdir('assets/pdf');
 
         $img = $this->_uploadFiles($dir);
@@ -263,11 +216,6 @@ class Students extends MY_Controller {
 
 	public function upload_waiver($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
-        
         $dir = $this->_mkdir('assets/pdf');
 
         $img = $this->_uploadFiles($dir);
@@ -284,9 +232,6 @@ class Students extends MY_Controller {
 
 	public function upload_good_moral($username)
 	{
-		if ( ! $this->session->userdata('login')) { 
-            redirect(base_url().'home/login');
-        }
         
         $dir = $this->_mkdir('assets/pdf');
 
@@ -304,11 +249,6 @@ class Students extends MY_Controller {
 
 	public function upload_registration_form($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
-        
         $dir = $this->_mkdir('assets/pdf');
 
         $img = $this->_uploadFiles($dir);
@@ -325,10 +265,6 @@ class Students extends MY_Controller {
 
 	public function upload_consent($username)
 	{
-		if ( ! $this->session->userdata('login')) { 
-            redirect(base_url().'home/login');
-        }
-        
         $dir = $this->_mkdir('assets/pdf');
 
         $img = $this->_uploadFiles($dir);
