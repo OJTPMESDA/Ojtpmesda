@@ -1,6 +1,6 @@
 <div class="container">
 	<?php
-	$aa = $fetch_data['username'];
+	$aa = $fetch_data['studentID'];
 	$a = $fetch_data['resume_status'];
 	$b = $fetch_data['clearance_status'];
 	$c = $fetch_data['waiver_status'];
@@ -12,7 +12,7 @@
 		$aab = array(
 			'pending' => 1
 		);
-			$this->db->where('username', $aa);
+			$this->db->where('id', $aa);
 			$this->db->update('students', $aab);
 	}
 	?>
@@ -41,22 +41,25 @@
             <div class="tab-pane fade show active" id="resume">
             	<center>
 			  	<br>
-                <?php 
-			  	if($fetch_data['resume'] != 'no_pdf.png') {
-			  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['resume'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-			    	<legend>'.$fetch_data['resume'].'</legend>';
-			    	if($fetch_data['resume_status'] == 0) {
-			    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
-			    		echo '<a href="'.base_url('admin/confirm_resume/'.$fetch_data['username'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
-			    		echo '<a href="'.base_url('admin/decline_resume/'.$fetch_data['username'].'').'" class="btn btn-danger"><i class="fas fa-times"></i></a>';
-			    		echo '</div>';
-			    	}
-			    	else{
-			    		echo 'Status: Approved';
-			    	}
+                <?php
+                if(!empty($fetch_data['resume'])) {
+				  	if($fetch_data['resume'] != 'no_pdf.png') {
+				  		echo '<a href="'.base_url().'assets/pdf/'.$fetch_data['resume'].'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
+				    	<legend>'.$fetch_data['resume'].'</legend>';
+				    	if($fetch_data['resume_status'] == 0) {
+				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
+				    		echo '<a href="'.base_url('admin/confirm_resume/'.$fetch_data['studentID'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
+				    		echo '<a href="'.base_url('admin/decline_resume/'.$fetch_data['studentID'].'').'" class="btn btn-danger"><i class="fas fa-times"></i></a>';
+				    		echo '</div>';
+				    	}
+				    	else{
+				    		echo 'Status: Approved';
+				    	}
+				    } else {
+				    	echo '<legend>No PDF Uploaded</legend>';
+				    }
 			    	
-			  	}
-			  	else{
+			  	} else {
 			  		echo '<legend>No PDF Uploaded</legend>';
 			  	}
 			  	?>

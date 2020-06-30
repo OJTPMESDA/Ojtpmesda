@@ -207,7 +207,9 @@ class Students_model extends CI_Model
 
 	function _getRequirements($where)
 	{
-		$res = $this->db->where($where)->get('requirements');
+		$res = $this->db->where($where)
+						->join('students','students.id = requirements.studentID','INNER')
+						->get('requirements');
 
 		if($res->num_rows() > 0) {         
 		    $this->arr = $res->row_array();
