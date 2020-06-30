@@ -53,7 +53,7 @@
 				  <tbody>
 				  	<tr>
 				  	<?php
-				  	$user = $fetch_data['studentID'];
+				  	$user = $fetch_data['id'];
 				  		$this->db->where('studentID', $user);
 						$name = $this->db->get('requirements');
 						foreach ($name->result() as $row) {
