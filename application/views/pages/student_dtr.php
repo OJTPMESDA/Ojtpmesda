@@ -6,9 +6,9 @@
 			<img src="<?php echo base_url(); ?>assets/images/<?php echo $fetch_data['user_image']; ?>" class="rounded-circle" width="130px">
 
 	<?php
-	$username = $fetch_data['username'];
+	$id = $fetch_data['id'];
 	$this->db->select_sum('ojt_hours');
-	$this->db->where('student_username', $username);
+	$this->db->where('studentID', $id);
 	$data = $this->db->get('students_dtr');
 	foreach ($data->result() as $row) {
 		$sum = $row->ojt_hours;
@@ -17,9 +17,9 @@
 	<legend><?php echo $fetch_data['name']; ?> | <?php echo $sum; ?>(hours)</legend>
 	<?php if($this->session->userdata('role') == 2) : ?>
 	<?php 
-	$now = DATE('Y-m-d');
+	$now = date('Y-m-d');
 	$this->db->select('ojt_date');
-	$this->db->where('student_username', $username);
+	$this->db->where('studentID', $id);
 	$this->db->where('ojt_date', $now);
 	$data = $this->db->get('students_dtr');
 	
@@ -35,10 +35,9 @@
 	
 	<?php endif; ?>
 	<?php
-	$username = $fetch_data['username'];
 	$counter = 1;
 	$this->db->order_by('ojt_date', 'DESC');
-	$this->db->where('student_username', $username);
+	$this->db->where('studentID', $id);
 	$data = $this->db->get('students_dtr');
 	?>
 	<table class="table table-responsive">
