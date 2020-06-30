@@ -21,15 +21,6 @@ class Home extends MY_Controller {
 		$this->load->view('pages/account_verify', $data);
 	}
 
-	public function login()
-	{
-		if($this->session->logged_in) redirect(base_url('home'));
-
-		$this->load->view('templates/header');
-		$this->load->view('pages/login');
-		$this->load->view('templates/footer');
-	}
-
 	public function register()
 	{
 		if($this->session->logged_in) redirect(base_url('home'));
@@ -38,8 +29,10 @@ class Home extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function get_login()
+	public function login()
 	{
+		if($this->session->logged_in) redirect(base_url('home'));
+
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		if ($this->form_validation->run()== FALSE) {
