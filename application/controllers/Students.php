@@ -149,9 +149,9 @@ class Students extends MY_Controller {
 		redirect('students/students_list');
 	}
 
-	public function student_dtr($username)
+	public function student_dtr($id)
 	{
-		$data['fetch_data'] = $this->Students_model->get_students_profile($username);
+		$data['fetch_data'] = $this->Students_model->_getData(['id' => $id]);
 		$this->load->view('templates/header');
 		$this->load->view('pages/student_dtr', $data);
 		$this->load->view('templates/footer');

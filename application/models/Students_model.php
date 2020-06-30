@@ -92,11 +92,19 @@ class Students_model extends CI_Model
 		
 	}
 
-	function get_students_profile($username)
+	function _getData($where)
 	{
-		$this->db->where('username', $username);
-		$data = $this->db->get('students');
-		return $data->row_array();
+		$data = [];
+
+		$res = $this->db->where($where)->db->get('students');
+
+		if($res->num_rows() > 0){
+			$data = $res->row_array()
+		}
+
+		$res->free_result();
+
+		return $data;
 	}
 
 	function update_students_profile($username, $post_image)

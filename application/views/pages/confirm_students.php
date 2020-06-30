@@ -50,10 +50,10 @@
 		      <td>
 		      	<div class="btn-group btn-group-toggle" data-toggle="buttons">
 				  <label class="btn btn-primary btn-sm">
-				    <a href="<?php echo base_url(); ?>students/student_dtr/<?php echo $row->username; ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
+				    <a href="<?php echo base_url('student/dtr/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
 				  </label>
 				  <label class="btn btn-success btn-sm">
-				    <a href="<?php echo base_url(); ?>students/student_profile/<?php echo $row->username; ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-user-tie"></i></a>
+				    <a href="<?php echo base_url('profile/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-user-tie"></i></a>
 				  </label>
 				</div>
 		      </td>
