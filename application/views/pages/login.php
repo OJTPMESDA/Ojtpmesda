@@ -5,7 +5,7 @@
 		<div class="col-md-4 shadow">
 			<div class="container">
 			<br>
-		  	<form method="post" action="">
+		  	<form method="post" action="signin">
 			  	<fieldset>
 				    <legend>Login</legend>
 				    <div class="form-group">
