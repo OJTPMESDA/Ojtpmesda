@@ -99,7 +99,7 @@ class Students_model extends CI_Model
 		$res = $this->db->where($where)->db->get('students');
 
 		if($res->num_rows() > 0){
-			$data = $res->row_array()
+			$data = $res->row_array();
 		}
 
 		$res->free_result();
