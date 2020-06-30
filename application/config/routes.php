@@ -15,6 +15,6 @@ $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
 
 $route['logout'] = 'Home/logout';
 
-$route['work/hours/(:num)'] = 'students/add_hours/$1';
+$route['work/hours/(:num)'] = 'Students/add_hours/$1';
 
-$route['student/dtr/(:num)'] = 'students/student_dtr/$1';
+$route['student/dtr/(:num)'] = 'Students/student_dtr/$1';
