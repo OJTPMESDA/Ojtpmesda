@@ -122,14 +122,16 @@ class Students extends MY_Controller {
 
 	public function update_student_profile($id)
 	{
+        $dir = $this->_mkdir('assets/images');
 
+        $img = $this->_uploadFiles($dir);
         if($this->input->post('gender') == 1) {
             $gender = "Male";
         } else {
             $gender = "Female";
         }
         $data = [
-            'user_image' => $post_image,
+            'user_image' => $img,
             'age' => $this->input->post('age'),
             'gender' => $gender,
             'address' => $this->input->post('address'),
@@ -138,10 +140,6 @@ class Students extends MY_Controller {
             'parents' => $this->input->post('parents'),
             'parents_contact_no' => $this->input->post('parents_contact_no')
         ];
-
-        $dir = $this->_mkdir('assets/images');
-
-        $img = $this->_uploadFiles($dir);
 
         if (!empty($img)) {
             $this->Students_model->_updateStudent(['id' => $id], $data);
