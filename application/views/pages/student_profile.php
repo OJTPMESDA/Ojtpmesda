@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<img src="<?php echo base_url($fetch_data['user_image']); ?>" class="rounded-circle" width="150px">
+			<?php $path = (!empty($fetch_data['user_image'])) ? base_url($fetch_data['user_image']) : base_url('assets/images/no_image.png') ;?>
+			<img src="<?php echo $path; ?>" class="rounded-circle" width="150px">
 			<legend><?php echo $fetch_data['name']; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">

@@ -2,7 +2,8 @@
 	<div class="row">
 		<div class="col-md-6">
         <?php foreach ($fetch_data->result() as $row) {
-            echo '<img src="'.base_url().'assets/images/'.$row->user_image.'" class="rounded-circle" width="150px">';
+            $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png');
+            echo '<img src="'.$path.'" class="rounded-circle" width="150px">';
             echo '<legend>'.$row->name.' | Overall Rating: 100</legend>';
             $yow = $row->company;
             if(!empty($yow))
@@ -18,7 +19,6 @@
             else{
                 echo '<legend>No Data Found</legend>';
             }
-            echo '<img src="'.base_url().'assets/images/'.$key->user_image.'" class="rounded-circle" width="50px">';
         }
         ?>
 			<canvas id="myData" width="400" height="400"></canvas>

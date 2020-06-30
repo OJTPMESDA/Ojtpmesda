@@ -29,9 +29,10 @@
 				$cat = $meow / $dog;
 				$yow = $row->company;
 				?>
+				<?php $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png') ;?>
 		    <tr class="table-bordered">
 		      <th scope="row"><?php echo $counter++; ?></th>
-		      <td><img src="<?php echo base_url($row->user_image); ?>" class="rounded-circle" height="60px"></td>
+		      <td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
 		      <td><?php echo $row->name;?></td>
 		      <td>0<?php echo $row->contact_no;?></td>
 		      <?php 

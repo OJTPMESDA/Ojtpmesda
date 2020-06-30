@@ -3,7 +3,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			<img src="<?php echo base_url(); ?>assets/images/<?php echo $fetch_data['user_image']; ?>" class="rounded-circle" width="130px">
+			<?php $path = (!empty($fetch_data['user_image'])) ? base_url($fetch_data['user_image']) : base_url('assets/images/no_image.png') ;?>
+			<img src="<?php echo $path; ?>" class="rounded-circle" width="130px">
 
 	<?php
 	$id = $fetch_data['id'];

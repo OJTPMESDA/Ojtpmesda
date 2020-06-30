@@ -22,9 +22,10 @@
 		  	}
 		  	?>
 		  	<?php foreach ($fetch_data->result() as $row): ?>
+		  		<?php $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png') ;?>
 		    <tr class="table-bordered">
 		    	<td><?php echo $counter++; ?></td>
-		    	<td><img src="<?php echo base_url(); ?>assets/images/<?php echo $row->user_image; ?>" class="rounded-circle" height="60px"></td>
+		    	<td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
 		      	<td><?php echo $row->company_name;?></td>
 		      	<td><?php echo $row->address;?></td>
 		      	<td>0<?php echo $row->contact_no;?></td>
