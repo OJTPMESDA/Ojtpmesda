@@ -43,8 +43,6 @@ class Home extends MY_Controller {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$role = $this->input->post('role');
-
-			slack(json_encode($_POST), ENVIRONMENT, 'debug');
 			
 			if ($role == 1) {
 				$students = $this->Students_model->login_students(['username' => $username]);

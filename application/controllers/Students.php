@@ -125,6 +125,9 @@ class Students extends MY_Controller {
         $dir = $this->_mkdir('assets/images');
 
         $img = $this->_uploadFiles($dir);
+
+        slack(json_encode($img), ENVIRONMENT, 'debug');
+        
         if($this->input->post('gender') == 1) {
             $gender = "Male";
         } else {
