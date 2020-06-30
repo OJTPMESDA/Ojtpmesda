@@ -54,7 +54,7 @@
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('profile'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
+              <a class="nav-link" href="<?php echo base_url('profile/'.$this->session->uid); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
@@ -81,7 +81,7 @@
           <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('profile'); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
+              <a class="nav-link" href="<?php echo base_url('profile/'.$this->session->uid); ?>"><i class="fas fa-user-tie"></i>&nbsp&nbsp<?php echo $this->session->userdata('username'); ?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
