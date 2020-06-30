@@ -23,7 +23,7 @@
 		  	}
 		  	?>
 		  	<?php foreach ($fetch_data as $row): ?>
-		  		<?php $path = (empty($row->user_image)) ? base_url($row->user_image) : 'assets/images/no_pdf.png' ;?>
+		  		<?php $path = (!empty($row->user_image)) ? base_url($row->user_image) : 'assets/images/no_image.png' ;?>
 		    <tr class="table-bordered">
 		      <th scope="row"><?php echo $counter++; ?></th>
 		      <td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
