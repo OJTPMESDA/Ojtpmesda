@@ -3,8 +3,6 @@
 class Students_model extends CI_Model
 {
 
-	private $arr = [];
-
 	public function __construct()
     {	
         parent::__construct();
@@ -207,16 +205,18 @@ class Students_model extends CI_Model
 
 	function _getRequirements($where)
 	{
+		$data = [];
+
 		$res = $this->db->where($where)
 						->join('students','students.id = requirements.studentID','INNER')
 						->get('requirements');
 
 		if($res->num_rows() > 0) {         
-		    $this->arr = $res->row_array();
+		    $data = $res->row_array();
 		}
 		$res->free_result();
 
-		return $this->arr;
+		return $data;
 	}
 
 
