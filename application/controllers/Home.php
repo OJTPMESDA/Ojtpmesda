@@ -67,6 +67,8 @@ class Home extends MY_Controller {
 						redirect(base_url());
 					}
 				}
+				$this->session->set_flashdata('error', 'Invalid Username and Password');
+				redirect(base_url());
 			} elseif ($role == 2) {
 				$company = $this->Students_model->login_company(['username' => $username]);
 				if(!empty($company)) {
@@ -116,8 +118,6 @@ class Home extends MY_Controller {
 					$this->session->set_flashdata('error', 'Invalid Username and Password');
 					redirect(base_url());
 				}
-			} else {
-				return false;
 			}
 			
 		}
