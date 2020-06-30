@@ -32,7 +32,7 @@ class Students_model extends CI_Model
 						->get('students');
 
 		if($res->num_rows() > 0){
-			$data = $res->row_array();
+			$data = $res->result();
 		}
 
 		$res->free_result();

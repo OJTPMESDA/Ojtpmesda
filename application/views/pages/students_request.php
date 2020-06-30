@@ -18,11 +18,11 @@
 		  <tbody>
 		  	<?php 
 		  	$counter = 1; 
-		  	if (empty($fetch_data->result())) {
+		  	if (empty($fetch_data)) {
 		  		echo '<td>No Student Request</td>';
 		  	}
 		  	?>
-		  	<?php foreach ($fetch_data->result() as $row): ?>
+		  	<?php foreach ($fetch_data as $row): ?>
 		    <tr class="table-bordered">
 		      <th scope="row"><?php echo $counter++; ?></th>
 		      <td><img src="<?php echo base_url(); ?>assets/images/<?php echo $row->user_image; ?>" class="rounded-circle" height="60px"></td>
