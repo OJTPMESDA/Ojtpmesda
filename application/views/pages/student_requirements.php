@@ -45,8 +45,9 @@
                 if(!empty($fetch_data['resume'])) {
 				  	if($fetch_data['resume'] != 'no_pdf.png') {
 				  		$resume = explode('/',$fetch_data['resume']);
+				  		$p = end($resume);
 				  		echo '<a href="'.base_url($fetch_data['resume']).'" target="_blank"><img src="'.base_url().'assets/pdf/pdf.png" width="150px"></a>
-				    	<legend>'.end($resume).'</legend>';
+				    	<legend>'.$p.'</legend>';
 				    	if($fetch_data['resume_status'] == 0) {
 				    		echo '<div class="btn-group btn-group-toggle" data-toggle="buttons">';
 				    		echo '<a href="'.base_url('admin/confirm_resume/'.$fetch_data['studentID'].'').'" class="btn btn-success"><i class="fas fa-check"></i></a>';
