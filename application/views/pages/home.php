@@ -9,25 +9,20 @@
 	<br>
 	<legend class="text-center">LIST OF OJT CANDIDATES</legend>
 	<div class="row">
-		<?php foreach ($fetch_data as $row): ?>
-			<?php 
-			$meow = $row->total_hours;
-			$dog = 4.00;
-			$cat = $meow / $dog;
-			$kwek = floor($cat);
-			$yow = $row->company;
-			 $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png')
+		<?php 
+			if (!empty($results)):
+		  		foreach ($results as $k):
+		  			$meow = $row->hours;
+					$dog = 4.00;
+					$cat = $meow / $dog;
+					$kwek = floor($cat);
+					$path = (!empty($k->profile)) ? base_url($k->profile) : base_url('assets/images/no_image.png');
 			?>
 			<div class="col-md-3 text-center">
 				<img src="<?php echo $path; ?>" class="rounded-circle " height="150px">
 				<br>
-				<h5><?php echo $row->name; ?></h5>
-				<?php 
-		      $data = $this->db->query('SELECT * FROM admin WHERE id = '.$yow.'');
-		      foreach ($data->result() as $key) {
-		      	echo '<p>'.$key->company_name.'</p>';
-		      }
-		      ?>
+				<h5><?php echo $row->studentName; ?></h5>
+				<p><?php echo $row->cname; ?></p>
 				<p>
 					<div class="progress">
 				  	<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: <?php echo $cat; ?>%" aria-valuenow="20%" aria-valuemin="0" aria-valuemax="486"><?php echo $kwek; ?>%</div>
