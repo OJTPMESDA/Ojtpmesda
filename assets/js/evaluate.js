@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	$(document).on('submit', '.evaluation-form', function(e) {
 
+		e.preventDefault();
+		
 		var f = $(this);
 		var b = clickedButton;
 		var t = b.text();
