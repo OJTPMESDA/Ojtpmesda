@@ -3,8 +3,8 @@
                 <div class="row">
                 	<div class="col-md-4">
                 		<img src="<?php echo base_url(); ?>assets/images/id.jpg" class="rounded-circle" width="130px">
-                		<legend>Maestro Robert Jr. S.</legend>
-                		<label>LGU Bongabong | Bongabong Oriental Mindoro</label>
+                		<legend><?php echo $row->name; ?></legend>
+                		<label><?php echo $row->company_name; ?> | <?php echo $row->address; ?></label>
                 		<table class="table table-responsive">
                 			<tbody>
                 				<thead class="table-success">
@@ -59,7 +59,7 @@
                     <div class="col-md-8">
 						<!-- Form Wizard -->
 						<div class="form-wizard form-header-classic form-body-classic">
-                    	<form role="form" class="evaluation-form" action="<?php echo base_url('evaluate/'); ?>" method="post">
+                    	<form role="form" class="evaluation-form" action="<?php echo base_url('evaluate/'.$this->uri->segment(3)); ?>" method="post">
 
                     		<h3>On The Job Training</h3>
                     		<p>Evaluation Form</p>
