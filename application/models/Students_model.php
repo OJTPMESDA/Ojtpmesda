@@ -76,19 +76,17 @@ class Students_model extends CI_Model
 	function get_confirm_students()
 	{
 		$data = [];
-		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile, students_rating.studentID as rating';
+		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile,';
 		if($this->session->userdata('role') == 2) {
 			$res = $this->db->select($select)
 							->where(['students.status' => 1, 'id' => $this->session->uid])
 							->join('admin','admin.id = students.company','LEFT')
-							->join('students_rating','students_rating.studentID = students.id','LEFT')
 							->order_by('total_hours', 'DESC')
 							->get('students');
 		} else {
 			$res = $this->db->select($select)
 							->where('students.status', 1)
 							->join('admin','admin.id = students.company','LEFT')
-							->join('students_rating','students_rating.studentID = students.id','LEFT')
 							->order_by('total_hours', 'DESC')
 							->get('students');
 		}

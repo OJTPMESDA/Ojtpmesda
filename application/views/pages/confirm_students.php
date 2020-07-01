@@ -43,11 +43,6 @@
 				  <label class="btn btn-primary btn-sm mr-1">
 				    <a href="<?php echo base_url('student/dtr/'.$k->studID); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
 				  </label>
-				  <?php if (!empty($k->rating)): ?>
-				  <label class="btn btn-danger btn-sm mr-1">
-				    <a href="<?php echo base_url('student/dtr/'.$k->studID); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
-				  </label>
-				  <?php endif; ?>
 				  <?php if ($this->session->role == 2): ?>
 				  <label class="btn btn-info btn-sm mr-1">
 				    <a href="<?php echo base_url('student/evaluate/'.$k->studID); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-code-branch"></i></a>

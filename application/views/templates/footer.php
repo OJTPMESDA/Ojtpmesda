@@ -19,6 +19,8 @@
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <script src="<?php echo base_url(); ?>assets/js/c3.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/global.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/form_wizard.js"></script>
