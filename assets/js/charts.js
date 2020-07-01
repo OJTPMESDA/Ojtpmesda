@@ -5,9 +5,13 @@ var chart = c3.generate({
 	            ['Knowledge', 240],
 	            ['Quality', 300]
 	        ],
-	        type: 'pie'
-	    }
-		
+	        type: 'donut'
+	    },
+		donut: {
+			title: "OJT Statistic",
+			width: 70,
+			padAngle: .1
+		}
 	});
 
 var chart = c3.generate({
