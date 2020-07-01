@@ -47,7 +47,7 @@ class Company extends MY_Controller {
 			$this->form_validation->set_rules('industry', 'Industry', 'xss_clean|trim|required|numeric');
 			$this->form_validation->set_rules('interested', 'Interested and Enthusiasm in the Performance of Work', 'xss_clean|trim|required|numeric');
 			$this->form_validation->set_rules('orderliness', 'Orderliness', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('remarks', 'Remarks', 'xss_clean|trim|required|numeric');
+			$this->form_validation->set_rules('remarks', 'Remarks', 'xss_clean|trim');
 
 			if ($this->form_validation->run()) {
 				$save = [

@@ -209,7 +209,7 @@
 									</div>
 									<div class="form-group">
 	                    			    <label>Remarks:</label>
-	                                    <textarea name="remarks" class="form-control" placeholder="Enter comments" required></textarea>
+	                                    <textarea name="remarks" class="form-control" placeholder="Enter comments"></textarea>
 	                                </div>
                                 <div class="form-wizard-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>
