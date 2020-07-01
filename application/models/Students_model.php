@@ -75,28 +75,30 @@ class Students_model extends CI_Model
 
 	function get_confirm_students()
 	{
-		if($this->session->userdata('role') == 2)
-		{
-			$this->db->select('id');
-			$this->db->where('id', $this->session->uid);
-			$tsk = $this->db->get('admin');
-			foreach ($tsk->result() as $row) {
-				$hey = $row->id;
-			}
-
-			$this->db->order_by('total_hours', 'DESC');
-			$this->db->where('status', 1);
-			$this->db->where('company', $hey);
-			$data = $this->db->get('students');
-			return $data;
-		}else
-		{
-			$this->db->order_by('total_hours', 'DESC');
-			$this->db->where('status', 1);
-			$data = $this->db->get('students');
-			return $data;
+		$data = [];
+		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile, students_rating.studentID as rating';
+		if($this->session->userdata('role') == 2) {
+			$res = $this->db->select($select)
+							->where(['status' => 1, 'id' => $this->session->uid])
+							->join('admin','admin.id = students.company','LEFT')
+							->join('students_rating','students_rating.studentID = students.id','LEFT')
+							->order_by('total_hours', 'DESC')
+							->get('students');
+		} else {
+			$res = $this->db->select($select)
+							->where('status', 1)
+							->join('admin','admin.id = students.company','LEFT')
+							->join('students_rating','students_rating.studentID = students.id','LEFT')
+							->order_by('total_hours', 'DESC')
+							->get('students');
 		}
-		
+		if($res->num_rows() > 0){
+			$data = $res->result();
+		}
+
+		$res->free_result();
+
+		return $data;
 	}
 
 	function _getData($where)

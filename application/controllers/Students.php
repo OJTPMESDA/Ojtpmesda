@@ -38,7 +38,6 @@ class Students extends MY_Controller {
 
 	public function confirm_student($username)
 	{
-
 		$this->Students_model->confirm_students($username);
 		redirect('students/students_list');
 	}
@@ -53,7 +52,7 @@ class Students extends MY_Controller {
 	public function get_confirm_students()
 	{
 
-		$data['fetch_data'] = $this->Students_model->get_confirm_students();
+		$data['results'] = $this->Students_model->get_confirm_students();
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);
 		$this->load->view('templates/footer');

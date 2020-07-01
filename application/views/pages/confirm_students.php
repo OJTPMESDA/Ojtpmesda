@@ -17,31 +17,21 @@
 		  </thead>
 		  <tbody>
 		  	<?php 
-		  	$counter = 1; 
-		  	if (empty($fetch_data->result())) {
-		  		echo '<td>No Student Request</td>';
-		  	}
+		  	$counter = 1;
+		  	if (!empty($results)):
+		  		foreach ($results as $k):
+		  			$meow = $k->hours;
+					$dog = 4.00;
+					$cat = $meow / $dog;
+					$path = (!empty($k->profile)) ? base_url($k->profile) : base_url('assets/images/no_image.png');
 		  	?>
-		  	<?php foreach ($fetch_data->result() as $row): ?>
-		  		<?php 
-				$meow = $row->total_hours;
-				$dog = 4.00;
-				$cat = $meow / $dog;
-				$yow = $row->company;
-				?>
-				<?php $path = (!empty($row->user_image)) ? base_url($row->user_image) : base_url('assets/images/no_image.png') ;?>
 		    <tr class="table-bordered">
 		      <th scope="row"><?php echo $counter++; ?></th>
 		      <td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
-		      <td><?php echo $row->name;?></td>
-		      <td>0<?php echo $row->contact_no;?></td>
-		      <?php 
-		      $data = $this->db->query('SELECT * FROM admin WHERE id = '.$yow.'');
-		      foreach ($data->result() as $key) {
-		      	echo '<td>'.$key->company_name.'</td>';
-		      	echo '<td>'.$key->address.'</td>';
-		      }
-		      ?>
+		      <td><?php echo $k->studentName;?></td>
+		      <td>0<?php echo $k->studentPhone;?></td>
+		      <td><?php echo $k->cname;?></td>
+		      <td>0<?php echo $k->cAddress;?></td>
 		      <td class="text-center">
 		      	<small><?php echo $meow; ?>/400</small>
 		      	<div class="progress">
@@ -64,7 +54,10 @@
 				</div>
 		      </td>
 		    </tr>
-		    <?php endforeach; ?>
+		    	<?php endforeach; ?>
+		    <?php else: ?>
+		    	<td>No Student Request</td>
+		    <?php endif; ?>
 		  </tbody>
 		</table> 
 	</div>
