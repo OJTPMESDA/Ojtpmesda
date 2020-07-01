@@ -29,7 +29,10 @@
 				</div>
 				</p>
 			</div>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
+		<?php else: ?>
+		    <td>No Student</td>
+		<?php endif; ?>
 	</div>
   
 </div>
