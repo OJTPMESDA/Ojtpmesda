@@ -61,6 +61,8 @@ class Reports extends MY_Controller {
 			}
     	}
 
+    	slack(json_encode(['Attendance' => $rate1, 'Absent' => $rate], ENVIRONMENT, __FUNCTION__));
+
     	$attendance = count($rate1);
     	$absent = count($rate);
 
