@@ -59,7 +59,7 @@
                     <div class="col-md-8">
 						<!-- Form Wizard -->
 						<div class="form-wizard form-header-classic form-body-classic">
-                    	<form role="form" class="evaluation-form" action="<?php echo base_url('evaluate/'.$this->uri->segment(1)); ?>" method="post">
+                    	<form role="form" class="evaluation-form" action="<?php echo base_url('evaluate/'.$this->uri->segment(3)); ?>" method="post">
 
                     		<h3>On The Job Training</h3>
                     		<p>Evaluation Form</p>
