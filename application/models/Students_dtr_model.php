@@ -1,9 +1,9 @@
 <?php
 
-class Students_rating_model extends CI_Model
+class Students_dtr_model extends CI_Model
 {
 
-	private $tbl = 'students_rating';
+	private $tbl = 'students_dtr';
 	private $id = 'id';
 
 
@@ -12,7 +12,7 @@ class Students_rating_model extends CI_Model
         parent::__construct();
     }
 
-    public function _insert($data)
+    public function _insertDTR($data)
     {
     	return $this->db->insert($this->tbl,$data);
     }
