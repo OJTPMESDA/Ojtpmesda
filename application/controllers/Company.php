@@ -35,18 +35,20 @@ class Company extends MY_Controller {
 
 			$this->load->model('Students_rating_model');
 
-			$this->form_validation->set_rules('ability', 'Ability to perform the assigned work well', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('accuracy', 'Accuracy of work', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('volume', 'Volume of Work Accomplished', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('knowledge', 'Knowledge of the Basic Principle Neccessary for the Accomplishment of assigned Work', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('extent', 'Extent of Knowledge with regards to Department Operations', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('follow', 'Ability to follow Instructions', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('punctuality', 'Punctuality', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('attendance', 'Attendance', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('department', 'Department/Behavior', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('industry', 'Industry', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('interested', 'Interested and Enthusiasm in the Performance of Work', 'xss_clean|trim|required|numeric');
-			$this->form_validation->set_rules('orderliness', 'Orderliness', 'xss_clean|trim|required|numeric');
+			slack(json_encode($this->input->post(NULL, true)), 'development', 'evaluate');
+
+			$this->form_validation->set_rules('ability', 'Ability to perform the assigned work well', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('accuracy', 'Accuracy of work', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('volume', 'Volume of Work Accomplished', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('knowledge', 'Knowledge of the Basic Principle Neccessary for the Accomplishment of assigned Work', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('extent', 'Extent of Knowledge with regards to Department Operations', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('follow', 'Ability to follow Instructions', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('punctuality', 'Punctuality', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('attendance', 'Attendance', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('department', 'Department/Behavior', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('industry', 'Industry', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('interested', 'Interested and Enthusiasm in the Performance of Work', 'xss_clean|trim|required');
+			$this->form_validation->set_rules('orderliness', 'Orderliness', 'xss_clean|trim|required');
 			$this->form_validation->set_rules('remarks', 'Remarks', 'xss_clean|trim');
 
 			if ($this->form_validation->run()) {
