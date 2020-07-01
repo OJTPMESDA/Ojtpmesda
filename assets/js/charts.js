@@ -1,7 +1,7 @@
 if ($('div').hasClass('donut-chart')) {
 	var chart = c3.generate({
 			data: {
-		        url: 'http://ojtpmesda.com/reports/ratings',
+		        url: 'http://ojtpmesda.com/reports/ratings/'+jsUri(2),
 				mimeType: 'json',
 		        type: 'donut'
 		    },
@@ -16,7 +16,7 @@ if ($('div').hasClass('second-donut-chart')) {
 	var chart = c3.generate({
 			bindto: '#bar-chart',
 			data: {
-				url: 'http://ojtpmesda.com/reports/attendance',
+				url: 'http://ojtpmesda.com/reports/attendance/'+jsUri(2),
 				mimeType: 'json',
 				type : 'donut'
 			},

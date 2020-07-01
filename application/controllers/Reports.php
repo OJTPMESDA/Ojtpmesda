@@ -7,10 +7,10 @@ class Reports extends MY_Controller {
         parent::__construct();
     }
 
-    public function ratings()
+    public function ratings($id)
     {
         $this->load->model('Students_rating_model');
-    	$results = $this->Students_rating_model->_getAllData(['studentID' => $this->uri->segment(2)]);
+    	$results = $this->Students_rating_model->_getAllData(['studentID' => $id]);
 
     	$rate = [];
     	$rate1 = [];
@@ -45,10 +45,10 @@ class Reports extends MY_Controller {
     	echo $output;
     }
 
-    public function attendance()
+    public function attendance($id)
     {
         $this->load->model('Students_dtr_model');
-    	$results = $this->Students_dtr_model->_getAllData(['studentID' => $this->uri->segment(2)]);
+    	$results = $this->Students_dtr_model->_getAllData(['studentID' => $id]);
 
     	$rate = [];
     	$rate1 = [];
