@@ -23,7 +23,7 @@ class Company extends MY_Controller {
 
 	public function evaluate($id)
 	{
-		$data['row'] = $this->Students_model->_getSingleData(['company' => $this->session->uid, 'id' => $id]);
+		$data['row'] = $this->Students_model->_getSingleData(['students.company' => $this->session->uid, 'students.id' => $id]);
 		$this->load->view('templates/header');
 		$this->load->view('pages/evaluate', $data);
 		$this->load->view('templates/footer');
