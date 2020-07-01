@@ -123,6 +123,18 @@ class Home extends MY_Controller {
 		}
 	}
 
+    public function check_email_availability()
+    {
+        $email = $this->input->post('email');
+
+        if ($this->Students_model->check_email($email)) {
+            echo '<label class="text-danger">Username Already Taken</label>';
+        }
+        else{
+             echo '<label class="text-success">Username Available</label>';
+        }
+    }
+
 	public function logout()
 	{
 		$this->session->sess_destroy();

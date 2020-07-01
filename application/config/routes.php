@@ -23,3 +23,5 @@ $route['work/hours/(:num)'] = 'Students/add_hours/$1';
 $route['student/dtr/(:num)'] = 'Students/student_dtr/$1';
 $route['student/evaluate/(:num)'] = 'Company/evaluate/$1';
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
+
+$route['availability'] = 'Home/check_email_availability';
