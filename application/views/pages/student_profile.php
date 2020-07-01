@@ -89,12 +89,12 @@
 			<div class="row">
 				<?php if (!empty($ratings)): ?>
 				<div class="col-md-3">
-					<div id="chart"></div>
+					<div id="chart" class="donut-chart"></div>
 				</div>
 				<?php endif; ?>
 				<?php if (!empty($dtr)): ?>
 				<div class="col-md-9">
-					<div id="bar-chart"></div>
+					<div id="bar-chart" class="second-donut-chart"></div>
 				</div>
 				<?php endif; ?>
 			</div>

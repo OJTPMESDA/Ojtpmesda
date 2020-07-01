@@ -25,9 +25,7 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/form_wizard.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/evaluate.js"></script>
-    <?php if (!empty($ratings)): ?>
     <script src="<?php echo base_url(); ?>assets/js/charts.js"></script>
-    <?php endif; ?>
 
     <script>
        $(document).ready(function() {
