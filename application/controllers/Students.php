@@ -68,6 +68,7 @@ class Students extends MY_Controller {
 
 	public function student_profile($id)
 	{
+        $this->load->model('Students_dtr_model');
 		$data['fetch_data'] = $this->Students_model->_getData(['id' => $id]);
         $data['ratings'] = $this->Students_dtr_model->_getAllData(['studentID' => $id]);
 		$this->load->view('templates/header');
