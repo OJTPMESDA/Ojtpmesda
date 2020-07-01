@@ -11,16 +11,8 @@ var chart = c3.generate({
 			onclick: function (d, i) { console.log("onclick", d, i, this); },
 			order: null 
 		},
-		axis: {
-			x: {
-				label: 'Sepal.Width'
-			},
-			y: {
-				labelabel: 'Petal.Width'
-			}
-		},
 		donut: {
-			title: "Iris Petal Width",
+			title: "OJT Statistic",
 			width: 70,
 			padAngle: .1
 		}
