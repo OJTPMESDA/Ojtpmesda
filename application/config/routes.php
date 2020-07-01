@@ -25,3 +25,4 @@ $route['student/evaluate/(:num)'] = 'Company/evaluate/$1';
 $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
 
 $route['availability'] = 'Home/check_email_availability';
+$route['account/verify/(:any)'] = 'Home/account_verify/$1';

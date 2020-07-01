@@ -15,9 +15,9 @@ class Home extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function account_verify($username)
+	public function account_verify()
 	{
-		$data['fetch_data'] = $this->Students_model->get_students_requirements($username);
+		$data['fetch_data'] = $this->Students_model->_getRequirements(['studentID' => $this->session->uid]);
 		$this->load->view('pages/account_verify', $data);
 	}
 
@@ -57,11 +57,10 @@ class Home extends MY_Controller {
 						];
 						$this->session->set_userdata($sess);
 
-						if ($students->status == 0) {
+						if ($students->status == 1) {
 							redirect(base_url('home'));
-						} elseif ($students->status == 1) {
-							redirect('home/account_verify/'.$username
-								.'');
+						} elseif ($students->status == 0) {
+							redirect('account/verify/'.$username);
 						}
 					} else {
 						$this->session->set_flashdata('error', 'Invalid Username and Password');
