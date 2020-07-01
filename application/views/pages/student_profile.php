@@ -4,9 +4,6 @@
 			<?php $path = (!empty($fetch_data['user_image'])) ? base_url($fetch_data['user_image']) : base_url('assets/images/no_image.png') ;?>
 			<img src="<?php echo $path; ?>" class="rounded-circle" width="150px">
 			<legend><?php echo $fetch_data['name']; ?></legend>
-			<div class="chart-container">
-				<div id="chart"></div>
-			</div>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
 			    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
@@ -87,6 +84,14 @@
 			  <div class="tab-pane fade" id="settings">
 			    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
 			  </div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="chart"></div>
+				</div>
+				<div class="col-md-6">
+					<div id="bar-chart"></div>
+				</div>
 			</div>
 		</div>	
 			
