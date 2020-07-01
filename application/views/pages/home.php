@@ -9,7 +9,7 @@
 	<br>
 	<legend class="text-center">LIST OF OJT CANDIDATES</legend>
 	<div class="row">
-		<?php foreach ($fetch_data->result() as $row): ?>
+		<?php foreach ($fetch_data as $row): ?>
 			<?php 
 			$meow = $row->total_hours;
 			$dog = 4.00;
