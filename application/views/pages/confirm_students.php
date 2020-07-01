@@ -50,15 +50,15 @@
 		      </td>
 		      <td>
 		      	<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-primary btn-sm">
+				  <label class="btn btn-primary btn-sm mr-1">
 				    <a href="<?php echo base_url('student/dtr/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
 				  </label>
 				  <?php if ($this->session->role == 2): ?>
-				  <label class="btn btn-primary btn-sm">
+				  <label class="btn btn-info btn-sm mr-1">
 				    <a href="<?php echo base_url('evaluate/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-code-branch"></i></a>
 				  </label>
 					<?php endif; ?>
-				  <label class="btn btn-success btn-sm">
+				  <label class="btn btn-success btn-sm mr-1">
 				    <a href="<?php echo base_url('profile/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-user-tie"></i></a>
 				  </label>
 				</div>
