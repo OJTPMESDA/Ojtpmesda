@@ -17,35 +17,35 @@
 					</div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Complete Name if Student | Company Name</label>
-				      <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter complete name">
+				      <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter complete name" required>
 				      <span class="text-danger"><?php echo form_error('name'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Contact No.</label>
-				      <input type="number" name="contact_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your contact no.">
+				      <input type="number" name="contact_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your contact no." required>
 				      <span class="text-danger"><?php echo form_error('contact_no'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Permanent Address</label>
-				      <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter valid address">
+				      <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter valid address" required>
 				      <span class="text-danger"><?php echo form_error('address'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Username</label>
-				      <input type="text" name="email" class="form-control" id="email" placeholder="Enter username">
+				      <input type="text" name="email" class="form-control" id="email" placeholder="Enter username" required>
 				      <small id="emailHelp" class="form-text text-muted">Pls. Select a unique username</small>
 				      <span id="email_result"></span>
 				      <span class="text-danger"><?php echo form_error('username'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputPassword1">Password</label>
-				      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
+				      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" required>
 				       <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
 				       <span class="text-danger"><?php echo form_error('password'); ?></span>
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputPassword1">Confirm Password</label>
-				      <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password">
+				      <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" required>
 				       <span class="text-danger"><?php echo form_error('confirm_password'); ?></span>
 				    </div>
 				    <button type="submit" class="btn btn-primary btn-block">Register</button>
