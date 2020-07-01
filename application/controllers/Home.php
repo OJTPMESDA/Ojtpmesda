@@ -123,6 +123,51 @@ class Home extends MY_Controller {
 		}
 	}
 
+	public function add_new_data()
+	{
+		$this->form_validation->set_rules('name', 'Complete Name', 'trim|required');
+		$this->form_validation->set_rules('email', 'Username', 'trim|required');
+		$this->form_validation->set_rules('address', 'Address', 'trim|required');
+		$this->form_validation->set_rules('contact_no', 'Contact No.', 'max_length[11]|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header');
+			$this->load->view('pages/register');
+			$this->load->view('templates/footer');
+		} else {
+            $hash = $this->_password_hash($this->input->post('password'));
+            $email = $this->input->post('email');
+            $name = $this->input->post('name');
+            $contact_no = $this->input->post('contact_no');
+            $address = $this->input->post('address');
+                
+            if($this->input->post('role') == 1) {
+                $data = [
+                    'name' => $name,
+                    'contact_no' => $contact_no,
+                    'address' => $address,
+                    'username' => $email,
+                    'password' => $hash
+                ];
+                $this->Students_model->insertStudent($data);
+
+            } else {
+                $admin = [
+                    'company_name' => $name,
+                    'contact_no' => $contact_no,
+                    'address' => $address,
+                    'username' => $email,
+                    'password' => $hash
+                ];
+                $this->Students_model->insertAdmin($admin);
+
+            }
+			redirect('home/login');
+		}
+	}
+
     public function check_email_availability()
     {
         $email = $this->input->post('email');
