@@ -19,6 +19,12 @@ $(document).ready(function(){
 				if (res.status) {
 					b.removeAttr('disabled');
 					b.html('Submit');
+
+					if (res.action == 'redirect') {
+	                    setTimeout(function() {
+	                        window.location = res.url;
+	                    }, 1000);
+		            }
 				}
 			}
 		});

@@ -71,7 +71,7 @@ class Company extends MY_Controller {
 				$res = $this->Students_rating_model->_insert($save);
 
 				if ($res) {
-					$this->response(true);
+					$this->response(true, null, ['action' => 'redirect', 'url' => base_url('student/confirm/list')]);
 				}
 
 				$this->response(false);
