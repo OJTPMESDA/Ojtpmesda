@@ -29,9 +29,9 @@
 		      <th scope="row"><?php echo $counter++; ?></th>
 		      <td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
 		      <td><?php echo $k->studentName;?></td>
-		      <td>0<?php echo $k->studentPhone;?></td>
+		      <td><?php echo (!empty($k->studentPhone)) ? '0'.$k->studentPhone : 'N/A';?></td>
 		      <td><?php echo (!empty($k->cname)) ? $k->cname : 'N/A';?></td>
-		      <td>0<?php echo (!empty($k->cAddress)) ? $k->cAddress : 'N/A';?></td>
+		      <td><?php echo (!empty($k->cAddress)) ? $k->cAddress : 'N/A';?></td>
 		      <td class="text-center">
 		      	<small><?php echo $meow; ?>/400</small>
 		      	<div class="progress">
