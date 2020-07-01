@@ -49,7 +49,7 @@ class Company extends MY_Controller {
 		$this->form_validation->set_rules('orderliness', 'Orderliness', 'xss_clean|trim|required');
 		$this->form_validation->set_rules('remarks', 'Remarks', 'xss_clean|trim');
 
-		if ($this->form_validation->run()) {
+		if (!$this->form_validation->run()) {
 			$save = [
 				'studentID'	=> $id,
 				'rating_1' => $this->input->post('ability'),
