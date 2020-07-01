@@ -1,4 +1,4 @@
-if ($('div#').hasClass('donut-chart')) {
+if ($('div').hasClass('donut-chart')) {
 	var chart = c3.generate({
 			data: {
 		        url: 'http://ojtpmesda.com/reports/ratings',
