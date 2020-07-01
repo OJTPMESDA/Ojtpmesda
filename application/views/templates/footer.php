@@ -25,6 +25,7 @@
     <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/form_wizard.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/evaluate.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts.js"></script>
 
     <script>
        $(document).ready(function() {
