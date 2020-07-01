@@ -21,10 +21,11 @@ class Company extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function evaluate()
+	public function evaluate($id)
 	{
+		$data['row'] = $this->Students_model->_getSingleData(['company' => $this->session->uid, 'id' => $id]);
 		$this->load->view('templates/header');
-		$this->load->view('pages/evaluate');
+		$this->load->view('pages/evaluate', $data);
 		$this->load->view('templates/footer');
 	}
 

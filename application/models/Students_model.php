@@ -114,6 +114,23 @@ class Students_model extends CI_Model
 		return $data;
 	}
 
+	function _getSingleData($where)
+	{
+		$data = [];
+
+		$res = $this->db->where($where)
+						->join('admin','admin.id = students.company','INNER')
+						->get('students');
+
+		if($res->num_rows() > 0){
+			$data = $res->row();
+		}
+
+		$res->free_result();
+
+		return $data;
+	}
+
 	function _updateStudent($where, $data)
 	{
 		return $this->db->where($where)->update('students', $data);
