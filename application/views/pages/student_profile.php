@@ -4,7 +4,9 @@
 			<?php $path = (!empty($fetch_data['user_image'])) ? base_url($fetch_data['user_image']) : base_url('assets/images/no_image.png') ;?>
 			<img src="<?php echo $path; ?>" class="rounded-circle" width="150px">
 			<legend><?php echo $fetch_data['name']; ?></legend>
-			<div id="chart"></div>
+			<div class="chart-container">
+				<div id="chart"></div>
+			</div>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
 			    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
