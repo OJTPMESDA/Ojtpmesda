@@ -57,12 +57,12 @@ class Reports extends MY_Controller {
 			if ($k->ojt_hours == 0) {
 				array_push($rate, $k->ojt_hours);
 			} else {
-				array_push($rate, $k->ojt_hours);
+				array_push($rate1, $k->ojt_hours);
 			}
     	}
 
-    	$attendance = count($rate);
-    	$absent = count($rate1);
+    	$attendance = count($rate1);
+    	$absent = count($rate);
 
     	$output = json_encode(['Attendance' => $attendance, 'Absent' => $absent]);
 
