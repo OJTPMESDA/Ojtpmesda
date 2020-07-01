@@ -1,4 +1,5 @@
 var clickedButton   =   '';
+var url_path = new URL(window.location.href).pathname;
 
 $(document).on('click', 'button[type=submit], input[type=submit]', function(){
     clickedButton   =   $(this);
