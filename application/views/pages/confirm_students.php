@@ -53,6 +53,11 @@
 				  <label class="btn btn-primary btn-sm">
 				    <a href="<?php echo base_url('student/dtr/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-chart-bar"></i></a>
 				  </label>
+				  <?php if ($this->session->role == 2): ?>
+				  <label class="btn btn-primary btn-sm">
+				    <a href="<?php echo base_url('evaluate/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-code-branch"></i></a>
+				  </label>
+					<?php endif; ?>
 				  <label class="btn btn-success btn-sm">
 				    <a href="<?php echo base_url('profile/'.$row->id); ?>" class="btn btn-sm" style="color: #fff;"><i class="fas fa-user-tie"></i></a>
 				  </label>
