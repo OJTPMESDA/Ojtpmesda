@@ -36,9 +36,9 @@ class Students extends MY_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function confirm_student($username)
+	public function confirm_student($id)
 	{
-		$this->Students_model->confirm_students($username);
+		$this->Students_model->_updateStudent(['id' => $id]);
 		redirect('students/students_list');
 	}
 
@@ -51,8 +51,12 @@ class Students extends MY_Controller {
 
 	public function get_confirm_students()
 	{
+        $join = [
+            ['admin os', 'admin.id = students.company','INNER']
+        ];
 
-		$data['results'] = $this->Students_model->get_confirm_students();
+        $data['results'] = $this->Students_model->get(null, null, $join, null);
+
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);
 		$this->load->view('templates/footer');

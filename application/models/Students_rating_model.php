@@ -1,20 +1,22 @@
 <?php
 
-class Students_rating_model extends CI_Model
+class Students_rating_model extends MY_Model
 {
 
-	private $tbl = 'students_rating';
-	private $id = 'id';
+	private $table = 'students_rating';
+	private $pk = 'id';
 
 
 	public function __construct()
     {	
         parent::__construct();
+        $this->tbl = $this->table;
+        $this->id = $this->pk;
     }
 
     public function _insert($data)
     {
-    	return $this->db->insert($this->tbl,$data);
+    	return $this->db->insert($this->table,$data);
     }
 
     public function _getAllData($where)
@@ -22,7 +24,7 @@ class Students_rating_model extends CI_Model
         $data = [];
         
         $res = $this->db->where($where)
-                        ->get($this->tbl);
+                        ->get($this->table);
         if($res->num_rows() > 0){
             $data = $res->result();
         }

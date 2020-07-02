@@ -1,6 +1,6 @@
 <?php
 
-class Students_model extends CI_Model
+class Students_model extends MY_Model
 {
 
 	public function __construct()
@@ -11,6 +11,43 @@ class Students_model extends CI_Model
 	public function insertStudent($data)
 	{
 		$this->db->insert('students', $data);
+	}
+
+	public function _getData($where)
+	{
+		$data = [];
+
+		$res = $this->db->where($where)->get('students');
+
+		if($res->num_rows() > 0){
+			$data = $res->row_array();
+		}
+
+		$res->free_result();
+
+		return $data;
+	}
+
+	public function _getSingleData($where)
+	{
+		$data = [];
+
+		$res = $this->db->where($where)
+						->join('admin','admin.id = students.company','INNER')
+						->get('students');
+
+		if($res->num_rows() > 0){
+			$data = $res->row();
+		}
+
+		$res->free_result();
+
+		return $data;
+	}
+
+	public function _updateStudent($where, $data)
+	{
+		return $this->db->where($where)->update('students', $data);
 	}
 
 	public function insertAdmin($data)
@@ -97,43 +134,6 @@ class Students_model extends CI_Model
 		$res->free_result();
 
 		return $data;
-	}
-
-	function _getData($where)
-	{
-		$data = [];
-
-		$res = $this->db->where($where)->get('students');
-
-		if($res->num_rows() > 0){
-			$data = $res->row_array();
-		}
-
-		$res->free_result();
-
-		return $data;
-	}
-
-	function _getSingleData($where)
-	{
-		$data = [];
-
-		$res = $this->db->where($where)
-						->join('admin','admin.id = students.company','INNER')
-						->get('students');
-
-		if($res->num_rows() > 0){
-			$data = $res->row();
-		}
-
-		$res->free_result();
-
-		return $data;
-	}
-
-	function _updateStudent($where, $data)
-	{
-		return $this->db->where($where)->update('students', $data);
 	}
 
 	function login_students($where)
