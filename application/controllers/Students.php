@@ -55,7 +55,11 @@ class Students extends MY_Controller {
             ['admin', 'admin.id = students.company','INNER']
         ];
 
-        $data['results'] = $this->Students_model->_getAllStudentData(null, null, $join, null);
+        $param = [
+            'select' => 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile'
+        ];
+
+        $data['results'] = $this->Students_model->_getAllStudentData(null, null, $join, $param);
 
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);
