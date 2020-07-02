@@ -46,7 +46,7 @@
         </li>
     </ul>
         <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade <?php echo ($this->session->flashdata('clearance-active')) ? $this->session->flashdata('clearance-active').' show' : $active.' '.$show; ?>" id="resume">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('resume-active')) ? $this->session->flashdata('resume-active').' show' : $active.' '.$show; ?>" id="resume">
             	<center>
 			  	<br>
                 <?php
