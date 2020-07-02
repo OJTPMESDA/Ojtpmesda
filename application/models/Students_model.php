@@ -79,7 +79,7 @@ class Students_model extends CI_Model
 		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile,';
 		if($this->session->userdata('role') == 2) {
 			$res = $this->db->select($select)
-							->where(['students.status' => 1, 'id' => $this->session->uid])
+							->where(['students.status' => 1, 'admin.id' => $this->session->uid])
 							->join('admin','admin.id = students.company','LEFT')
 							->order_by('total_hours', 'DESC')
 							->get('students');
