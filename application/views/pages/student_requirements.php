@@ -1,12 +1,12 @@
 <div class="container">
 	<?php
-	$aa = $fetch_data['studentID'];
-	$a = $fetch_data['resume_status'];
-	$b = $fetch_data['clearance_status'];
-	$c = $fetch_data['waiver_status'];
-	$d = $fetch_data['good_moral_status'];
-	$e = $fetch_data['registration_status'];
-	$f = $fetch_data['consent_status'];
+	$aa = $fetch_data['studentID'] ?? null;
+	$a = $fetch_data['resume_status'] ?? null;
+	$b = $fetch_data['clearance_status'] ?? null;
+	$c = $fetch_data['waiver_status'] ?? null;
+	$d = $fetch_data['good_moral_status'] ?? null;
+	$e = $fetch_data['registration_status'] ?? null;
+	$f = $fetch_data['consent_status'] ?? null;
 	$g = $a+$b+$c+$d+$e+$f;
 	if($g == 6){
 		$aab = array(
