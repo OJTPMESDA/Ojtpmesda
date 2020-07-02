@@ -55,7 +55,7 @@ class Students extends MY_Controller {
             ['admin os', 'admin.id = students.company','INNER']
         ];
 
-        $data['results'] = $this->Students_model->get(null, null, $join, null);
+        $data['results'] = $this->Students_model->_getAllStudentData(null, null, $join, null);
 
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);

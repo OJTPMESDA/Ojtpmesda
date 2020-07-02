@@ -2,7 +2,6 @@
 
 class Students_model extends MY_Model
 {
-
 	public function __construct()
     {	
         parent::__construct();
@@ -26,6 +25,13 @@ class Students_model extends MY_Model
 		$res->free_result();
 
 		return $data;
+	}
+
+	public function _getAllStudentData($where = null, $order = null, $join = null, $params = null)
+	{
+		$this->tbl = 'students';
+        $this->id = 'id';
+		return $this->get($where, $order, $join, $params);
 	}
 
 	public function _getSingleData($where)
