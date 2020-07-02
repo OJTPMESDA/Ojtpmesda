@@ -10,76 +10,76 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function confirm_resume($username)
+	public function confirm_resume($id)
 	{
-		$this->Students_model->confirm_resume($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['resume_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function confirm_clearance($username)
+	public function confirm_clearance($id)
 	{
-		$this->Students_model->confirm_clearance($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['clearance_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function confirm_waiver($username)
+	public function confirm_waiver($id)
 	{
-		$this->Students_model->confirm_waiver($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['waiver_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function confirm_registration($username)
+	public function confirm_registration($id)
 	{
-		$this->Students_model->confirm_registration($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['registration_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function confirm_consent($username)
+	public function confirm_consent($id)
 	{
-		$this->Students_model->confirm_consent($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['consent_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function confirm_good_moral($username)
+	public function confirm_good_moral($id)
 	{
-		$this->Students_model->confirm_good_moral($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['good_moral_status' => 1]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_resume($username)
+	public function decline_resume($id)
 	{
-		$this->Students_model->decline_resume($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['resume_status' => 0, 'resume' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_clearance($username)
+	public function decline_clearance($id)
 	{
-		$this->Students_model->decline_clearance($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['clearance_status' => 0, 'clearance' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_waiver($username)
+	public function decline_waiver($id)
 	{
-		$this->Students_model->decline_waiver($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['waiver_status' => 0, 'waiver' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_registration($username)
+	public function decline_registration($id)
 	{
-		$this->Students_model->decline_registration($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['registration_status' => 0, 'registration_form' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_consent($username)
+	public function decline_consent($id)
 	{
-		$this->Students_model->decline_consent($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['consent_status' => 0, 'parents_consent' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
-	public function decline_good_moral($username)
+	public function decline_good_moral($id)
 	{
-		$this->Students_model->decline_good_moral($username);
-		redirect(base_url('Students/students_requirements/'.$username.''));
+		$this->Students_model->_updateData(['studentID' => $id],['good_moral_status' => 0, 'good_moral' => null]);
+		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 }

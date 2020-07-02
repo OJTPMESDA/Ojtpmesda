@@ -26,3 +26,18 @@ $route['evaluate/(:num)'] = 'Company/submitEvaluate/$1';
 
 $route['availability'] = 'Home/check_email_availability';
 $route['account/verify/(:any)'] = 'Home/account_verify/$1';
+
+
+$route['confirm/resume/(:num)'] = 'Admin/confirm_resume/$1';
+$route['confirm/clearance/(:num)'] = 'Admin/confirm_clearance/$1';
+$route['confirm/waiver/(:num)'] = 'Admin/confirm_waiver/$1';
+$route['confirm/registration/(:num)'] = 'Admin/confirm_registration/$1';
+$route['confirm/consent/(:num)'] = 'Admin/confirm_consent/$1';
+$route['confirm/good-moral/(:num)'] = 'Admin/confirm_good_moral/$1';
+
+$route['decline/resume/(:num)'] = 'Admin/decline_resume/$1';
+$route['decline/clearance/(:num)'] = 'Admin/decline_clearance/$1';
+$route['decline/waiver/(:num)'] = 'Admin/decline_waiver/$1';
+$route['decline/registration/(:num)'] = 'Admin/decline_registration/$1';
+$route['decline/consent/(:num)'] = 'Admin/decline_consent/$1';
+$route['decline/good-moral/(:num)'] = 'Admin/decline_good_moral/$1';
