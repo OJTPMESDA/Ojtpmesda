@@ -52,7 +52,7 @@ class Students extends MY_Controller {
 	public function get_confirm_students()
 	{
         $join = [
-            ['admin os', 'admin.id = students.company','INNER']
+            ['admin', 'admin.id = students.company','INNER']
         ];
 
         $data['results'] = $this->Students_model->_getAllStudentData(null, null, $join, null);
