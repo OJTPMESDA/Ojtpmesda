@@ -12,7 +12,7 @@ class Students extends MY_Controller {
     public function students_requirements($id)
     {
         
-        $data['fetch_data'] = $this->Students_model->_getRequirements(['studentID' => $id]);
+        $data['fetch_data'] = $this->Students_model->_getRequirements(['students.id' => $id]);
         $this->load->view('templates/header');
         $this->load->view('pages/student_requirements', $data);
         $this->load->view('templates/footer');

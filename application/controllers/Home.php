@@ -17,7 +17,7 @@ class Home extends MY_Controller {
 
 	public function account_verify()
 	{
-		$data['fetch_data'] = $this->Students_model->_getRequirements(['studentID' => $this->session->uid]);
+		$data['fetch_data'] = $this->Students_model->_getRequirements(['students.id' => $this->session->uid]);
 		$this->load->view('pages/account_verify', $data);
 	}
 
