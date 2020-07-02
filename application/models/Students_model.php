@@ -27,11 +27,11 @@ class Students_model extends MY_Model
 		return $data;
 	}
 
-	public function _getAllStudentData($where = null, $order = null, $join = null, $params = null)
+	public function _getAllStudentData($where = null, $limit = null, $offset = null, $order = null, $join = null, $params = null)
 	{
 		$this->tbl = 'students';
         $this->id = 'id';
-		return $this->get($where, $order, $join, $params);
+		return $this->list_all($where, $limit, $offset, $order, $join, $params);
 	}
 
 	public function _getSingleData($where)
@@ -119,7 +119,7 @@ class Students_model extends MY_Model
 	function get_confirm_students()
 	{
 		$data = [];
-		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile,';
+		$select = 'admin.id AS adminID, students.id as studID, students.name as studentName, students.contact_no as studentPhone, admin.company_name as cname, admin.address as cAddress, students.total_hours as hours, students.user_image as profile';
 		if($this->session->userdata('role') == 2) {
 			$res = $this->db->select($select)
 							->where(['students.status' => 1, 'admin.id' => $this->session->uid])
