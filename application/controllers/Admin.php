@@ -12,36 +12,48 @@ class Admin extends CI_Controller {
 
 	public function confirm_resume($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('resume-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['resume_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 	public function confirm_clearance($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('clearance-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['clearance_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 	public function confirm_waiver($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('waiver-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['waiver_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 	public function confirm_registration($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('registration-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['registration_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 	public function confirm_consent($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('consent-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['consent_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}
 
 	public function confirm_good_moral($id)
 	{
+		$this->session->set_flashdata('remove', 'active');
+        $this->session->set_flashdata('good-moral-active', 'active');
 		$this->Students_model->_updateData(['studentID' => $id],['good_moral_status' => 1]);
 		redirect(base_url('Students/students_requirements/'.$id));
 	}

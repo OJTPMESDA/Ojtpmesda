@@ -148,10 +148,6 @@ class Students extends MY_Controller {
 
 	public function confirm_requirements($username)
 	{
-		if ( ! $this->session->userdata('login'))
-        { 
-            redirect(base_url().'home/login');
-        }
 		$this->Students_model->confirm_requirements($username);
 		redirect(base_url().'students/students_list');
 	}
