@@ -60,7 +60,7 @@ class Students extends MY_Controller {
         ];
 
         $data['results'] = $this->Students_model->_getAllStudentData(null, null, $join, $param);
-
+        dump($data['results'], true);
 		$this->load->view('templates/header');
 		$this->load->view('pages/confirm_students', $data);
 		$this->load->view('templates/footer');

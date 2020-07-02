@@ -15,6 +15,7 @@ class MY_Model extends CI_Model {
 
     public function get($where = null, $order = null, $join = null, $params = null)
     {
+        $output = [];
         # accept string but the default where is to the primary key
         if (!empty($where)) {
             if (!is_array($where)) {
@@ -135,17 +136,22 @@ class MY_Model extends CI_Model {
 
         if ($return_type) {
             if ($return_type == 'array') {
-                return $query->num_rows() > 0 ? $query->row_array() : false;
+                $output = $query->num_rows() > 0 ? $query->row_array() : false;
             } else {
-                return $query->num_rows() > 0 ? $query->row() : false;
+                $output = $query->num_rows() > 0 ? $query->row() : false;
             }
         } else {
-            return $query->num_rows() > 0 ? $query->row() : false;
+            $output = $query->num_rows() > 0 ? $query->row() : false;
         }
+
+        $query->free_result();
+
+        return $output;
     }
 
     public function list_all($where = null, $limit = null, $offset = null, $order = null, $join = null, $params = null)
     {
+        $output = [];
         if (empty($limit)) {
             $limit  =   PHP_INT_MAX;
         }
@@ -301,13 +307,17 @@ class MY_Model extends CI_Model {
 
         if ($return_type) {
             if ($return_type == 'array') {
-                return $query->num_rows() > 0 ? $query->result_array() : false;
+                $output = $query->num_rows() > 0 ? $output = $query->result_array() : false;
             } else {
-                return $query->num_rows() > 0 ? $query->result() : false;
+                $output = $query->num_rows() > 0 ? $output = $query->result() : false;
             }
         } else {
-            return $query->num_rows() > 0 ? $query->result() : false;
+            $output = $query->num_rows() > 0 ? $query->result() : false;
         }
+
+        $query->free_result();
+
+        return $output;
     }
 
     public function create($fields, $return = true)

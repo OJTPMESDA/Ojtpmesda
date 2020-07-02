@@ -25,19 +25,19 @@ if ( ! function_exists('dump'))
         $varname = NULL;
         $c = 0;
 
-        for ($i = 0; $i < $max; $i++) {
-            if ($match[1]{$i} == "(" ) $c++;
-            elseif ($match[1]{$i} == ")" ) $c--;
-            if ($c < 0) break;
-            $varname .= $match[1]{$i};
+        for ($i = 0; $i < $max; $i++) { 
+            if ($match[1][$i] == "(" ) $c++;    
+            elseif ($match[1][$i] == ")" ) $c--;    
+            if ($c < 0) break;  
+            $varname .= $match[1][$i];  
         }
 
         if(is_object($data))     $message = 'Variable holds an OBJECT';
         elseif(is_array($data))  $message = 'Variable holds an ARRAY';
         elseif(is_string($data)) $message = 'Variable holds a  STRING';
         elseif(is_int($data))    $message = 'Variable holds a  INTEGER';
-        elseif(is_true($data))   $message = 'Variable holds a  TRUE BOOLEAN';
-        elseif(is_false($data))  $message = 'Variable holds a  FALSE BOOLEAN';
+        elseif($data === true)   $message = 'Variable holds a  TRUE BOOLEAN';
+        elseif($data === false)   $message = 'Variable holds a  FALSE BOOLEAN';
         elseif(is_null($data))   $message = 'Variable is NULL';
         elseif(is_float($data))  $message = 'Variable is FLOAT';
         else                     $message = 'N/A';
