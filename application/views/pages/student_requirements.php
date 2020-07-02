@@ -15,30 +15,38 @@
 			$this->db->where('id', $aa);
 			$this->db->update('students', $aab);
 	}
+
+	if ($this->session->flashdata('remove')) {
+		$active = null;
+		$show = null;
+	} else {
+		$active = 'active';
+		$show = 'show';
+	}
 	?>
 	<legend>@<?= $fetch_data['username'].' '.$g.'/6'; ?></legend>
 	<ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#resume">Resume</a>
+            <a class="nav-link <?php echo $active; echo $this->session->flashdata('resume-active'); ?>" data-toggle="tab" href="#resume">Resume</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#clearance">Clearance</a>
+            <a class="nav-link <?php echo $this->session->flashdata('clearance-active'); ?>" data-toggle="tab" href="#clearance">Clearance</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#waiver">Waiver</a>
+            <a class="nav-link <?php echo $this->session->flashdata('waiver-active'); ?>" data-toggle="tab" href="#waiver">Waiver</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#good_moral">Good Moral</a>
+            <a class="nav-link <?php echo $this->session->flashdata('good-moral-active');?>" data-toggle="tab" href="#good_moral">Good Moral</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#registration_form">Registration Form</a>
+            <a class="nav-link <?php echo $this->session->flashdata('registration-active'); ?>" data-toggle="tab" href="#registration_form">Registration Form</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#parents_consent">Parents Consent</a>
+            <a class="nav-link <?php echo $this->session->flashdata('consent-active'); ?>" data-toggle="tab" href="#parents_consent">Parents Consent</a>
         </li>
     </ul>
         <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade show active" id="resume">
+            <div class="tab-pane fade <?php echo $active.' '.$show; ?>" id="resume">
             	<center>
 			  	<br>
                 <?php
@@ -68,7 +76,7 @@
 			    </center>
             </div>
 
-            <div class="tab-pane fade" id="clearance">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('clearance-active')) ? $this->session->flashdata('clearance-active').' show' : null; ?>" id="clearance">
             	<center>
 			  	<br>
                 <?php 
@@ -98,7 +106,7 @@
 			    </center>
             </div>
 
-            <div class="tab-pane fade" id="waiver">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('waiver-active')) ? $this->session->flashdata('waiver-active').' show' : null; ?>" id="waiver">
             	<center>
 			  	<br>
                 <?php
@@ -129,7 +137,7 @@
 			    </center>
             </div>
 
-            <div class="tab-pane fade" id="good_moral">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('good-moral-active')) ? $this->session->flashdata('good-moral-active').' show' : null; ?>" id="good_moral">
             	<center>
 			  	<br>
                 <?php
@@ -160,7 +168,7 @@
 			    </center>
             </div>
 
-            <div class="tab-pane fade" id="registration_form">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('registration-active')) ? $this->session->flashdata('registration-active').' show' : null; ?>" id="registration_form">
             	<center>
 			  	<br>
                 <?php
@@ -191,7 +199,7 @@
 			    </center>
             </div>
 
-            <div class="tab-pane fade" id="parents_consent">
+            <div class="tab-pane fade <?php echo ($this->session->flashdata('consent-active')) ? $this->session->flashdata('consent-active').' show' : null; ?>" id="parents_consent">
             	<center>
 			  	<br>
                 <?php
