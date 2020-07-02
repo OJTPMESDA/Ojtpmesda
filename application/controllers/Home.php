@@ -46,7 +46,6 @@ class Home extends MY_Controller {
 			
 			if ($role == 1) {
 				$students = $this->Students_model->login_students(['username' => $username]);
-				slack(json_encode($students), ENVIRONMENT, __FUNCTION__);
 				if(!empty($students)) {
 
 					if ($this->_password_verify($password,$students->password)) {
