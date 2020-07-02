@@ -225,8 +225,8 @@ class Students_model extends CI_Model
 		$data = [];
 
 		$res = $this->db->where($where)
-						->join('students','students.id = requirements.studentID','LEFT')
-						->get('requirements');
+						->join('requirements','students.id = requirements.studentID','LEFT')
+						->get('students');
 
 		if($res->num_rows() > 0) {         
 		    $data = $res->row_array();

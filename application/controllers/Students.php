@@ -13,7 +13,6 @@ class Students extends MY_Controller {
     {
         
         $data['fetch_data'] = $this->Students_model->_getRequirements(['students.id' => $id]);
-        slack(json_encode(['Attendance' => $this->db->last_query(), 'results' => $data['fetch_data']]), ENVIRONMENT, __FUNCTION__);
         $this->load->view('templates/header');
         $this->load->view('pages/student_requirements', $data);
         $this->load->view('templates/footer');
