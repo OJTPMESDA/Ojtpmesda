@@ -6,30 +6,10 @@ class Students_dtr_model extends MY_Model
 	private $table = 'students_dtr';
 	private $pk = 'id';
 
-
 	public function __construct()
     {	
         parent::__construct();
         $this->tbl = $this->table;
-        $this->id = $this->pk;
-    }
-
-    public function _insertDTR($data)
-    {
-    	return $this->db->insert($this->table,$data);
-    }
-
-    public function _getAllData($where)
-    {
-        $data = [];
-        
-        $res = $this->db->where($where)
-                        ->get($this->table);
-        if($res->num_rows() > 0){
-            $data = $res->result();
-        }
-
-        $res->free_result();
-        return $data;
+        $this->primary_key = $this->pk;
     }
 }

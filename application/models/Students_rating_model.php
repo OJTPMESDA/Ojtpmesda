@@ -11,7 +11,7 @@ class Students_rating_model extends MY_Model
     {	
         parent::__construct();
         $this->tbl = $this->table;
-        $this->id = $this->pk;
+        $this->primary_key = $this->pk;
     }
 
     public function _insert($data)

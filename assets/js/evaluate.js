@@ -31,4 +31,28 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$(document).on('submit', '.sign-up-form', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
+
+	$(document).on('submit', '.login-form', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
+
+	$(document).on('submit', '.deployment-form', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
+
+	$(document).on('submit', '.change-password', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
 });

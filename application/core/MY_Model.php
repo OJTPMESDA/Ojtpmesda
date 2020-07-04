@@ -1,18 +1,30 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class MY_Model extends CI_Model {
+    
     public $primary_key;
     public $id;
     public $tbl;
-    public $fields;
-
-    public $where;
 
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * get single data
+     *
+     * @param array $where
+     * key for column name, value for value
+     * @param string $order
+     * column name ASC or DESC
+     * @param multidimentinal array $join
+     * table, join string, join prefix
+     * @param array $params
+     * key mysql command, value string e.g select then value
+     * you can either set return type to array key must return_type default by object
+     * @return single array or object
+     */
     public function get($where = null, $order = null, $join = null, $params = null)
     {
         $output = [];
@@ -149,6 +161,24 @@ class MY_Model extends CI_Model {
         return $output;
     }
 
+    /**
+     * get single data
+     *
+     * @param array $where
+     * key for column name, value for value
+     * @param int $limit
+     * result limit 
+     * @param int $offset
+     * result start at 
+     * @param string $order
+     * column name ASC or DESC
+     * @param multidimentinal array $join
+     * table, join string, join prefix
+     * @param array $params
+     * key mysql command, value string e.g select then value
+     * you can either set return type to array key must return_type default by object
+     * @return all array or object
+     */
     public function list_all($where = null, $limit = null, $offset = null, $order = null, $join = null, $params = null)
     {
         $output = [];
@@ -320,6 +350,14 @@ class MY_Model extends CI_Model {
         return $output;
     }
 
+    /**
+     * Save data
+     *
+     * @param array $data
+     * key for column name
+     * @param bool $return
+     * it return new data
+     */
     public function create($fields, $return = true)
     {
         $this->db->insert($this->tbl, $fields);
@@ -336,15 +374,22 @@ class MY_Model extends CI_Model {
         return $this->db->affected_rows() > 0 ? true : false;
     }
 
-    public function update($fields, $where = null)
+    /**
+     * Update data
+     *
+     * @param array $where
+     * key must be a column name
+     * @param array $fields
+     * key must be a column name
+     * @return bool
+     */
+    public function update($where = null, $fields)
     {
         if (!empty($where)) {
             if (!is_array($where)) {
                 $where  =   [$this->primary_key => $where];
             }
             $this->db->where($where);
-        } else {
-            $this->db->where($this->primary_key, $this->id);
         }
 
         $this->db->update($this->tbl, $fields);

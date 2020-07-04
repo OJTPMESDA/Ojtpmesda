@@ -10,6 +10,32 @@
 	color: #fff;
 	padding: 50px;
 }
+
+.footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #e8e8e8;
+}
+
+.content {
+	margin-bottom: 5%;
+}
+
+.donut-chart {
+	max-height: 268px !important;
+}
+
+.second-donut-chart {
+	max-height: 268px !important;
+}
+
+.font-sm {
+	font-size: 18px;
+}
+
 .shadow{
 	-webkit-box-shadow: -9px 10px 25px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -9px 10px 25px -9px rgba(0,0,0,0.75);

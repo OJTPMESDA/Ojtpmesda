@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Manila');
 |
 */
 
-$config['base_url'] = 'http://ojtpmesda.com/';
+$config['base_url'] = _BASE_URL_;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

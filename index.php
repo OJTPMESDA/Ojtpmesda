@@ -54,6 +54,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('APP', 'STUDENT');
 
 /*
  *---------------------------------------------------------------
@@ -153,7 +154,7 @@ switch (ENVIRONMENT)
  */
 	// The directory name, relative to the "controllers" directory.  Leave blank
 	// if your controller is not in a sub-directory within the "controllers" one
-	// $routing['directory'] = '';
+	$routing['directory'] = 'student';
 
 	// The controller class file name.  Example:  mycontroller
 	// $routing['controller'] = '';
