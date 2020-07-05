@@ -1,23 +1,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+			<?php $show = ($this->uri->segment(1) == 'profile') ? 'active show': null; ?>
+			<?php $settings = ($this->uri->segment(1) == 'settings') ? 'active show': null; ?>
 			<?php $path = (!empty($row->USER_PHOTO)) ? base_url($row->USER_PHOTO) : base_url('assets/images/no_image.png') ;?>
 			<img src="<?php echo $path; ?>" class="rounded-circle" width="150px">
 			<legend><?php echo $row->FULL_NAME; ?></legend>
 			<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
+			    <a class="nav-link <?= $show; ?>" data-toggle="tab" href="#profile">Profile</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" data-toggle="tab" href="#requirements">OJT Requirements</a>
 			  </li>
 			   <li class="nav-item">
-			    <a class="nav-link" data-toggle="tab" href="#settings">Settings</a>
+			    <a class="nav-link <?= $settings; ?>" data-toggle="tab" href="#settings">Settings</a>
 			  </li>
 			  
 			</ul>
 			<div id="myTabContent" class="tab-content">
-			  <div class="tab-pane fade active show" id="profile">
+			  <div class="tab-pane fade <?= $show; ?>" id="profile">
 			    <p>Age: <strong><?php echo $row->AGE; ?></strong></p>
 				<p>Gender: <strong><?php echo $row->GENDER; ?></strong></p>
 				<p>Address: <strong><?php echo $row->ADDRESS; ?></strong></p>
@@ -95,7 +97,7 @@
 				</tbody>
 				</table>
 			  </div>
-			  <div class="tab-pane fade" id="settings">
+			  <div class="tab-pane fade <?= $settings; ?>" id="settings">
 			    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
 			  </div>
 			</div>

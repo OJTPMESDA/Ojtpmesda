@@ -10,117 +10,71 @@ class Students extends MY_Controller {
 
     public function index()
     {
-
-        $join = [
-            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
-        ];
-
-        $rows = $this->Students_model->list_all(['COMPANY_ID' => $this->session->cid, 'STUDENT_STATUS' => 1], null, null, null, $join);
-        
-        $data = [
-            'content'   => $this->folderPath.'confirm-list',
-            'navbar'    => $this->includesPath.'nav-bar',
-            'title'     => 'Home - MinSCAT OJTPMESDA',
-            'copyright' => true,
-            'results'   => $rows
-        ];
-        $this->load->view($this->globalTemplate, $data);
+        $this->_studentConfirmList();
     }
 
-    public function profile($id)
+    public function profile($id = null)
     {
-        $join = [
-            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER'],
-            ['company', 'company.CID = students.COMPANY_ID','INNER']
-        ];
-
-        $rateJoin = [
-            ['partners', 'PARTNERS_ID = rating_by','INNER']
-        ];
-
-        $rows = $this->Students_model->get(['COMPANY_ID' => $this->session->cid], null, $join);
-
-        $rate = $this->Students_rating_model->get(['studentID' => $id, 'rating_status' => 0], null, $rateJoin);
-
-        if (!empty($rate)) {
-            $first = array_sum([
-                $rate->rating_1,
-                $rate->rating_2,
-                $rate->rating_3
-            ]);
-            $second = array_sum([
-                $rate->rating_4,
-                $rate->rating_5,
-                $rate->rating_6
-            ]);
-            $third = array_sum([
-                $rate->rating_7,
-                $rate->rating_8,
-                $rate->rating_9,
-                $rate->rating_10,
-                $rate->rating_11,
-                $rate->rating_12
-            ]);
-
-            $rate->first = $first / 3;
-            $rate->second = $second / 3;
-            $rate->third = $third / 6;
-
-            if (strlen($rate->first) > 2) {
-                $rate->first = number_format($rate->first,1);
-            }
-            if (strlen($rate->second) > 2) {
-                $rate->second = number_format($rate->second,1);
-            }
-            if (strlen($rate->third) > 2) {
-                $rate->third = number_format($rate->third,1);
-            }
+        if (!empty($id)) {
+            $this->_ratingResults($id);
+        } else {
+            show_404();
         }
-
-        $data = [
-            'content'   => $this->folderPath.'student-profile',
-            'navbar'    => $this->includesPath.'nav-bar',
-            'title'     => 'Home - MinSCAT OJTPMESDA',
-            'copyright' => true,
-            'results'   => $rows,
-            'rating'    => $rate,
-            'dtr'       => $this->Students_dtr_model->list_all(['STUDENTID' => $id])
-        ];
-        $this->load->view($this->globalTemplate, $data);
     }
 
-    public function rating($id)
+    public function add_dtr()
     {
-        $this->_ratings($id);
+        $this->_addDTR();
     }
 
-    public function dtr($id)
+    public function rating($id = null)
     {
-        $join = [
-            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER'],
-            ['company', 'company.CID = students.COMPANY_ID','INNER']
-        ];
+        if (!empty($id)) {
+            $this->_ratings($id);
+        } else {
+            show_404();
+        }
+    }
 
-        $row = $this->Students_model->get(['USERID' => $id], null, $join);
+    public function dtr($id = null)
+    {
+        if (!empty($id)) {
+            $join = [
+                ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER'],
+                ['company', 'company.CID = students.COMPANY_ID','INNER']
+            ];
 
-        $data = [
-            'content'   => $this->folderPath.'student-dtr',
-            'navbar'    => $this->includesPath.'nav-bar',
-            'title'     => 'Home - MinSCAT OJTPMESDA',
-            'copyright' => true,
-            'results'   => $row
-        ];
-        $this->load->view($this->globalTemplate, $data);
+            $row = $this->Students_model->get(['USERID' => $id], null, $join);
+
+            $data = [
+                'content'   => $this->folderPath.'student-dtr',
+                'navbar'    => $this->includesPath.'nav-bar',
+                'title'     => 'Home - MinSCAT OJTPMESDA',
+                'copyright' => true,
+                'results'   => $row
+            ];
+            $this->load->view($this->globalTemplate, $data);
+        } else {
+            show_404();
+        }
     }
 
     public function attendance($id)
     {
-        $this->_attendance($id);
+        if (!empty($id)) {
+            $this->_attendance($id);
+        } else {
+            show_404();
+        }
     }
 
     public function getdtr($id)
     {
-        $this->_getDTR($id);
+        if (!empty($id)) {
+            $this->_getDTR($id);
+        } else {
+            show_404();
+        }
     }
 }
 

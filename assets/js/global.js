@@ -4,6 +4,7 @@ var url_path = new URL(window.location.href).pathname;
 var dropzone = null;
 var date = new Date();
 var lastMonth = date.getFullYear()+'-12-'+date.getDate();
+var calendar = null;
 
 $(document).on('click', 'button[type=submit], input[type=submit]', function(){
     clickedButton   =   $(this);

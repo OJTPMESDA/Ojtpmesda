@@ -42,7 +42,6 @@
 						</td>
 					</tr>
 				<?php endforeach; ?>
-				<?php else: ?>
 				<?php endif; ?>
 			</tbody>
 		</table>

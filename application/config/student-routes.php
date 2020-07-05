@@ -9,6 +9,8 @@
 	$route['logout'] 	= 'Login/logout';
 
 	$route['profile'] 					= 'Home/profile';
+	$route['ojt/results'] 				= 'Home/ojt_results';
+	$route['settings'] 					= 'Home/profile';
 	$route['profile/update'] 			= 'Home/update_profile';
 	$route['forums'] 					= 'Home/forum';
 	$route['account/verify/(:any)'] 	= 'Home/account_verify/$1';

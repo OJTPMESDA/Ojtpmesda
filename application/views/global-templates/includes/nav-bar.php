@@ -11,6 +11,9 @@
 					<div class="dropdown-menu" aria-labelledby="dropdown">
 						<a class="dropdown-item" href="<?php echo base_url('profile'); ?>"><i class="far fa-id-card mr-2"></i>Profile</a>
 						<a class="dropdown-item" href="<?php echo base_url('settings'); ?>"><i class="fas fa-cogs mr-2"></i>Settings</a>
+						<?php if ($this->session->role == 3): ?>
+							<a class="dropdown-item" href="<?php echo base_url('ojt/results'); ?>"><i class="far fa-star mr-2"></i></i>Rating</a>
+						<?php endif; ?>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="<?php echo base_url('logout'); ?>"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
 					</div>

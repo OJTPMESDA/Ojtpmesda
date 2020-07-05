@@ -26,4 +26,6 @@
 	$route['settings'] 			= 'Home/profile';
 	$route['change/password'] 	= 'Home/changePass';
 	$route['profile/update'] 	= 'Home/update_profile';
+
+	$route['student/add/dtr'] = 'Students/add_dtr';
 ?>

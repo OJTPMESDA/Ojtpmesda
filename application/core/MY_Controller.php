@@ -16,6 +16,50 @@ class MY_Controller extends CI_Controller {
         $this->folderPath = strtolower(APP).'/pages/';
     }
 
+    protected function _addDTR()
+    {
+        if (!$this->input->is_ajax_request()) {
+            exit('Direct access not allowed');
+        }
+
+        $validation = validation([
+            ['hours', '<strong>Work hours</strong>', 'xss_clean|required|trim', '#hours'],
+            ['id', '<strong>Work hours</strong>', 'xss_clean|required|trim', '#id']
+        ]);
+
+        if ($validation) {
+            $this->response(false, $validation);
+        }
+
+        $hours = $this->input->post('hours');
+        $id = $this->input->post('id');
+
+        $return = $this->Students_dtr_model->create(['STUDENTID' => $id, 'DTR_HOURS' => $hours, 'CHECKBY' => $this->session->uid]);
+
+        if ($return) {
+            $this->response(true);
+        }
+    }
+
+    protected function _studentConfirmList()
+    {
+        $join = [
+            ['company', 'CID = USERID','INNER'],
+            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
+        ];
+
+        $rows = $this->Students_model->list_all(['COMPANY_ID' => $this->session->cid, 'STUDENT_STATUS' => 1], null, null, null, $join);
+        
+        $data = [
+            'content'   => $this->globalPage.'confirm-list',
+            'navbar'    => $this->includesPath.'nav-bar',
+            'title'     => 'Confirm List - MinSCAT OJTPMESDA',
+            'copyright' => true,
+            'results'   => $rows
+        ];
+        $this->load->view($this->globalTemplate, $data);
+    }
+
     protected function _availability()
     {
         if (!$this->input->is_ajax_request()) {
@@ -118,6 +162,76 @@ class MY_Controller extends CI_Controller {
             'title'     => 'Confirm list - MinSCAT OJTPMESDA',
             'copyright' => true,
             'results'   => $results
+        ];
+        $this->load->view($this->globalTemplate, $data);
+    }
+
+    protected function _ratingResults($id)
+    {
+        $join = [
+            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER'],
+            ['company', 'company.CID = students.COMPANY_ID','INNER']
+        ];
+
+        $rateJoin = [
+            ['partners', 'PARTNERS_ID = rating_by','INNER']
+        ];
+
+        $rate = $this->Students_rating_model->get(['studentID' => $id, 'rating_status' => 0], null, $rateJoin);
+        $where = [
+                'USERID' => $id,
+                'COMPANY_ID' => $this->session->cid
+            ];
+        if ($this->session->role == 1) {
+            $where = [
+                'USERID' => $id
+            ];
+        }
+        $rows = $this->Students_model->get($where, null, $join);
+
+        if (!empty($rate)) {
+            $first = array_sum([
+                $rate->rating_1,
+                $rate->rating_2,
+                $rate->rating_3
+            ]);
+            $second = array_sum([
+                $rate->rating_4,
+                $rate->rating_5,
+                $rate->rating_6
+            ]);
+            $third = array_sum([
+                $rate->rating_7,
+                $rate->rating_8,
+                $rate->rating_9,
+                $rate->rating_10,
+                $rate->rating_11,
+                $rate->rating_12
+            ]);
+
+            $rate->first = $first / 3;
+            $rate->second = $second / 3;
+            $rate->third = $third / 6;
+
+            if (strlen($rate->first) > 2) {
+                $rate->first = number_format($rate->first,1);
+            }
+            if (strlen($rate->second) > 2) {
+                $rate->second = number_format($rate->second,1);
+            }
+            if (strlen($rate->third) > 2) {
+                $rate->third = number_format($rate->third,1);
+            }
+        }
+
+        $data = [
+            'content'   => $this->globalPage.'rating-results',
+            'navbar'    => $this->includesPath.'nav-bar',
+            'title'     => 'Home - MinSCAT OJTPMESDA',
+            'copyright' => true,
+            'results'   => $rows,
+            'rating'    => $rate,
+            'dtr'       => $this->Students_dtr_model->list_all(['STUDENTID' => $id])
         ];
         $this->load->view($this->globalTemplate, $data);
     }

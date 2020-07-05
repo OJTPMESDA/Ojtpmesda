@@ -84,6 +84,11 @@ class Home extends MY_Controller {
 		redirect(base_url('profile/'.$id));
 	}
 
+    public function ojt_results()
+    {
+        $this->_ratingResults($this->session->uid);
+    }
+
 	public function forum()
 	{
 		$this->_forumIndex();

@@ -44,4 +44,6 @@
 	$route['forums/post/approved/(:num)'] 		= 'Forum/approved/$1';
 	$route['forums/post/decline/(:num)'] 		= 'Forum/decline/$1';
 
+	$route['students/profile/(:num)']	= 'Student/profile/$1';
+
 ?>

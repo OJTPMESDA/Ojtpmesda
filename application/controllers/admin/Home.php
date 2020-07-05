@@ -32,26 +32,23 @@ class Home extends MY_Controller {
 	}
 
 	public function confirm_list()
-	{
-		$join = [
-            ['company', 'CID = USERID','INNER']
+    {
+        $join = [
+            ['company', 'CID = USERID','INNER'],
+            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
         ];
 
-        $param = [
-            'select' => 'CID, USERID, FULL_NAME, CONTACT_NO, COMPANY_NAME, ADDRESS, WORK_HOURS, USER_PHOTO'
-        ];
-
-        $rows = $this->Students_model->list_all(['STUDENT_STATUS' => 1, 'COMPANY_ID' => 1], null, null, null, $join, $param);
+        $rows = $this->Students_model->list_all(null, null, null, null, $join, null);
         
-		$data = [
-			'content' 	=> $this->globalPage.'homepage',
-			'navbar' 	=> $this->includesPath.'nav-bar',
-			'title'		=> 'Confirm list - MinSCAT OJTPMESDA',
-			'copyright'	=> true,
-			'results'	=> $rows
-		];
-		$this->load->view($this->globalTemplate, $data);
-	}
+        $data = [
+            'content'   => $this->globalPage.'confirm-list',
+            'navbar'    => $this->includesPath.'nav-bar',
+            'title'     => 'Confirm list - MinSCAT OJTPMESDA',
+            'copyright' => true,
+            'results'   => $rows
+        ];
+        $this->load->view($this->globalTemplate, $data);
+    }
 
 	public function profile()
 	{

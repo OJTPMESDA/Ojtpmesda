@@ -4,7 +4,7 @@ class Students_dtr_model extends MY_Model
 {
 
 	private $table = 'students_dtr';
-	private $pk = 'id';
+	private $pk = 'DTR_ID';
 
 	public function __construct()
     {	

@@ -27,6 +27,15 @@ class Student extends MY_Controller {
         $this->load->view($this->globalTemplate, $data);
     }
 
+    public function profile($id = null)
+    {
+        if (!empty($id)) {
+            $this->_ratingResults($id);
+        } else {
+            show_404();
+        }
+    }
+
     public function requirements($id)
     {
 
