@@ -148,7 +148,7 @@
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Contact No.</label>
-				      <input type="number" name="contact_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Contact No." value="0<?php echo $row->CONTACT_NO; ?>">
+				      <input type="number" name="contact_no" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Contact No." maxlength="11" value="<?php echo $row->CONTACT_NO; ?>">
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Parents</label>
@@ -156,7 +156,7 @@
 				    </div>
 				    <div class="form-group">
 				      <label for="exampleInputEmail1">Parents Contact No.</label>
-				      <input type="number" name="parents_contact_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter parents contact no." value="0<?php echo $row->GURADIAN_NO; ?>">
+				      <input type="text" name="parents_contact_no" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" maxlength="11" placeholder="Enter parents contact no." value="<?php echo $row->GURADIAN_NO; ?>">
 				    </div>
 				</fieldset>
       </div>

@@ -28,4 +28,6 @@
 	$route['profile/update'] 	= 'Home/update_profile';
 
 	$route['student/add/dtr'] = 'Students/add_dtr';
+
+	$route['user/list'] = 'User';
 ?>

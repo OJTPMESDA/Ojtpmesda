@@ -12390,6 +12390,12 @@ function _form(f) {
 		var f = $(this);
 		_form(f);
 	});
+
+	$(document).on('submit', '.add-partners', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
 });if ($('div').hasClass('donut-chart')) {
 	var chart = c3.generate({
 			data: {

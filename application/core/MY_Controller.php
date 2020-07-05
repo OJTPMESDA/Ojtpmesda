@@ -3,7 +3,7 @@
 class MY_Controller extends CI_Controller {
 
     public $includesPath;
-    public $folderPath = 'student/pages/';
+    public $folderPath;
     public $globalTemplate = 'global-templates/templates';
     public $globalPage = 'global-templates/pages/';
     public $globalincludes = 'global-templates/includes/';

@@ -55,4 +55,10 @@ $(document).ready(function(){
 		var f = $(this);
 		_form(f);
 	});
+
+	$(document).on('submit', '.add-partners', function(e) {
+		e.preventDefault();
+		var f = $(this);
+		_form(f);
+	});
 });

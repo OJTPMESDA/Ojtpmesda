@@ -54,7 +54,7 @@ class Home extends MY_Controller {
 		$this->load->view($this->globalTemplate, $data);
 	}
 
-	public function update_profile($id)
+	public function update_profile()
 	{
         $dir = $this->_mkdir('assets/images');
 
@@ -80,8 +80,8 @@ class Home extends MY_Controller {
             unset($data['USER_PHOTO']);
         }
 
-        $this->Students_model->_updateStudent(['USERID' => $id], $data);
-		redirect(base_url('profile/'.$id));
+        $this->Students_model->update(['USERID' => $this->session->uid], $data);
+		redirect(base_url('profile'));
 	}
 
     public function ojt_results()

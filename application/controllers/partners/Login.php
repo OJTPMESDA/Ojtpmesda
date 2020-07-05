@@ -27,24 +27,28 @@ class Login extends MY_Controller {
     	$username = $this->input->post('username');
     	$password = $this->input->post('password');
 
-    	$row = $this->Partners_model->get(['USERNAME' => $username]);
+    	$row = $this->Partners_model->get(['USERNAME' => $username, 'PARTNERS_STATUS !=' => 3]);
 
     	if (!empty($row)) {
-    		if ($this->_password_verify($password,$row->PASSWORD)) {
-				$sess = [
-					'role' => $row->ROLE,
-					'username' => $row->USERNAME,
-					'uid' => $row->PARTNERS_ID,
-                    'cid' => $row->COMPANY,
-                    'img' =>  $row->USER_PHOTO,
-					'logged_in' => TRUE
-				];
-				$this->session->set_userdata($sess);
+            if ($row->PARTNERS_STATUS == 2) {
+                if ($this->_password_verify($password,$row->PASSWORD)) {
+                    $sess = [
+                        'role' => $row->ROLE,
+                        'username' => $row->USERNAME,
+                        'uid' => $row->PARTNERS_ID,
+                        'cid' => $row->COMPANY,
+                        'img' =>  $row->USER_PHOTO,
+                        'logged_in' => TRUE
+                    ];
+                    $this->session->set_userdata($sess);
 
-				$url = base_url('forums');
+                    $url = base_url('forums');
 
-				$this->response(true, null, ['action' => 'redirect', 'url' => $url]);
-			}
+                    $this->response(true, null, ['action' => 'redirect', 'url' => $url]);
+                }
+            }
+
+            $this->response(false, 'Your acct has been suspended');
     	}
 
     	$this->response(false, 'Invalid <strong>Email</strong> or <strong>Password</strong>');
