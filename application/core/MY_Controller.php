@@ -18,14 +18,19 @@ class MY_Controller extends CI_Controller {
 
     protected function _availability()
     {
-        $email = $this->input->post('email');
+        if (!$this->input->is_ajax_request()) {
+            exit('Direct access not allowed');
+        }
 
-        if ($this->Students_model->check_email($email)) {
-            echo '<label class="text-danger">Username Already Taken</label>';
+        $username = $this->input->post('username');
+
+        if ($this->Students_model->get(['username' => $username])) {
+            $text = '<label class="text-username text-danger">Username Already Taken</label>';
+        } else {
+            $text = '<label class="text-username text-success">Username Available</label>';
         }
-        else{
-             echo '<label class="text-success">Username Available</label>';
-        }
+
+        echo $text;
     }
 
     protected function _ratings($id)

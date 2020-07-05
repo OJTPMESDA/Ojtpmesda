@@ -15,7 +15,7 @@ class Evaluate extends MY_Controller {
             ['company', 'company.CID = students.COMPANY_ID','INNER']
         ];
 
-        $row = $this->Students_model->get(['COMPANY_ID' => $this->session->cid], null, $join);
+        $row = $this->Students_model->get(['USERID' => $id], null, $join);
 
     	$data = [
             'content'   => $this->folderPath.'student-evaluate',

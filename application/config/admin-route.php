@@ -26,6 +26,8 @@
 	$route['confirm/registration/(:num)'] 	= 'Requirements/confirm_registration/$1';
 	$route['confirm/consent/(:num)'] 		= 'Requirements/confirm_consent/$1';
 	$route['confirm/good-moral/(:num)'] 	= 'Requirements/confirm_good_moral/$1';
+	
+	$route['students/requirements/delete/(:num)'] 	= 'Requirements/deleteAll/$1';
 
 	$route['decline/resume/(:num)'] 		= 'Requirements/decline_resume/$1';
 	$route['decline/clearance/(:num)'] 		= 'Requirements/decline_clearance/$1';

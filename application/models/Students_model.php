@@ -6,7 +6,7 @@ class Students_model extends MY_Model
     {	
         parent::__construct();
         $this->tbl = 'students';
-        $this->primary_key = 'id';
+        $this->primary_key = 'USERID';
     }
 }
 ?>

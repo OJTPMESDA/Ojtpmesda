@@ -1,17 +1,22 @@
 $(document).ready(function() {
 
-	$('#username').change(function(){
-		var email = $('#email').val();
-		if (email != '')  {
-			$.ajax({
-				url:base_url+"/availability",
-				method:"POST",
-				data: {email:email},
-				success:function(data){
-					$('#email_result').html(data);
-				}
-			});
-		}
-	});
-	
+	if (jsUri(1) == 'register') {
+		$('#username').change(function(){
+			var username = $('#username').val();
+			if (username != '')  {
+				$.ajax({
+					url:base_url+"/availability",
+					method:"POST",
+					data: {username:username},
+					beforeSend:function(){
+						$('.text-username').remove();
+					},
+					success:function(res){
+						$('#username').parents('.form-group').append(res);
+					}
+				});
+			}
+		});
+	}
+
 });

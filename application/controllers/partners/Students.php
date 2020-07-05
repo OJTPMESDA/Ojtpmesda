@@ -15,7 +15,7 @@ class Students extends MY_Controller {
             ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
         ];
 
-        $rows = $this->Students_model->list_all(['COMPANY_ID' => $this->session->cid], null, null, null, $join);
+        $rows = $this->Students_model->list_all(['COMPANY_ID' => $this->session->cid, 'STUDENT_STATUS' => 1], null, null, null, $join);
         
         $data = [
             'content'   => $this->folderPath.'confirm-list',
@@ -96,11 +96,19 @@ class Students extends MY_Controller {
 
     public function dtr($id)
     {
+        $join = [
+            ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER'],
+            ['company', 'company.CID = students.COMPANY_ID','INNER']
+        ];
+
+        $row = $this->Students_model->get(['USERID' => $id], null, $join);
+
         $data = [
             'content'   => $this->folderPath.'student-dtr',
             'navbar'    => $this->includesPath.'nav-bar',
             'title'     => 'Home - MinSCAT OJTPMESDA',
             'copyright' => true,
+            'results'   => $row
         ];
         $this->load->view($this->globalTemplate, $data);
     }

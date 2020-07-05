@@ -40,8 +40,8 @@ class Login extends MY_Controller {
 				];
 				$this->session->set_userdata($sess);
 
-				if ($row->STUDENT_STATUS == 1) {
-					$url = base_url('home');
+				if ($row->STUDENT_STATUS != 0) {
+					$url = base_url('forums');
 				} elseif ($row->STUDENT_STATUS == 0) {
 					$url = base_url('account/verify/'.$username);
 				}

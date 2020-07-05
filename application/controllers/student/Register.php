@@ -27,7 +27,8 @@ class Register extends MY_Controller {
             ['fname', '<strong>Fullname</strong>', 'xss_clean|required|trim', '#fname'],
             ['contact_no', '<strong>Contact No.</strong>', 'xss_clean|required|trim', '#contact_no'],
             ['address', '<strong>Permanent Address</strong>', 'xss_clean|required|trim', '#address'],
-            ['username', '<strong>Username</strong>', 'xss_clean|required|trim', '#username'],
+            ['username', '<strong>Username</strong>', 'xss_clean|required|trim|is_unique[students.USERNAME]', '#username'],
+            ['school', '<strong>Username</strong>', 'xss_clean|required|trim', '#school'],
             ['password', '<strong>Password</strong>', 'xss_clean|required|trim', '#password'],
             ['confirm_password', '<strong>Confirm Password</strong>', 'xss_clean|required|trim|matches[password]', '#confirm_password']
         ]);

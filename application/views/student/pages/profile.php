@@ -99,20 +99,6 @@
 			    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
 			  </div>
 			</div>
-			
-			<div class="row">
-				<?php if (!empty($rating_by)): ?>
-				<div class="col-md-3">
-					<div id="chart" class="donut-chart"></div>
-				</div>
-				<?php endif; ?>
-				<?php if (!empty($dtr)): ?>
-				<div class="col-md-9">
-					<div id="bar-chart" class="second-donut-chart"></div>
-				</div>
-				<?php endif; ?>
-			</div>
-			
 		</div>	
 			
 	</div>

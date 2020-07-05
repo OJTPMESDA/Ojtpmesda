@@ -4,7 +4,6 @@
 	<div class="col-md-4"></div>
 		<div class="col-md-4 shadow">
 			<div class="container">
-			<br>
 		  	<form method="post" action="<?php echo base_url('create'); ?>" class="sign-up-form">
 			  	<fieldset>
 				    <legend>Sign Up</legend>
@@ -15,6 +14,10 @@
 				    <div class="form-group">
 				      <label for="contact_no">Contact No.</label>
 				      <input type="text" name="contact_no" class="form-control" id="contact_no" onkeypress="return event.charCode >= 48 && event.charCode <= 57" aria-describedby="emailHelp" placeholder="Enter your contact no." maxlength="11" autocomplete="off" required>
+				    </div>
+				    <div class="form-group">
+				      <label for="contact_no">State University</label>
+				      <?php echo form_dropdown('school', school(),  set_value('school'), 'class="custom-select" id="school" required'); ?>
 				    </div>
 				    <div class="form-group">
 				      <label for="address">Permanent Address</label>
@@ -32,7 +35,7 @@
 				      <label for="confirm_password">Confirm Password</label>
 				      <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm password" required>
 				    </div>
-				    <button type="submit" class="btn btn-primary btn-block">Register</button>
+				    <button type="submit" class="btn btn-primary btn-block btn-disabled">Register</button>
 				    <br>
 				    <center>
 				    	<a href="<?php echo base_url('login'); ?>">Click here to Login</a>
@@ -41,7 +44,5 @@
 				</fieldset>
 			</form>
 		</div>
-		</div>
-	<div class="col-md-4"></div>
 	</div>
 </div>

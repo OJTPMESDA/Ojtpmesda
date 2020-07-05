@@ -10,6 +10,8 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
+		if($this->session->logged_in) redirect(base_url('forums'));
+
 		$join = [
             ['company', 'CID = USERID','INNER']
         ];
@@ -30,7 +32,7 @@ class Home extends MY_Controller {
 		$this->load->view($this->globalTemplate, $data);
 	}
 
-	public function profile($id)
+	public function profile()
 	{
         $join = [
             ['requirements r', 'r.studentID = USERID','LEFT'],
@@ -46,8 +48,8 @@ class Home extends MY_Controller {
     		'navbar' 	=> $this->includesPath.'nav-bar',
     		'title'		=> 'Profile - MinSCAT OJTPMESDA',
     		'copyright'	=> true,
-    		'row'	=> $this->Students_model->get(['USERID' => $id], null, $join, $param),
-    		'dtr'	=> $this->Students_dtr_model->list_all(['STUDENTID' => $id])
+    		'row'	=> $this->Students_model->get(['USERID' => $this->session->uid], null, $join, $param),
+    		'dtr'	=> $this->Students_dtr_model->list_all(['STUDENTID' => $this->session->uid])
     	];
 		$this->load->view($this->globalTemplate, $data);
 	}

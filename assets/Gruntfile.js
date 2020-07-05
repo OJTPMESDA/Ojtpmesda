@@ -5,17 +5,37 @@ module.exports = function (grunt) {
             options: {
                 separator: '',
             },
-            dist: {
+
+            default: {
                 src: ['js/popper.min.js', 'js/bootstrap.min.js', 'js/global.js', 'js/c3.js', 'js/custom.js', 'js/form_wizard.js', 'js/evaluate.js', 'js/charts.js', 'js/dirty.js'],
                 dest: 'dist/built.js',
             },
+
+            calendar: {
+                src: ['js/student-dtr.js'],
+                dest: 'dist/calendar.js',
+            },
+
+            table: {
+                src: ['js/dataTable.js'],
+                dest: 'dist/datatable.js',
+            }
         },
 
         uglify: { 
-            my_target: {
-                files: {
-                    'dist/output.min.js': ['dist/built.js']
-                }
+            default: {
+                src: 'dist/built.js',
+                dest: 'dist/output.min.js'
+            },
+
+            calendar: {
+                src: 'dist/calendar.js',
+                dest: 'dist/calendar.min.js'
+            },
+
+            table: {
+                src: 'dist/datatable.js',
+                dest: 'dist/datatable.min.js'
             }
         }
 

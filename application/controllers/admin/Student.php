@@ -15,7 +15,7 @@ class Student extends MY_Controller {
             ['requirements', 'studentID = USERID','LEFT']
         ];
 
-        $rows = $this->Students_model->list_all(['COMPANY_ID' => 0], null, null, null, $join);
+        $rows = $this->Students_model->list_all(['COMPANY_ID' => 0, 'STUDENT_STATUS != ' => 2], null, null, null, $join);
         
         $data = [
             'content'   => $this->folderPath.'pending-student-list',

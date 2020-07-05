@@ -2,6 +2,8 @@ var clickedButton   =   '';
 var base_url = window.location.origin;
 var url_path = new URL(window.location.href).pathname;
 var dropzone = null;
+var date = new Date();
+var lastMonth = date.getFullYear()+'-12-'+date.getDate();
 
 $(document).on('click', 'button[type=submit], input[type=submit]', function(){
     clickedButton   =   $(this);

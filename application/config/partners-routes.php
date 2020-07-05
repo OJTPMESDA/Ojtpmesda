@@ -21,4 +21,9 @@
 	$route['students/evaluate/(:num)'] = 'Evaluate/evaluation/$1';
 
 	$route['students/my-dtr/(:num)'] = 'Students/getdtr/$1';
+
+	$route['profile'] 			= 'Home/profile';
+	$route['settings'] 			= 'Home/profile';
+	$route['change/password'] 	= 'Home/changePass';
+	$route['profile/update'] 	= 'Home/update_profile';
 ?>

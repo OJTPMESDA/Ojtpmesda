@@ -13,6 +13,8 @@
 var base_url = window.location.origin;
 var url_path = new URL(window.location.href).pathname;
 var dropzone = null;
+var date = new Date();
+var lastMonth = date.getFullYear()+'-12-'+date.getDate();
 
 $(document).on('click', 'button[type=submit], input[type=submit]', function(){
     clickedButton   =   $(this);
@@ -12417,18 +12419,23 @@ if ($('div').hasClass('second-donut-chart')) {
 		});
 }$(document).ready(function() {
 
-	$('#username').change(function(){
-		var email = $('#email').val();
-		if (email != '')  {
-			$.ajax({
-				url:base_url+"/availability",
-				method:"POST",
-				data: {email:email},
-				success:function(data){
-					$('#email_result').html(data);
-				}
-			});
-		}
-	});
-	
+	if (jsUri(1) == 'register') {
+		$('#username').change(function(){
+			var username = $('#username').val();
+			if (username != '')  {
+				$.ajax({
+					url:base_url+"/availability",
+					method:"POST",
+					data: {username:username},
+					beforeSend:function(){
+						$('.text-username').remove();
+					},
+					success:function(res){
+						$('#username').parents('.form-group').append(res);
+					}
+				});
+			}
+		});
+	}
+
 });

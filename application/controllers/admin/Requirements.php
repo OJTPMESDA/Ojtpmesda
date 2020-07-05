@@ -8,6 +8,12 @@ class Requirements extends MY_Controller {
         if(!$this->session->logged_in) redirect(base_url('login'));
     }
 
+    public function deleteAll($id)
+    {
+        $this->Requirements_model->update(['studentID' => $id],['status' => 1]);
+        redirect('students/pending/list');
+    }
+
     public function confirm_resume($id)
     {
         $this->session->set_flashdata('remove', 'active');
