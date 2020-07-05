@@ -40,6 +40,7 @@ class Register extends MY_Controller {
         $save = [
             'FULL_NAME' => $this->input->post('fname'),
             'CONTACT_NO' => $this->input->post('contact_no'),
+            'SCHOOL_ID' => $this->input->post('school'),
             'ADDRESS' => $this->input->post('address'),
             'USERNAME' => $this->input->post('username'),
             'PASSWORD' => $this->_password_hash($this->input->post('password'))
