@@ -6,7 +6,7 @@
 			<div class="container">
 		  	<form method="post" action="<?php echo base_url('create'); ?>" class="sign-up-form">
 			  	<fieldset>
-				    <legend>Certificate of Registration</legend>
+				    <legend>Sign Up</legend>
 				    <div class="form-group">
 				      <label for="fname">Fullname</label>
 				      <input type="text" name="fname" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="Enter complete name" autocomplete="off" required>

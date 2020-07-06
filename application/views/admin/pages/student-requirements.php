@@ -23,7 +23,7 @@
             <a class="nav-link <?php echo $this->session->flashdata('good-moral-active');?>" data-toggle="tab" href="#good_moral">Good Moral</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php echo $this->session->flashdata('registration-active'); ?>" data-toggle="tab" href="#registration_form">Registration Form</a>
+            <a class="nav-link <?php echo $this->session->flashdata('registration-active'); ?>" data-toggle="tab" href="#registration_form">Certificate of Registration</a>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php echo $this->session->flashdata('consent-active'); ?>" data-toggle="tab" href="#parents_consent">Parents Consent</a>

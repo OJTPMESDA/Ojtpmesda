@@ -37,7 +37,7 @@
 				      <th scope="col" class="text-center">Clearance</th>
 				      <th scope="col" class="text-center">Waiver</th>
 				      <th scope="col" class="text-center">Good Moral</th>
-				      <th scope="col" class="text-center">Registration Form</th>
+				      <th scope="col" class="text-center">Certificate of Registration</th>
 				      <th scope="col" class="text-center">Parents Consent</th>
 				    </tr>
 				  </thead>
