@@ -31,24 +31,28 @@ class Login extends MY_Controller {
 
     	if (!empty($row)) {
             if ($row->PARTNERS_STATUS == 2) {
-                if ($this->_password_verify($password,$row->PASSWORD)) {
-                    $sess = [
-                        'role' => $row->ROLE,
-                        'username' => $row->USERNAME,
-                        'uid' => $row->PARTNERS_ID,
-                        'cid' => $row->COMPANY,
-                        'img' =>  $row->USER_PHOTO,
-                        'logged_in' => TRUE
-                    ];
-                    $this->session->set_userdata($sess);
-
-                    $url = base_url('forums');
-
-                    $this->response(true, null, ['action' => 'redirect', 'url' => $url]);
-                }
+                $this->response(false, 'Your account has been suspended');
             }
 
-            $this->response(false, 'Your acct has been suspended');
+            if ($row->PARTNERS_STATUS == 0) {
+                $this->response(false, 'Your account not yet active');
+            }
+
+            if ($this->_password_verify($password,$row->PASSWORD)) {
+                $sess = [
+                    'role' => $row->ROLE,
+                    'username' => $row->USERNAME,
+                    'uid' => $row->PARTNERS_ID,
+                    'cid' => $row->COMPANY,
+                    'img' =>  $row->USER_PHOTO,
+                    'logged_in' => TRUE
+                ];
+                $this->session->set_userdata($sess);
+
+                $url = base_url('forums');
+
+                $this->response(true, null, ['action' => 'redirect', 'url' => $url]);
+            }
     	}
 
     	$this->response(false, 'Invalid <strong>Email</strong> or <strong>Password</strong>');
