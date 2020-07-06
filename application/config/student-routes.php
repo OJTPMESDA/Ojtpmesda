@@ -13,6 +13,7 @@
 	$route['settings'] 					= 'Home/profile';
 	$route['profile/update'] 			= 'Home/update_profile';
 	$route['forums'] 					= 'Home/forum';
+	$route['forums/post'] 				= 'Home/forum_post';
 	$route['account/verify/(:any)'] 	= 'Home/account_verify/$1';
 
 	$route['register'] 	= 'Register';

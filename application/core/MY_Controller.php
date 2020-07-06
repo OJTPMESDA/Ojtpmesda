@@ -292,7 +292,7 @@ class MY_Controller extends CI_Controller {
         if ($this->session->role == 3) {
             $save['POST_BY_STUDENT'] = $this->session->uid;
             unset($save['POST_BY_COMPANY']);
-            unset($save['POST_BY_STUDENT']);
+            unset($save['POST_BY_ADMIN']);
         }
 
         $return = $this->Forum_model->create($save);
