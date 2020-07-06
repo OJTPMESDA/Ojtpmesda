@@ -10,7 +10,7 @@ class User extends MY_Controller {
 
     public function index()
     {
-        $rows = $this->Partners_model->list_all(['COMPANY' => $this->session->cid]);
+        $rows = $this->Partners_model->list_all(['COMPANY' => $this->session->cid, 'PARTNERS_ID != ' => $this->session->uid]);
 
         $data = [
             'content'   => $this->folderPath.'user-list',
