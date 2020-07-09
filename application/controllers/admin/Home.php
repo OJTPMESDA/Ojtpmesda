@@ -12,7 +12,7 @@ class Home extends MY_Controller {
 	{
         redirect('students/pending/list');
 		$join = [
-            ['company', 'CID = USERID','INNER']
+            ['company', 'CID = COMPANY_ID','INNER']
         ];
 
         $param = [
@@ -34,7 +34,7 @@ class Home extends MY_Controller {
 	public function confirm_list()
     {
         $join = [
-            ['company', 'CID = USERID','INNER'],
+            ['company', 'CID = COMPANY_ID','INNER'],
             ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
         ];
 

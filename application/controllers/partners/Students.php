@@ -51,7 +51,8 @@ class Students extends MY_Controller {
                 'navbar'    => $this->includesPath.'nav-bar',
                 'title'     => 'Home - MinSCAT OJTPMESDA',
                 'copyright' => true,
-                'results'   => $row
+                'results'   => $row,
+                'dtr'       => $this->Students_dtr_model->list_all(['STUDENTID' => $id, 'DTR_DATE' => date('Y-m-d')])
             ];
             $this->load->view($this->globalTemplate, $data);
         } else {

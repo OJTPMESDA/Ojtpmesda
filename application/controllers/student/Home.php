@@ -13,7 +13,7 @@ class Home extends MY_Controller {
 		if($this->session->logged_in) redirect(base_url('forums'));
 
 		$join = [
-            ['company', 'CID = USERID','INNER']
+            ['company', 'CID = COMPANY_ID','INNER']
         ];
 
         $param = [
