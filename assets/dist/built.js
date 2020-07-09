@@ -12451,6 +12451,7 @@ if ($('div').hasClass('second-donut-chart')) {
 		if (hours != '') {
 			if ( e.which === 13) {
 				_workHours(hours, id);
+				$('.dtr-footer').remove();
 			}
 		}
 	});
@@ -12459,10 +12460,8 @@ if ($('div').hasClass('second-donut-chart')) {
 		var id = $('.workhours').data('id');
 		var hours = $('.workhours').val();
 		if (hours != '') {
-			if ( e.which === 13) {
-				_workHours(hours, id);
-				$('.dtr-footer').remove();
-			}
+			_workHours(hours, id);
+			$('.dtr-footer').remove();
 		}
 	});
 

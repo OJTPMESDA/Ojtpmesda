@@ -25,6 +25,7 @@ $(document).ready(function() {
 		if (hours != '') {
 			if ( e.which === 13) {
 				_workHours(hours, id);
+				$('.dtr-footer').remove();
 			}
 		}
 	});
@@ -33,10 +34,8 @@ $(document).ready(function() {
 		var id = $('.workhours').data('id');
 		var hours = $('.workhours').val();
 		if (hours != '') {
-			if ( e.which === 13) {
-				_workHours(hours, id);
-				$('.dtr-footer').remove();
-			}
+			_workHours(hours, id);
+			$('.dtr-footer').remove();
 		}
 	});
 
