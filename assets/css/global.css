@@ -25,6 +25,16 @@
     border-top: 1px solid #e8e8e8;
 }
 
+.logo-login {
+	width: 18%;
+}
+
+@media only screen and (max-width: 600px) {
+	.logo-login {
+		width: 70%;
+	}
+}
+
 .content {
 	margin-bottom: 5%;
 }

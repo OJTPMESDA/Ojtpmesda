@@ -45,4 +45,4 @@
 		<link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
 	</head>
-	<body>
+	<body <?php echo ($this->uri->segment(1) == 'login') ? 'class="pt-5"' : null; ?>>
