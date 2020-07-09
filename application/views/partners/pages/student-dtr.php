@@ -11,7 +11,7 @@
                     <label>Work Hours: <i><?= $results->WORK_HOURS ?? 0; ?> / 400</i></label>
             	</div>
                 <?php if (empty($dtr)): ?>
-                <div class="card-footer">
+                <div class="card-footer dtr-footer">
                     <div class="input-group">
                         <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control workhours" data-id="<?= $results->USERID ?? 0; ?>" placeholder="Work hours">
                         <div class="input-group-append">
