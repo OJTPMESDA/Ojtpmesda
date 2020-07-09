@@ -14,7 +14,7 @@
 		<title><?php echo $title; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+		<link rel="icon" type="image/png" href="<?php echo base_url('assets/images/ojtpmesda.png'); ?>">
 		<link rel="preload" href="<?php echo base_url('assets/icon/css/all.css'); ?>" as="style">
 		<link rel="preload" href="<?php echo base_url('assets/css/bootstrap.css'); ?>" as="style">
 		<link rel="preload" href="<?php echo base_url('assets/css/custom.min.css'); ?>" as="style">

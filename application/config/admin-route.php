@@ -36,11 +36,11 @@
 	$route['decline/consent/(:num)'] 		= 'Requirements/decline_consent/$1';
 	$route['decline/good-moral/(:num)'] 	= 'Requirements/decline_good_moral/$1';
 
-	$route['forums/post']				= 'Forum/post';
-	$route['forums'] 					= 'Forum';
-	$route['forums/post/request'] 		= 'Forum/request';
-	$route['forums/post/approved/(:num)'] 		= 'Forum/approved/$1';
-	$route['forums/post/decline/(:num)'] 		= 'Forum/decline/$1';
+	$route['forums/post']					= 'Forum/post';
+	$route['forums'] 						= 'Forum';
+	$route['forums/post/request'] 			= 'Forum/request';
+	$route['forums/post/approved/(:num)']	= 'Forum/approved/$1';
+	$route['forums/post/decline/(:num)']	= 'Forum/decline/$1';
 
 	$route['students/profile/(:num)']	= 'Student/profile/$1';
 
