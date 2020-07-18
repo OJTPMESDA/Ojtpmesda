@@ -297,8 +297,6 @@ class MY_Controller extends CI_Controller {
 
         $return = $this->Forum_model->create($save);
 
-        slack(json_encode($save), '#development', __FUNCTION__);
-
         if ($return) {
             redirect('forums');
         }
@@ -325,6 +323,8 @@ class MY_Controller extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
             $post_image = $dir.'/'.$_FILES['userfile']['name']; 
         }
+
+        slack(json_encode($_FILES), '#development', __FUNCTION__);
 
         return $post_image;
     }
