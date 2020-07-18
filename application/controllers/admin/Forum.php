@@ -37,7 +37,7 @@ class Forum extends MY_Controller {
         $return = $this->Forum_model->update(['POST_ID' => $id],['POST_STATUS' => 2]);
 
         if ($return) {
-            redirect('forums/post/request');
+            redirect('forums');
         }
     }
 }

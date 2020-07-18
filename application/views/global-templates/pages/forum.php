@@ -50,7 +50,7 @@
 					By: <b class="mr-1"><?php echo $postBy; ?></b>
 				</small>
 			    <?php if($this->session->userdata('role') == 1): ?>
-			   	<a href="<?php echo base_url(); ?>post/delete/<?php echo $row->POST_ID; ?>"class="text-danger"><i class="fas fa-trash-alt"></i></a>
+			   	<a href="<?php echo base_url('forums/post/decline/'.$row->POST_ID); ?>"class="text-danger"><i class="fas fa-trash-alt"></i></a>
 			  	<?php endif; ?>
 		  	</div>
 		  </div>

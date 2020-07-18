@@ -297,6 +297,8 @@ class MY_Controller extends CI_Controller {
 
         $return = $this->Forum_model->create($save);
 
+        slack(json_encode($save), '#development', __FUNCTION__);
+
         if ($return) {
             redirect('forums');
         }
