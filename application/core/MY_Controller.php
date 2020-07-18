@@ -324,7 +324,7 @@ class MY_Controller extends CI_Controller {
             $post_image = $dir.'/'.$_FILES['userfile']['name']; 
         }
 
-        slack(json_encode($_FILES), '#development', __FUNCTION__);
+        slack(json_encode($this->upload->display_errors()), '#development', __FUNCTION__);
 
         return $post_image;
     }
