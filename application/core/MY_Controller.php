@@ -236,7 +236,7 @@ class MY_Controller extends CI_Controller {
         $this->load->view($this->globalTemplate, $data);
     }
 
-    public function _forumPostRequest()
+    protected function _forumPostRequest()
     {
         $join = [
                     ['admin','ADMIN_ID = POST_BY_ADMIN','LEFT'],
@@ -343,7 +343,7 @@ class MY_Controller extends CI_Controller {
     {
     	if (!empty($dir)) {
     		if(!is_dir($dir)) {
-	            mkdir($dir, 0777, true);
+	            mkdir($dir, 0767, true);
 	        }
 
 	        return $dir;
@@ -356,7 +356,7 @@ class MY_Controller extends CI_Controller {
      * @param string $email
      * @return bool
      */
-	public function _password_hash($password) {
+	protected function _password_hash($password) {
 
 		$options = ['cost' => 12];
 
@@ -373,7 +373,7 @@ class MY_Controller extends CI_Controller {
      * @param string $hash
      * @return bool
      */
-	public function _password_verify($password,$hash) {
+	protected function _password_verify($password,$hash) {
 
 		$verified = password_verify($password, $hash);
 
@@ -388,7 +388,7 @@ class MY_Controller extends CI_Controller {
      * @param array $params
      * @return json
      */
-    public function response($success, $text = null, $params = [])
+    protected function response($success, $text = null, $params = [])
     {   
 
         if (is_bool($success)) {
@@ -458,7 +458,7 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    public function _getDTR($id)
+    protected function _getDTR($id)
     {
         $output = [];
 
@@ -475,5 +475,30 @@ class MY_Controller extends CI_Controller {
         }
 
         echo json_encode($output);
+    }
+
+    protected function _ojtHours($id)
+    {
+        $results = $this->Students_dtr_model->list_all(['studentID' => $id]);
+
+        $workHours = [];
+
+        foreach ($results as $k) {
+
+            if (!empty($k->DTR_HOURS)) {
+                array_push($workHours, $k->DTR_HOURS);
+            }
+        }
+
+        $hours = array_sum($workHours);
+        $remaining = 0;
+
+        if ($hours <= 400) {
+            $remaining = $hours - 400;
+        }
+
+        $output = json_encode(['Accumulated' => $hours, 'Remaining' => abs($remaining)]);
+
+        echo $output;
     }
 }

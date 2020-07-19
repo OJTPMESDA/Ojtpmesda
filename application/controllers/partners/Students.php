@@ -77,6 +77,15 @@ class Students extends MY_Controller {
             show_404();
         }
     }
+
+    public function ojthours($id)
+    {
+        if (!empty($id)) {
+            $this->_ojtHours($id);
+        } else {
+            show_404();
+        }
+    }
 }
 
 ?>

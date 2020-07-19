@@ -17,6 +17,7 @@
 
 	$route['students/reports/ratings/(:num)'] = 'Students/rating/$1';
 	$route['students/reports/attendance/(:num)'] = 'Students/attendance/$1';
+	$route['students/reports/ojt-hours/(:num)'] = 'Students/ojthours/$1';
 
 	$route['students/evaluate/(:num)'] = 'Evaluate/evaluation/$1';
 

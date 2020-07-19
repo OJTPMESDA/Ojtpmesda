@@ -8,13 +8,16 @@
 			<label><?= $results->SCHOOL_NAME; ?> | <?= $results->SCHOOL_ADDRESS; ?></label>
 		</div>
 		<?php if (!empty($rating)): ?>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div id="chart" class="donut-chart"></div>
 		</div>
 		<?php endif; ?>
 		<?php if (!empty($dtr)): ?>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div id="bar-chart" class="second-donut-chart"></div>
+		</div>
+		<div class="col-md-2">
+			<div id="dounut" class="ojt-hours"></div>
 		</div>
 		<?php endif; ?>
 	</div>

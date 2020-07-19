@@ -16,6 +16,9 @@
 		<div class="col-md-3">
 			<div id="bar-chart" class="second-donut-chart"></div>
 		</div>
+		<div class="col-md-3">
+			<div id="dounut" class="ojt-hours"></div>
+		</div>
 		<?php endif; ?>
 	</div>
 	
