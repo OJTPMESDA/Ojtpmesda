@@ -10,7 +10,6 @@
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="profile-navbar"><i class="fas fa-user-tie mr-2"></i><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
 					<div class="dropdown-menu" aria-labelledby="dropdown">
 						<a class="dropdown-item" href="<?php echo base_url('profile'); ?>"><i class="far fa-id-card mr-2"></i>Profile</a>
-						<a class="dropdown-item" href="<?php echo base_url('settings'); ?>"><i class="fas fa-cogs mr-2"></i>Settings</a>
 						<?php if ($this->session->role == 3): ?>
 							<a class="dropdown-item" href="<?php echo base_url('ojt/results'); ?>"><i class="far fa-star mr-2"></i></i>Rating</a>
 						<?php endif; ?>

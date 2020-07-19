@@ -1,22 +1,15 @@
 <?php $path = (!empty($row->PHOTO)) ? base_url($row->PHOTO) : base_url('assets/images/no_image.png') ;?>
 <?php $show = ($this->uri->segment(1) == 'profile') ? 'active show': null; ?>
-<?php $settings = ($this->uri->segment(1) == 'settings') ? 'active show': null; ?>
 <div class="container">
 	<img src="<?php echo $path; ?>" class="rounded-circle" width="150px">
 	<legend class="mt-1"><?php echo $row->FULLNAME; ?></legend>
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link <?php echo $show; ?>" data-toggle="tab" href="#profile">Profile</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link <?php echo $settings; ?>" data-toggle="tab" href="#settings">Settings</a>
+	    <a class="nav-link <?php echo $show; ?>" data-toggle="tab" href="#settings">Settings</a>
 	  </li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
-	  <div class="tab-pane fade <?php echo $show; ?>" id="profile">
-	    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-	  </div>
-	  <div class="tab-pane fade <?php echo $settings; ?>" id="settings">
+	  <div class="tab-pane fade <?php echo $show; ?>" id="settings">
 	    <p>Username: <strong><?php echo $row->USERNAME; ?></strong></p>
 		<p>Address: <strong><?php echo $row->ADDRESS; ?></strong></p>
 		<p>Email Address: <strong><?php echo $row->EMAIL_ADDRESS; ?></strong></p>

@@ -30,7 +30,7 @@
 					<tr>
 						<td><?= $k->FULL_NAME; ?></td>
 						<td><?= $k->EMAIL_ADDRESS ?? 'N/A'; ?></td>
-						<td><?= $k->AGE ?? 'N/A'; ?></td>
+						<td><?= (empty($k->AGE)) ?'N/A' : $k->AGE; ?></td>
 						<td><?= $k->CONTACT_NO ?? 'N/A'; ?></td>
 						<td><?= $k->GUARDIAN ?? 'N/A'; ?></td>
 						<td><?= $k->GURADIAN_NO ?? 'N/A'; ?></td>

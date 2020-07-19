@@ -78,7 +78,7 @@ class Home extends MY_Controller {
         
     }
 
-	public function update_profile($id)
+	public function update_profile()
 	{
         $dir = $this->_mkdir('assets/images');
 
@@ -97,9 +97,9 @@ class Home extends MY_Controller {
             unset($data['PHOTO']);
         }
 
-        $return = $this->Admin_model->update(['ADMIN_ID' => $id], $data);
+        $return = $this->Admin_model->update(['ADMIN_ID' => $this->session->uid], $data);
         if ($return) {
-        	redirect('profile/'.$id);
+        	redirect('profile/');
         }
 	}
 }

@@ -30,7 +30,7 @@
 						<td><img src="<?php echo $path; ?>" class="rounded-circle" height="60px"></td>
 						<td><?php echo $row->COMPANY_NAME;?></td>
 						<td><?php echo strlen($row->COMPANY_ADDRESS) > 40 ? substr($row->COMPANY_ADDRESS,0,40)."..." : $row->COMPANY_ADDRESS;?></td>
-						<td><?php echo $row->COMPANY_CONTACT_NO;?></td>
+						<td><?php echo (empty($row->COMPANY_CONTACT_NO)) ? 'N/A' : $row->COMPANY_CONTACT_NO;?></td>
 						<td><?php echo $status; ?></td>
 						<td>
 							<div class="btn-group btn-group-toggle" data-toggle="buttons">

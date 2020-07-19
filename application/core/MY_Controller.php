@@ -44,7 +44,7 @@ class MY_Controller extends CI_Controller {
     protected function _studentConfirmList()
     {
         $join = [
-            ['company', 'CID = USERID','INNER'],
+            ['company', 'CID = COMPANY_ID','INNER'],
             ['school_list', 'school_list.SCHOOL_ID = students.SCHOOL_ID','INNER']
         ];
 
@@ -324,8 +324,6 @@ class MY_Controller extends CI_Controller {
             $post_image = $dir.'/'.$_FILES['userfile']['name']; 
         }
 
-        slack(json_encode($this->upload->display_errors()), '#development', __FUNCTION__);
-
         return $post_image;
     }
 
@@ -345,7 +343,7 @@ class MY_Controller extends CI_Controller {
     {
     	if (!empty($dir)) {
     		if(!is_dir($dir)) {
-	            mkdir($dir, 0755, TRUE);
+	            mkdir($dir, 0777, true);
 	        }
 
 	        return $dir;
