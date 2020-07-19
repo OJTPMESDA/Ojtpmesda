@@ -10,26 +10,66 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
-        redirect('students/pending/list');
-		$join = [
-            ['company', 'CID = COMPANY_ID','INNER']
-        ];
 
         $param = [
-            'select' => 'CID, USERID, FULL_NAME, CONTACT_NO, COMPANY_NAME, ADDRESS, WORK_HOURS, USER_PHOTO'
+            'select' => 'USERID, FULL_NAME, CONTACT_NO, ADDRESS, WORK_HOURS, USER_PHOTO'
         ];
 
-        $rows = $this->Students_model->list_all(['STUDENT_STATUS' => 0, 'COMPANY_ID' => 0], null, null, null, $join, $param);
+        $pending = $this->Students_model->list_all(['STUDENT_STATUS' => 0, 'COMPANY_ID' => 0], null, null, null, null, $param);
+        $confirm = $this->Students_model->list_all(['STUDENT_STATUS' => 1, 'COMPANY_ID !=' => 0], null, null, null, null, $param);
 
 		$data = [
 			'content' 	=> $this->globalPage.'homepage',
 			'navbar' 	=> $this->includesPath.'nav-bar',
 			'title'		=> 'Home - MinSCAT OJTPMESDA',
 			'copyright'	=> true,
-			'results'	=> $rows
+			'pending'	=> count($pending),
+            'confirm'   => count($confirm)
 		];
 		$this->load->view($this->globalTemplate, $data);
 	}
+
+    public function requirementBarGraph()
+    {
+        $requirements = $this->Requirements_model->list_all(['status' => 0]);
+
+        $resume = [];
+        $clearance = [];
+        $waiver = [];
+        $good_moral = [];
+        $registration_form = [];
+        $parents_consent = [];
+
+        if (!empty($requirements)) {
+            foreach ($requirements as $k) {
+                if ($k->resume_status == 1) {
+                    array_push($resume, $k->resume);
+                }
+                if ($k->clearance_status == 1) {
+                    array_push($clearance, $k->clearance);
+                }
+                if ($k->waiver_status == 1) {
+                    array_push($waiver, $k->waiver);
+                }
+                if ($k->good_moral_status == 1) {
+                    array_push($good_moral, $k->good_moral);
+                }
+                if ($k->registration_status == 1) {
+                    array_push($registration_form, $k->registration_form);
+                }
+                if ($k->consent_status == 1) {
+                    array_push($parents_consent, $k->parents_consent);
+                }
+            }
+        }
+
+        $output = [
+            'label' => ['Resume','Clearance','Waiver','Good Moral','Registration Form','Parents Consent'],
+            'Requirements' => [count($resume),count($clearance),count($waiver),count($good_moral),count($registration_form),count($parents_consent)]
+        ];
+
+        echo json_encode($output);
+    }
 
 	public function confirm_list()
     {

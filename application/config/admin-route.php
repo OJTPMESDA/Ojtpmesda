@@ -20,6 +20,8 @@
 	$route['students/requirements/(:num)']	= 'Student/requirements/$1';
 	$route['students/confirm/(:num)']		= 'Student/confirm_student/$1';
 
+	$route['summary/report']		= 'Home/requirementBarGraph';
+
 	$route['confirm/resume/(:num)'] 		= 'Requirements/confirm_resume/$1';
 	$route['confirm/clearance/(:num)'] 		= 'Requirements/confirm_clearance/$1';
 	$route['confirm/waiver/(:num)'] 		= 'Requirements/confirm_waiver/$1';

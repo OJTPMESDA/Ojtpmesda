@@ -43,3 +43,32 @@ if ($('div').hasClass('ojt-hours')) {
 			}
 		});
 }
+
+if ($('div').hasClass('requirements')) {
+	c3.generate({
+		bindto: '#requirements',
+		data: {
+			x: 'label',
+			url: base_url+'/summary/report',
+			mimeType: 'json',
+			type : 'bar'
+		},
+		size: {
+			height: 400
+		},
+		axis: {
+            x: {
+                type: 'category',
+            	height: 50
+            }
+        },
+		grid: {
+			x: {
+				show: !0
+			},
+			y: {
+				show: !0
+			}
+		}
+	});
+}

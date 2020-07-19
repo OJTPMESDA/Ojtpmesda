@@ -12440,6 +12440,38 @@ if ($('div').hasClass('ojt-hours')) {
 				padAngle: .1
 			}
 		});
+}
+
+if ($('div').hasClass('requirements')) {
+	c3.generate({
+		bindto: '#requirements',
+		data: {
+			x: 'label',
+			url: base_url+'/summary/report',
+			mimeType: 'json',
+			type : 'bar'
+		},
+		padding: {
+			top: 50
+		},
+		size: {
+			height: 480
+		},
+		axis: {
+            x: {
+                type: 'category',
+            	height: 50
+            }
+        },
+		grid: {
+			x: {
+				show: !0
+			},
+			y: {
+				show: !0
+			}
+		}
+	});
 }$(document).ready(function() {
 
 	if (jsUri(1) == 'register') {
