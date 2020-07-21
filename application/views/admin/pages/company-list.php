@@ -65,7 +65,7 @@
 						</div>
 						<div class="form-group">
 							<label for="acronym">Acronym <small>(optional)</small></label>
-							<input type="text" name="acronym" class="form-control" id="acronym" aria-describedby="emailHelp" autocomplete="off" required>
+							<input type="text" name="acronym" class="form-control" id="acronym" aria-describedby="emailHelp" autocomplete="off">
 						</div>
 						<div class="form-group">
 							<label for="address">Address</label>
@@ -78,6 +78,22 @@
 						<div class="form-group">
 							<label for="contact_person">Contact Person</label>
 							<input type="text" name="contact_person" class="form-control" id="contact_person" aria-describedby="emailHelp" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="password" maxlength="11" class="form-control" id="password" aria-describedby="emailHelp" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="cpassword">Confirm Password</label>
+							<input type="password" name="cpassword" class="form-control" id="cpassword" aria-describedby="emailHelp" autocomplete="off" required>
 						</div>
 					</div>
 

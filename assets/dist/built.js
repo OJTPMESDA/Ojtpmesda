@@ -33,6 +33,16 @@ function jsUri(id) {
     }
 }
 
+$("input#username").on({
+  keydown: function(e) {
+    if (e.which === 32)
+      return false;
+  },
+  change: function() {
+    this.value = this.value.replace(/\s/g, "");
+  }
+});
+
 function IsEmpty(value) {
     return ( $.trim( value ) == '' );
 }
@@ -12451,11 +12461,8 @@ if ($('div').hasClass('requirements')) {
 			mimeType: 'json',
 			type : 'bar'
 		},
-		padding: {
-			top: 50
-		},
 		size: {
-			height: 480
+			height: 400
 		},
 		axis: {
             x: {
